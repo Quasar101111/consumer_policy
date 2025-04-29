@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\policy_backend.props" />
+</Project>
