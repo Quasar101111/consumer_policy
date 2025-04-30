@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "AhtYsdsLRlZQlkIr1g4o4REzKFGN+hvFxEyKB+lMTFw=",
-  "Source": "policy_backend",
-  "BasePath": "_content/policy_backend",
+  "Hash": "34v2RoOKfy7jlPISBUWeRLrtt6fDb7koS61dusCUnFg=",
+  "Source": "policy_portal_api",
+  "BasePath": "_content/policy_portal_api",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
@@ -47,12 +47,12 @@
       "OriginalItemSpec": "C:\\Users\\rohan.kurian\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.11\\staticwebassets\\QuickGrid.razor.js"
     },
     {
-      "Identity": "D:\\intern\\policy_backend\\policy_backend\\obj\\Debug\\net8.0\\scopedcss\\bundle\\policy_backend.styles.css",
-      "SourceId": "policy_backend",
+      "Identity": "D:\\intern\\policy_backend\\policy_backend\\obj\\Debug\\net8.0\\scopedcss\\bundle\\policy_portal_api.styles.css",
+      "SourceId": "policy_portal_api",
       "SourceType": "Computed",
       "ContentRoot": "D:\\intern\\policy_backend\\policy_backend\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
-      "BasePath": "_content/policy_backend",
-      "RelativePath": "policy_backend.styles.css",
+      "BasePath": "_content/policy_portal_api",
+      "RelativePath": "policy_portal_api.styles.css",
       "AssetKind": "All",
       "AssetMode": "CurrentProject",
       "AssetRole": "Primary",
@@ -63,7 +63,7 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\intern\\policy_backend\\policy_backend\\obj\\Debug\\net8.0\\scopedcss\\bundle\\policy_backend.styles.css"
+      "OriginalItemSpec": "D:\\intern\\policy_backend\\policy_backend\\obj\\Debug\\net8.0\\scopedcss\\bundle\\policy_portal_api.styles.css"
     }
   ]
 }

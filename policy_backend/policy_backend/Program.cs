@@ -35,9 +35,22 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
         new MySqlServerVersion(new Version(8, 0, 42)))); //  Match your MySQL version
-builder.Services.AddCors();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularOrgins",
+        builder => builder.WithOrigins("http://localhost:4200")
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials()); 
+}
+    
+    );
+
 
 var app = builder.Build();
+
+app.UseCors("AllowAngularOrgins");
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -33,8 +33,8 @@ namespace policy_backend.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] User user) { 
-          if(await _context.Users.FindAsync(user.Username)!= null)
+        public async Task<IActionResult> Register([FromBody] User user) {
+            if (await _context.Users.FindAsync(user.Username) != null)
             {
                 return BadRequest("username already exists");
             }
@@ -45,7 +45,7 @@ namespace policy_backend.Controllers
 
 
             // Hash the password
-           user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
 
             user.CreatedAt = DateTime.UtcNow;
 
@@ -53,7 +53,7 @@ namespace policy_backend.Controllers
             await _context.SaveChangesAsync();
 
             return Ok(new { message = "User registered successfully" });
-        
+
         }
 
         [HttpPost("login")]
@@ -68,9 +68,9 @@ namespace policy_backend.Controllers
 
             return Ok(new
             {
-               //token = GenerateJwtToken(user),
+                //token = GenerateJwtToken(user),
                 username = user.Username,
-               
+
                 message = "Login successful"
             });
         }
@@ -78,9 +78,9 @@ namespace policy_backend.Controllers
         {
             var claims = new[]
             {
-        new Claim(ClaimTypes.Name, user.Username),
-        new Claim(ClaimTypes.Email, user.Email)
-    };
+            new Claim(ClaimTypes.Name, user.Username),
+            new Claim(ClaimTypes.Email, user.Email)
+            };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -95,8 +95,21 @@ namespace policy_backend.Controllers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
+        [HttpGet("check-username/{username}")]
+        public async Task<IActionResult> checkUsername(string username) {
+            var userExists = await _context.Users.AnyAsync(u => u.Username == username);
 
+            if (userExists)
+            {
+                return Conflict(new { message = "Username already taken" });
+            }
 
-
+            return Ok(new { message = "Username available" });
+        }
     }
+
+
+
+
+    
 }

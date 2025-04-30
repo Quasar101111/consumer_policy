@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ApiService } from '../services/api.service';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'app-register',
   imports: [FormsModule, CommonModule],
@@ -20,27 +24,58 @@ export class RegisterComponent {
   submitted = false;
   usernameTaken = false;
   passwordMismatch = false;
+  errorMessage ='';
+  constructor(
+    private apiService: ApiService, private router :Router)
+   {}
+   
  
   checkUsername() {
-    // TODO: Implement username check logic
-    // For now, just simulating a check
-    this.usernameTaken = false;
+    if(this.registerData.username){
+      this.apiService.checkUsername(this.registerData.username).subscribe({next:()=> {
+        this.usernameTaken = false;
+      },
+      error: (error)=> {
+        if (error.status === 409) {
+          this.usernameTaken = true;
+        } else {
+          console.error('Error checking username:', error);
+        }
+      }
+    });
   }
+}
   checkPasswordMatch() {
     this.passwordMismatch = this.registerData.password !== this.registerData.confirmPassword;
   }
 
   onRegister() {
     this.submitted = true;
-    
-    // Check if passwords match
-    this.passwordMismatch = this.registerData.password !== this.registerData.confirmPassword;
+    this.checkUsername();
+    this.checkPasswordMatch();
+  
 
-    if (this.passwordMismatch) {
+    if (this.passwordMismatch || this.usernameTaken) {
       return;
     }
 
-    // TODO: Implement registration logic
+    const user={
+      username: this.registerData.username,
+      fullName: this.registerData.fullName,
+      password: this.registerData.password,
+      email: this.registerData.email,
+    };
+
+    this.apiService.register(user).subscribe({next:(response)=> {
+      this.router.navigate(['/login']);
+    },
+    error:(error)=>{
+    console.error("Registration failed ", error);
+    this.errorMessage =  'Registration failed. Please try again.';
+    }
+
+  });
+
     console.log('Registration data:', this.registerData);
   }
 }

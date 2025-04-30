@@ -7361,9 +7361,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\intern\\policy_backend\\policy_backend\\policy_backend.csproj",
-      "projectName": "policy_backend",
-      "projectPath": "D:\\intern\\policy_backend\\policy_backend\\policy_backend.csproj",
+      "projectUniqueName": "D:\\intern\\policy_backend\\policy_backend\\policy_portal_api.csproj",
+      "projectName": "policy_portal_api",
+      "projectPath": "D:\\intern\\policy_backend\\policy_backend\\policy_portal_api.csproj",
       "packagesPath": "C:\\Users\\rohan.kurian\\.nuget\\packages\\",
       "outputPath": "D:\\intern\\policy_backend\\policy_backend\\obj\\",
       "projectStyle": "PackageReference",

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ApiService } from '../services/api.service'; 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,22 +11,37 @@ import { CommonModule } from '@angular/common';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  username: string = '';
-  password: string = '';
+  
+  loginData={
+    username: '',
+    password: ''
+  }
+ 
   loginError: string = '';
   submitted = false;
 
+
+  constructor(
+    private apiService: ApiService, private router :Router)
+   {}
+
+  
   onLogin() {
     this.submitted = true;
     this.loginError = '';
-
-    // For demo purposes - replace with actual authentication logic
-    if (this.username !== "abc" || this.password !== "123") {
-      this.loginError = 'Invalid username or password';
-      return;
+    const login ={
+        username : this.loginData.username,
+        password : this.loginData.password
+    };
+  
+    this.apiService.login(login).subscribe({next:(response)=>
+       {
+         this.router.navigate(['/home'])
+    },
+    error:()=>{
+      this.loginError = 'Invalid username or password.';
     }
+  })
 
-    console.log('Login successful:', this.username);
-    // Add your login success logic here
   }
 }

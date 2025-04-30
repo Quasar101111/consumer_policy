@@ -29,6 +29,12 @@
             novalidate>
             <h1 class="text-center mb-4 text-primary fw-bold">Create Account</h1>
 
+
+            <div *ngIf="errorMessage" class="alert alert-dange mb-3">
+                {{errorMessage}}
+
+            </div>
+
             <!-- Username Field -->
             <div class="mb-3 form-floating">
                 <input type="text" id="username" name="username" [(ngModel)]="registerData.username"
