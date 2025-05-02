@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
+ 
   imports: [FormsModule, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
@@ -36,7 +37,10 @@ export class LoginComponent {
   
     this.apiService.login(login).subscribe({next:(response)=>
        {
-         this.router.navigate(['/home'])
+        localStorage.setItem('username', response.username);
+        localStorage.setItem('token', response.token);
+         
+        this.router.navigate(['/home'])
     },
     error:()=>{
       this.loginError = 'Invalid username or password.';

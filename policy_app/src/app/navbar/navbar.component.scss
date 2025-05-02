@@ -1,39 +1,6 @@
-.navbar {
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+.bg-alt {
+    background-color: #7fb8e7; 
+    border-radius: 8%;
   }
-  
-  .dropdown-menu {
-    min-width: 200px;
-    padding: 0.5rem 0;
-    margin-top: 0.5rem;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  }
-  
-  .dropdown-item {
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    
-    &:hover {
-      background-color: #f8f9fa;
-    }
-  
-    i {
-      width: 1rem;
-      text-align: center;
-    }
-  }
-  
-  .nav-link {
-    cursor: pointer;
-    &.active {
-      font-weight: 500;
-    }
-  }
-  
-  @media (max-width: 991.98px) {
-    .dropdown-menu {
-      border: none;
-      box-shadow: none;
-      padding: 0;
-    }
-  }
+ 

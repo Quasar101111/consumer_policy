@@ -63,17 +63,20 @@ namespace policy_backend.Controllers
 
             if (!BCrypt.Net.BCrypt.Verify(loginDto.Password, user.Password))
             {
-                return Unauthorized("Invalid username or password");
+                return BadRequest("Invalid username or password");
             }
 
             return Ok(new
             {
-                //token = GenerateJwtToken(user),
+                token = GenerateJwtToken(user),
                 username = user.Username,
 
                 message = "Login successful"
             });
         }
+
+
+        
         private string GenerateJwtToken(User user)
         {
             var claims = new[]
@@ -91,8 +94,11 @@ namespace policy_backend.Controllers
                 claims: claims,
                 expires: DateTime.UtcNow.AddHours(1),
                 signingCredentials: creds);
+           //var  tokenString = new JwtSecurityTokenHandler().WriteToken(token);
+           // Console.WriteLine("JWT Token: " + tokenString);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+            //return tokenString;
         }
 
         [HttpGet("check-username/{username}")]
