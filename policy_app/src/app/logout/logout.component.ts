@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './logout.component.scss'
 })
 export class LogoutComponent {
-
+ 
 }

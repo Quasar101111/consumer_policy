@@ -22,10 +22,11 @@ export class NavbarComponent {
   @Output() usernameChange= new EventEmitter<string>();
   userName =localStorage.getItem('username')||'Guest';
   constructor(private router:Router){}
+
   
   ngOnInit(){
     this.usernameChange.emit(this.userName);
-    console.log(this.userName);
+   
   }
   
   
