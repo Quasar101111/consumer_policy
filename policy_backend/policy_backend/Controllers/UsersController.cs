@@ -107,7 +107,8 @@ namespace policy_backend.Controllers
 
             if (userExists)
             {
-                return Conflict(new { message = "Username already taken" });
+                //return Conflict(new { message = "Username already taken" });
+                return BadRequest("Username already taken");
             }
 
             return Ok(new { message = "Username available" });

@@ -30,13 +30,16 @@ export class NavbarComponent {
   }
   
   
-   
 
    logout(){
     localStorage.removeItem('username');
     localStorage.removeItem('token');
     this.userName= '';
-    this.router.navigate(['/login']);
-   }
-  
+    this.router.navigate(['/login']).then(() => {
+      window.history.pushState(null, '', window.location.href);
+      window.onpopstate = () => {
+        window.history.pushState(null, '', window.location.href);
+      };
+    }); 
+  }
 }

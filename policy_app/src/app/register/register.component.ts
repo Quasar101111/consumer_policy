@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component,ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../services/api.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-register',
@@ -25,18 +26,22 @@ export class RegisterComponent {
   usernameTaken = false;
   passwordMismatch = false;
   errorMessage ='';
+  successMessage =false;
   constructor(
     private apiService: ApiService, private router :Router)
    {}
    
- 
+
+   
   checkUsername() {
+    
     if(this.registerData.username){
+      
       this.apiService.checkUsername(this.registerData.username).subscribe({next:()=> {
         this.usernameTaken = false;
       },
       error: (error)=> {
-        if (error.status === 409) {
+        if (error.status === 409 || error.status==400) {
           this.usernameTaken = true;
         } else {
           console.error('Error checking username:', error);
@@ -65,9 +70,11 @@ export class RegisterComponent {
       password: this.registerData.password,
       email: this.registerData.email,
     };
-
+    
     this.apiService.register(user).subscribe({next:(response)=> {
-      this.router.navigate(['/login']);
+      this.successMessage =true;
+      setTimeout(()=>{
+      this.router.navigate(['/login']);},4000);
     },
     error:(error)=>{
     console.error("Registration failed ", error);

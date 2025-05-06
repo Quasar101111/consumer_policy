@@ -43,7 +43,9 @@ export class LoginComponent {
     this.apiService.login(login).subscribe({next:(response)=>
        {
         localStorage.setItem('username', response.username);
+       
         localStorage.setItem('token', response.token);
+       
         this.eventService.sendWelcomeMessage(1);
        
        
