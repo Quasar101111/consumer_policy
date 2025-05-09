@@ -34,10 +34,8 @@ namespace policy_backend.Controllers
 
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] User user) {
-            if (await _context.Users.FindAsync(user.Username) != null)
-            {
-                return BadRequest("username already exists");
-            }
+            
+            
             if (await _context.Users.AnyAsync(x => x.Email == user.Email))
             {
                 return BadRequest("Email already exists");
@@ -107,8 +105,8 @@ namespace policy_backend.Controllers
 
             if (userExists)
             {
-                //return Conflict(new { message = "Username already taken" });
-                return BadRequest("Username already taken");
+                return Conflict(new { message = "Username already taken" });
+                //return BadRequest(new {message= "Username already taken" });
             }
 
             return Ok(new { message = "Username available" });

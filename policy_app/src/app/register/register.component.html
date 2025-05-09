@@ -43,14 +43,15 @@
                 <div class="mb-3 form-floating">
                     <input type="text" id="username" name="username" [(ngModel)]="registerData.username"
                         #usernameField="ngModel" required pattern="^[^\s]*$" class="form-control" [ngClass]="{'is-invalid': (usernameField.invalid && (usernameField.touched || submitted)) || usernameTaken,
-                               'is-valid': usernameField.valid && !usernameTaken && usernameField.touched}"
-                        placeholder="Username" (input)="checkUsername()">
+                               'is-valid': usernameField.valid && !usernameTaken && usernameField.touched }"
+                        placeholder="Username" (input)="checkUsername()"/>
                     <label for="username">Username *</label>
                     <div class="invalid-feedback">
                         <small *ngIf="usernameField.errors?.['required']">Username is required.</small>
-                        <small *ngIf="usernameTaken">This username is already taken.</small>
-                        <small *ngIf="usernameField.errors?.['pattern']">User should only contain characters other than
+                         <small *ngIf="usernameField.errors?.['pattern']">User should only contain characters other than
                             space.</small>
+                            <small *ngIf="usernameTaken">This username is already taken.</small>
+                       
                     </div>
                 </div>
 

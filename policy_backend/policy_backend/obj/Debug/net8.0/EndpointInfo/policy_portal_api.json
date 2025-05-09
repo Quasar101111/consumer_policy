@@ -5,6 +5,36 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/Policy/findpolicy/{policyno}/{chassisno}": {
+      "get": {
+        "tags": [
+          "Policy"
+        ],
+        "parameters": [
+          {
+            "name": "policyno",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "chassisno",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Users/register": {
       "post": {
         "tags": [
@@ -96,10 +126,14 @@
         "type": "object",
         "properties": {
           "username": {
+            "maxLength": 100,
+            "minLength": 0,
             "type": "string",
             "nullable": true
           },
           "password": {
+            "maxLength": 100,
+            "minLength": 0,
             "type": "string",
             "nullable": true
           }
@@ -113,18 +147,25 @@
         "type": "object",
         "properties": {
           "username": {
-            "minLength": 1,
+            "maxLength": 100,
+            "minLength": 0,
             "type": "string"
           },
           "fullName": {
+            "maxLength": 100,
+            "minLength": 0,
             "type": "string",
             "nullable": true
           },
           "email": {
+            "maxLength": 100,
+            "minLength": 0,
             "type": "string",
             "nullable": true
           },
           "password": {
+            "maxLength": 100,
+            "minLength": 0,
             "type": "string",
             "nullable": true
           },

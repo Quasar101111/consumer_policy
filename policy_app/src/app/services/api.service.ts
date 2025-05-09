@@ -9,6 +9,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class ApiService {
   private baseUrl = 'https://localhost:7225/api/Users';
+  private baseUrlPolicy = 'https://localhost:7225/api/Policy';
 
   constructor( private http: HttpClient) { }
 
@@ -19,8 +20,13 @@ export class ApiService {
     return this.http.post(`${this.baseUrl}/login`, userData);
   }
   checkUsername(userName: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}/check-username/${userName}`);
+    const encodedUsername = encodeURIComponent(userName); 
+    return this.http.get(`${this.baseUrl}/check-username/${encodedUsername}`);
   }
+  checkPolicy(data: any): Observable<any>{
+    return this.http.get(`${this.baseUrlPolicy}/findPolicy/${data.policyNumber}/${data.chassisNumber}`);
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
 
@@ -31,4 +37,7 @@ export class ApiService {
     }
     return throwError(() => new Error('Something went wrong. Please try again later.'));
   }
+
+
+
 }

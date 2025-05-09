@@ -33,8 +33,10 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
-        new MySqlServerVersion(new Version(8, 0, 42)))); //  Match your MySQL version
+    options.UseMySql(builder.Configuration.GetConnectionString("PolicyConnection"),
+        new MySqlServerVersion(new Version(8, 0, 31))
+        )); 
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngularApp",

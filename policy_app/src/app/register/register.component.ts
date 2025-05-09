@@ -33,23 +33,27 @@ export class RegisterComponent {
    
 
    
-  checkUsername() {
-    
-    if(this.registerData.username){
+   checkUsername() {
+    if (this.registerData.username) {
       
-      this.apiService.checkUsername(this.registerData.username).subscribe({next:()=> {
-        this.usernameTaken = false;
-      },
-      error: (error)=> {
-        if (error.status === 409 || error.status==400) {
-          this.usernameTaken = true;
-        } else {
-          console.error('Error checking username:', error);
-        }
-      }
-    });
+      this.apiService.checkUsername(this.registerData.username).subscribe({
+        next: () => {
+          this.usernameTaken = false; 
+          
+        },
+        error: (error) => {
+          if (error.status === 409) { 
+            this.usernameTaken = true;
+            
+          } else {
+            console.error("Error checking username:", error);
+          }
+        },
+      });
+    } else {
+      this.usernameTaken = false; 
+    }
   }
-}
   checkPasswordMatch() {
     this.passwordMismatch = this.registerData.password !== this.registerData.confirmPassword;
   }
