@@ -4,7 +4,9 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using NuGet.Protocol.Core.Types;
-using policy_backend.Data;
+
+using Data_Logic;
+using Data_Logic.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 

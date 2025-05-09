@@ -1,24 +1,23 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Data.Repository;
+﻿using Data_Logic.Repository;
 using System;
 using System.Threading.Tasks;
 
 namespace Business_Logic.Services
 {
-    public class PolicyServices
+    public class PolicyServices 
     {
-        private readonly Repository _repository;
+        private readonly PolicyRepository _repository;
 
-        public PolicyServices(Repository repository)
+        public PolicyServices(PolicyRepository repository)
         {
             _repository = repository;
         }
 
-        public async Task<object> FindPolicyAsync(string policyno, string chassisno)
+        public async Task<object> FindPolicy(string policyno, string chassisno)
         {
-            int policyExists = await _repository.GetPolicyCountAsync(policyno);
-            int chassisExists = await _repository.GetChassisCountAsync(chassisno);
-            int policyVehicleExists = await _repository.GetPolicyVehicleCountAsync(policyno, chassisno);
+            int policyExists = await _repository.CheckPolicyExists(policyno);
+            int chassisExists = await _repository.CheckChassisExists(chassisno);
+            int policyVehicleExists = await _repository.CheckPolicyVehicleExists(policyno, chassisno);
 
             if (policyExists == 0 && chassisExists == 0)
                 return new { Message = "Policy and vehicle not found" };
@@ -32,7 +31,7 @@ namespace Business_Logic.Services
             if (policyVehicleExists == 0)
                 return new { Message = "Policy and vehicle do not match" };
 
-            return await _repository.GetBasicDetailsAsync(policyno, chassisno);
+            return await _repository.GetBasicDetails(policyno, chassisno);
         }
     }
 }

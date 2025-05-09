@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace policy_backend.Models
+namespace Data_Logic.Models
 {
     [Table("portal_user")]
     public class User

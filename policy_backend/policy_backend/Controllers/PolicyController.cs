@@ -23,7 +23,7 @@ namespace policy_portal_api.Controllers
             try
             {
 
-                var result = await _PolicyServices.FindPolicyAsync(policyno, chassisno);
+                var result = await _PolicyServices.FindPolicy(policyno, chassisno);
                 return Ok(result);
             }
             catch (Exception ex)

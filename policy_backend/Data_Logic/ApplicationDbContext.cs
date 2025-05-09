@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using policy_backend.Models;
+using Data_Logic.Models;
 
-namespace policy_backend.Data
+namespace Data_Logic.Data
 {
     public class ApplicationDbContext : DbContext
     {

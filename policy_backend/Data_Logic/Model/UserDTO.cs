@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace policy_backend.Models
+namespace Data_Logic.Models
 {
     public class UserDTO
     {
