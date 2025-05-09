@@ -1,9 +1,10 @@
-using Microsoft.EntityFrameworkCore;
-using policy_backend.Data;
-using System;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Business_Logic.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using NuGet.Protocol.Core.Types;
+using policy_backend.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,11 +32,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
+builder.Services.AddScoped<PolicyRepository>();
+builder.Services.AddScoped<PolicyServices>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("PolicyConnection"),
         new MySqlServerVersion(new Version(8, 0, 31))
-        )); 
+        ));
 
 builder.Services.AddCors(options =>
 {

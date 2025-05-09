@@ -1,4 +1,4 @@
-﻿namespace Business_Logic.Service
+﻿namespace Data_Logic
 {
     public class Class1
     {

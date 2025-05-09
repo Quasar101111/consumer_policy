@@ -31,4 +31,8 @@
     <Folder Include="Migrations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Business_Logic\Business_Logic.csproj" />
+  </ItemGroup>
+
 </Project>

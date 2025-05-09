@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Rohan_backup\\intern\\policy_backend\\Data_Access_Layer\\Data_Access_Layer.csproj": {}
+    "D:\\Rohan_backup\\intern\\policy_backend\\Data_Logic\\Data_Logic.csproj": {}
   },
   "projects": {
-    "D:\\Rohan_backup\\intern\\policy_backend\\Data_Access_Layer\\Data_Access_Layer.csproj": {
+    "D:\\Rohan_backup\\intern\\policy_backend\\Data_Logic\\Data_Logic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Rohan_backup\\intern\\policy_backend\\Data_Access_Layer\\Data_Access_Layer.csproj",
-        "projectName": "Data_Access_Layer",
-        "projectPath": "D:\\Rohan_backup\\intern\\policy_backend\\Data_Access_Layer\\Data_Access_Layer.csproj",
+        "projectUniqueName": "D:\\Rohan_backup\\intern\\policy_backend\\Data_Logic\\Data_Logic.csproj",
+        "projectName": "Data_Logic",
+        "projectPath": "D:\\Rohan_backup\\intern\\policy_backend\\Data_Logic\\Data_Logic.csproj",
         "packagesPath": "C:\\Users\\rohan.kurian\\.nuget\\packages\\",
-        "outputPath": "D:\\Rohan_backup\\intern\\policy_backend\\Data_Access_Layer\\obj\\",
+        "outputPath": "D:\\Rohan_backup\\intern\\policy_backend\\Data_Logic\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -49,6 +49,22 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.13, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

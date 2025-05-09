@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
+﻿using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using policy_backend.Data;
 using policy_backend.Models;
-using BCrypt.Net;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
 
 
 
@@ -33,9 +25,10 @@ namespace policy_backend.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] User user) {
-            
-            
+        public async Task<IActionResult> Register([FromBody] User user)
+        {
+
+
             if (await _context.Users.AnyAsync(x => x.Email == user.Email))
             {
                 return BadRequest("Email already exists");
@@ -74,7 +67,7 @@ namespace policy_backend.Controllers
         }
 
 
-        
+
         private string GenerateJwtToken(User user)
         {
             var claims = new[]
@@ -92,15 +85,16 @@ namespace policy_backend.Controllers
                 claims: claims,
                 expires: DateTime.UtcNow.AddHours(1),
                 signingCredentials: creds);
-           //var  tokenString = new JwtSecurityTokenHandler().WriteToken(token);
-           // Console.WriteLine("JWT Token: " + tokenString);
+            //var  tokenString = new JwtSecurityTokenHandler().WriteToken(token);
+            // Console.WriteLine("JWT Token: " + tokenString);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
             //return tokenString;
         }
 
         [HttpGet("check-username/{username}")]
-        public async Task<IActionResult> checkUsername(string username) {
+        public async Task<IActionResult> checkUsername(string username)
+        {
             var userExists = await _context.Users.AnyAsync(u => u.Username == username);
 
             if (userExists)
@@ -116,5 +110,5 @@ namespace policy_backend.Controllers
 
 
 
-    
+
 }

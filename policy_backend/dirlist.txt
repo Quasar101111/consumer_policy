@@ -1,0 +1,1127 @@
+ Volume in drive D is New Volume
+ Volume Serial Number is 50B9-7EF7
+
+ Directory of D:\Rohan_backup\intern\policy_backend
+
+09-05-2025  14:40    <DIR>          .
+05-05-2025  15:15    <DIR>          ..
+09-05-2025  12:54    <DIR>          Business_Logic
+09-05-2025  12:54    <DIR>          Data
+09-05-2025  14:41                 0 dirlist.txt
+09-05-2025  14:40    <DIR>          policy_backend
+               1 File(s)              0 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\Business_Logic
+
+09-05-2025  12:54    <DIR>          .
+09-05-2025  14:40    <DIR>          ..
+09-05-2025  09:42    <DIR>          bin
+09-05-2025  12:54               320 Business_Logic.csproj
+09-05-2025  12:54    <DIR>          obj
+09-05-2025  14:40    <DIR>          Services
+               1 File(s)            320 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\Business_Logic\bin
+
+09-05-2025  09:42    <DIR>          .
+09-05-2025  12:54    <DIR>          ..
+09-05-2025  09:42    <DIR>          Debug
+               0 File(s)              0 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\Business_Logic\bin\Debug
+
+09-05-2025  09:42    <DIR>          .
+09-05-2025  09:42    <DIR>          ..
+09-05-2025  09:42    <DIR>          net8.0
+               0 File(s)              0 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\Business_Logic\bin\Debug\net8.0
+
+09-05-2025  09:42    <DIR>          .
+09-05-2025  09:42    <DIR>          ..
+               0 File(s)              0 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\Business_Logic\obj
+
+09-05-2025  12:54    <DIR>          .
+09-05-2025  12:54    <DIR>          ..
+09-05-2025  12:54             5,678 Business_Logic.csproj.nuget.dgspec.json
+09-05-2025  12:31             1,688 Business_Logic.csproj.nuget.g.props
+09-05-2025  12:33               857 Business_Logic.csproj.nuget.g.targets
+09-05-2025  09:42    <DIR>          Debug
+09-05-2025  12:53            36,458 project.assets.json
+09-05-2025  12:54             2,515 project.nuget.cache
+               5 File(s)         47,196 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\Business_Logic\obj\Debug
+
+09-05-2025  09:42    <DIR>          .
+09-05-2025  12:54    <DIR>          ..
+09-05-2025  14:41    <DIR>          net8.0
+               0 File(s)              0 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\Business_Logic\obj\Debug\net8.0
+
+09-05-2025  14:41    <DIR>          .
+09-05-2025  09:42    <DIR>          ..
+09-05-2025  09:42               198 .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+09-05-2025  11:41             1,056 Business_Logic.AssemblyInfo.cs
+09-05-2025  11:41                66 Business_Logic.AssemblyInfoInputs.cache
+09-05-2025  12:53            10,365 Business_Logic.assets.cache
+09-05-2025  14:41             9,601 Business_Logic.csproj.AssemblyReference.cache
+09-05-2025  09:42               698 Business_Logic.GeneratedMSBuildEditorConfig.editorconfig
+09-05-2025  09:42               295 Business_Logic.GlobalUsings.g.cs
+09-05-2025  09:42    <DIR>          ref
+09-05-2025  09:42    <DIR>          refint
+               7 File(s)         22,279 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\Business_Logic\obj\Debug\net8.0\ref
+
+09-05-2025  09:42    <DIR>          .
+09-05-2025  14:41    <DIR>          ..
+               0 File(s)              0 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\Business_Logic\obj\Debug\net8.0\refint
+
+09-05-2025  09:42    <DIR>          .
+09-05-2025  14:41    <DIR>          ..
+               0 File(s)              0 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\Business_Logic\Services
+
+09-05-2025  14:40    <DIR>          .
+09-05-2025  12:54    <DIR>          ..
+09-05-2025  14:40             1,303 PolicyServices.cs
+               1 File(s)          1,303 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\Data
+
+09-05-2025  12:54    <DIR>          .
+09-05-2025  14:40    <DIR>          ..
+08-05-2025  17:06               510 ApplicationDbContext.cs
+09-05-2025  09:44    <DIR>          bin
+09-05-2025  09:44                79 Class1.cs
+09-05-2025  14:40               743 Data.csproj
+09-05-2025  12:55    <DIR>          Models
+09-05-2025  12:54    <DIR>          obj
+09-05-2025  14:40    <DIR>          Repository
+               3 File(s)          1,332 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\Data\bin
+
+09-05-2025  09:44    <DIR>          .
+09-05-2025  12:54    <DIR>          ..
+09-05-2025  09:44    <DIR>          Debug
+               0 File(s)              0 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\Data\bin\Debug
+
+09-05-2025  09:44    <DIR>          .
+09-05-2025  09:44    <DIR>          ..
+09-05-2025  12:55    <DIR>          net8.0
+               0 File(s)              0 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\Data\bin\Debug\net8.0
+
+09-05-2025  12:55    <DIR>          .
+09-05-2025  09:44    <DIR>          ..
+09-05-2025  12:55            33,725 Data.deps.json
+09-05-2025  12:55             7,168 Data.dll
+09-05-2025  12:55            12,644 Data.pdb
+09-05-2025  12:55               337 Data.runtimeconfig.json
+               4 File(s)         53,874 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\Data\Models
+
+09-05-2025  12:55    <DIR>          .
+09-05-2025  12:54    <DIR>          ..
+09-05-2025  12:55               599 User.cs
+09-05-2025  12:55               632 UserDTO.cs
+               2 File(s)          1,231 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\Data\obj
+
+09-05-2025  12:54    <DIR>          .
+09-05-2025  12:54    <DIR>          ..
+09-05-2025  12:54             3,080 Data.csproj.nuget.dgspec.json
+09-05-2025  12:53             2,520 Data.csproj.nuget.g.props
+09-05-2025  12:53               857 Data.csproj.nuget.g.targets
+09-05-2025  12:33             3,145 Data_Access_Layer.csproj.nuget.dgspec.json
+09-05-2025  12:32             2,520 Data_Access_Layer.csproj.nuget.g.props
+09-05-2025  12:33               857 Data_Access_Layer.csproj.nuget.g.targets
+09-05-2025  09:44    <DIR>          Debug
+09-05-2025  12:53           105,789 project.assets.json
+09-05-2025  12:54             5,796 project.nuget.cache
+               8 File(s)        124,564 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\Data\obj\Debug
+
+09-05-2025  09:44    <DIR>          .
+09-05-2025  12:54    <DIR>          ..
+09-05-2025  12:55    <DIR>          net8.0
+               0 File(s)              0 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\Data\obj\Debug\net8.0
+
+09-05-2025  12:55    <DIR>          .
+09-05-2025  09:44    <DIR>          ..
+09-05-2025  09:44               198 .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+09-05-2025  12:53             1,026 Data.AssemblyInfo.cs
+09-05-2025  12:53                66 Data.AssemblyInfoInputs.cache
+09-05-2025  12:53            37,171 Data.assets.cache
+09-05-2025  12:53             9,765 Data.csproj.AssemblyReference.cache
+09-05-2025  12:54                66 Data.csproj.CoreCompileInputs.cache
+09-05-2025  12:55             1,433 Data.csproj.FileListAbsolute.txt
+09-05-2025  12:55             7,168 Data.dll
+09-05-2025  12:53               691 Data.GeneratedMSBuildEditorConfig.editorconfig
+09-05-2025  12:55                66 Data.genruntimeconfig.cache
+09-05-2025  12:53               295 Data.GlobalUsings.g.cs
+09-05-2025  12:55            12,644 Data.pdb
+09-05-2025  12:54               153 Data.sourcelink.json
+09-05-2025  11:45             1,025 Data_Access_Layer.AssemblyInfo.cs
+09-05-2025  11:45                66 Data_Access_Layer.AssemblyInfoInputs.cache
+09-05-2025  12:33            36,550 Data_Access_Layer.assets.cache
+09-05-2025  12:33             9,765 Data_Access_Layer.csproj.AssemblyReference.cache
+09-05-2025  09:44               704 Data_Access_Layer.GeneratedMSBuildEditorConfig.editorconfig
+09-05-2025  09:44               295 Data_Access_Layer.GlobalUsings.g.cs
+09-05-2025  12:55    <DIR>          ref
+09-05-2025  12:55    <DIR>          refint
+              19 File(s)        119,147 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\Data\obj\Debug\net8.0\ref
+
+09-05-2025  12:55    <DIR>          .
+09-05-2025  12:55    <DIR>          ..
+09-05-2025  12:55             6,656 Data.dll
+               1 File(s)          6,656 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\Data\obj\Debug\net8.0\refint
+
+09-05-2025  12:55    <DIR>          .
+09-05-2025  12:55    <DIR>          ..
+09-05-2025  12:55             6,656 Data.dll
+               1 File(s)          6,656 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\Data\Repository
+
+09-05-2025  14:40    <DIR>          .
+09-05-2025  12:54    <DIR>          ..
+09-05-2025  14:40               208 PolicyRepository.cs
+               1 File(s)            208 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend
+
+09-05-2025  14:40    <DIR>          .
+09-05-2025  14:40    <DIR>          ..
+06-05-2025  10:35               684 .gitignore
+29-04-2025  10:00               127 appsettings.Development.json
+07-05-2025  11:57               644 appsettings.json
+05-05-2025  15:15    <DIR>          bin
+09-05-2025  12:54             2,120 consumer_policy_portal.sln
+09-05-2025  14:40    <DIR>          Controllers
+08-05-2025  17:06    <DIR>          Data
+07-05-2025  11:29    <DIR>          Migrations
+09-05-2025  12:55    <DIR>          Models
+09-05-2025  12:54    <DIR>          obj
+09-05-2025  12:54             1,775 policy_portal_api.csproj
+29-04-2025  11:43             1,092 policy_portal_api.csproj.user
+29-04-2025  12:50               132 policy_portal_api.http
+09-05-2025  14:40             2,113 Program.cs
+05-05-2025  15:16    <DIR>          Properties
+               8 File(s)          8,687 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\.vs
+
+09-05-2025  14:40    <DIR>          ..
+09-05-2025  14:40    <DIR>          consumer_policy_portal
+09-05-2025  12:12    <DIR>          policy_backend
+09-05-2025  14:40    <DIR>          ProjectEvaluation
+29-04-2025  10:00    <DIR>          sd
+               0 File(s)              0 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\.vs\consumer_policy_portal
+
+09-05-2025  14:40    <DIR>          .
+09-05-2025  11:55    <DIR>          config
+09-05-2025  14:40    <DIR>          DesignTimeBuild
+09-05-2025  14:32    <DIR>          FileContentIndex
+09-05-2025  14:40    <DIR>          v17
+               0 File(s)              0 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\.vs\consumer_policy_portal\config
+
+09-05-2025  11:55    <DIR>          .
+09-05-2025  14:40    <DIR>          ..
+01-02-2024  11:34            76,534 applicationhost.config
+               1 File(s)         76,534 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\.vs\consumer_policy_portal\DesignTimeBuild
+
+09-05-2025  14:40    <DIR>          .
+09-05-2025  14:40    <DIR>          ..
+09-05-2025  14:40           230,210 .dtbcache.v2
+               1 File(s)        230,210 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\.vs\consumer_policy_portal\FileContentIndex
+
+09-05-2025  14:32    <DIR>          .
+09-05-2025  14:40    <DIR>          ..
+09-05-2025  14:32             1,697 2c624808-e31f-4a94-8ef8-d0ee4c082408.vsidx
+09-05-2025  14:12            44,959 dd7ceafb-da71-4a71-996e-76b39e61cc5b.vsidx
+               2 File(s)         46,656 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\.vs\consumer_policy_portal\v17
+
+09-05-2025  14:40    <DIR>          .
+09-05-2025  14:40    <DIR>          ..
+09-05-2025  14:40               405 .futdcache.v2
+09-05-2025  14:11            14,435 DocumentLayout.backup.json
+09-05-2025  14:40            15,219 DocumentLayout.json
+               3 File(s)         30,059 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\.vs\policy_backend
+
+09-05-2025  12:12    <DIR>          .
+09-05-2025  12:12    <DIR>          DesignTimeBuild
+09-05-2025  12:55    <DIR>          FileContentIndex
+               0 File(s)              0 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\.vs\policy_backend\DesignTimeBuild
+
+09-05-2025  12:12    <DIR>          .
+09-05-2025  12:12    <DIR>          ..
+09-05-2025  13:01           231,148 .dtbcache.v2
+               1 File(s)        231,148 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\.vs\policy_backend\FileContentIndex
+
+09-05-2025  12:55    <DIR>          .
+09-05-2025  12:12    <DIR>          ..
+09-05-2025  12:55             4,050 0daf7752-c98f-48b2-b133-5987c7bc3650.vsidx
+09-05-2025  12:55            34,896 25aaa92b-7b42-4d32-900d-526b44887c9a.vsidx
+09-05-2025  12:55             9,770 3f583b4b-180c-4be9-b5d0-b9b45b089530.vsidx
+09-05-2025  12:54             5,998 439a3a90-5d5c-4c46-94b7-e8ab3ba7cb3d.vsidx
+09-05-2025  12:55             3,247 671081bc-103c-4f8a-8f6c-733e6cb97612.vsidx
+               5 File(s)         57,961 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\.vs\ProjectEvaluation
+
+09-05-2025  14:40    <DIR>          .
+09-05-2025  14:40             2,042 consumer_policy_portal.metadata.v9.bin
+09-05-2025  14:40            86,434 consumer_policy_portal.projects.v9.bin
+09-05-2025  14:40           176,161 consumer_policy_portal.strings.v9.bin
+09-05-2025  14:11             2,264 policy_backend.metadata.v9.bin
+09-05-2025  14:11           197,544 policy_backend.projects.v9.bin
+09-05-2025  14:11           178,750 policy_backend.strings.v9.bin
+               6 File(s)        643,195 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\.vs\sd
+
+29-04-2025  10:00    <DIR>          .
+               0 File(s)              0 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin
+
+05-05-2025  15:15    <DIR>          .
+09-05-2025  14:40    <DIR>          ..
+05-05-2025  15:15    <DIR>          Debug
+               0 File(s)              0 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug
+
+05-05-2025  15:15    <DIR>          .
+05-05-2025  15:15    <DIR>          ..
+09-05-2025  11:55    <DIR>          net8.0
+               0 File(s)              0 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0
+
+09-05-2025  11:55    <DIR>          .
+05-05-2025  15:15    <DIR>          ..
+07-05-2025  16:15    <DIR>          af
+29-04-2025  10:00               127 appsettings.Development.json
+07-05-2025  11:57               644 appsettings.json
+07-05-2025  16:15    <DIR>          ar
+07-05-2025  16:15    <DIR>          az
+03-03-2022  21:40            23,040 BCrypt.Net-Next.dll
+07-05-2025  16:15    <DIR>          bg
+07-05-2025  16:15    <DIR>          bn-BD
+07-05-2025  16:15    <DIR>          cs
+07-05-2025  16:15    <DIR>          da
+07-05-2025  16:15    <DIR>          de
+31-10-2024  07:48            54,320 dotnet-aspnet-codegenerator-design.dll
+07-05-2025  16:15    <DIR>          el
+07-05-2025  16:15    <DIR>          es
+07-05-2025  16:15    <DIR>          fa
+07-05-2025  16:15    <DIR>          fi-FI
+07-05-2025  16:15    <DIR>          fr
+07-05-2025  16:15    <DIR>          fr-BE
+07-05-2025  16:15    <DIR>          he
+07-05-2025  16:15    <DIR>          hr
+07-05-2025  16:15    <DIR>          hu
+29-01-2022  20:34           355,944 Humanizer.dll
+07-05-2025  16:15    <DIR>          hy
+07-05-2025  16:15    <DIR>          id
+07-05-2025  16:15    <DIR>          is
+07-05-2025  16:15    <DIR>          it
+07-05-2025  16:15    <DIR>          ja
+07-05-2025  16:15    <DIR>          ko
+07-05-2025  16:15    <DIR>          ko-KR
+07-05-2025  16:15    <DIR>          ku
+07-05-2025  16:15    <DIR>          lv
+01-11-2023  06:38            51,992 Microsoft.AspNetCore.Authentication.JwtBearer.dll
+22-10-2024  05:25            51,504 Microsoft.AspNetCore.Authorization.dll
+22-10-2024  05:25           334,136 Microsoft.AspNetCore.Components.dll
+22-10-2024  05:25            45,864 Microsoft.AspNetCore.Components.Forms.dll
+22-10-2024  05:27            64,808 Microsoft.AspNetCore.Components.QuickGrid.dll
+22-10-2024  05:27            18,232 Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter.dll
+22-10-2024  05:26           174,376 Microsoft.AspNetCore.Components.Web.dll
+22-10-2024  05:26            81,720 Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
+22-10-2024  05:25            16,184 Microsoft.AspNetCore.Metadata.dll
+19-10-2023  10:25         1,010,440 Microsoft.AspNetCore.Razor.Language.dll
+18-10-2022  21:44            19,072 Microsoft.Bcl.AsyncInterfaces.dll
+20-10-2023  02:23         1,919,664 Microsoft.Build.dll
+20-10-2023  02:23           305,936 Microsoft.Build.Framework.dll
+06-06-2020  09:07           543,624 Microsoft.CodeAnalysis.AnalyzerUtilities.dll
+08-11-2023  23:26         6,501,536 Microsoft.CodeAnalysis.CSharp.dll
+08-11-2023  23:28         2,013,984 Microsoft.CodeAnalysis.CSharp.Features.dll
+08-11-2023  23:26           883,472 Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+08-11-2023  23:16         2,895,520 Microsoft.CodeAnalysis.dll
+11-05-2022  20:19           145,840 Microsoft.CodeAnalysis.Elfie.dll
+08-11-2023  23:22         4,902,672 Microsoft.CodeAnalysis.Features.dll
+19-10-2023  10:25            92,448 Microsoft.CodeAnalysis.Razor.dll
+08-11-2023  23:22           137,904 Microsoft.CodeAnalysis.Scripting.dll
+08-11-2023  23:21         3,852,448 Microsoft.CodeAnalysis.Workspaces.dll
+29-04-2023  01:01            87,168 Microsoft.DiaSymReader.dll
+31-10-2024  07:47           135,712 Microsoft.DotNet.Scaffolding.Shared.dll
+17-01-2025  05:59            34,872 Microsoft.EntityFrameworkCore.Abstractions.dll
+17-01-2025  06:00           486,472 Microsoft.EntityFrameworkCore.Design.dll
+17-01-2025  05:59         2,534,472 Microsoft.EntityFrameworkCore.dll
+17-01-2025  06:00         1,994,312 Microsoft.EntityFrameworkCore.Relational.dll
+17-09-2024  04:40            45,832 Microsoft.Extensions.Caching.Memory.dll
+17-09-2024  04:39            63,768 Microsoft.Extensions.DependencyInjection.Abstractions.dll
+17-09-2024  04:39            92,952 Microsoft.Extensions.DependencyInjection.dll
+17-09-2024  04:39            79,664 Microsoft.Extensions.DependencyModel.dll
+17-09-2024  04:39            65,320 Microsoft.Extensions.Logging.Abstractions.dll
+17-09-2024  04:40            50,976 Microsoft.Extensions.Logging.dll
+18-01-2024  08:35            64,776 Microsoft.Extensions.Options.dll
+17-10-2023  07:50            19,392 Microsoft.IdentityModel.Abstractions.dll
+17-10-2023  07:24           123,432 Microsoft.IdentityModel.JsonWebTokens.dll
+17-10-2023  07:26            36,904 Microsoft.IdentityModel.Logging.dll
+17-10-2023  07:27            40,488 Microsoft.IdentityModel.Protocols.dll
+17-10-2023  07:36           119,840 Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+17-10-2023  07:31           284,192 Microsoft.IdentityModel.Tokens.dll
+22-10-2024  05:25            66,360 Microsoft.JSInterop.dll
+20-10-2023  02:23            30,384 Microsoft.NET.StringTools.dll
+30-08-2020  01:44           173,960 Microsoft.OpenApi.dll
+31-10-2024  07:48            63,048 Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+31-10-2024  07:48            37,448 Microsoft.VisualStudio.Web.CodeGeneration.dll
+31-10-2024  07:48            83,528 Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+31-10-2024  07:48            30,264 Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+31-10-2024  07:48            35,368 Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+31-10-2024  07:48           605,240 Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+18-10-2022  21:46            26,752 Microsoft.Win32.SystemEvents.dll
+29-10-2022  03:16           168,448 Mono.TextTemplating.dll
+07-05-2025  16:15    <DIR>          ms-MY
+07-05-2025  16:15    <DIR>          mt
+20-01-2024  18:24           828,776 MySqlConnector.dll
+07-05-2025  16:15    <DIR>          nb
+07-05-2025  16:15    <DIR>          nb-NO
+08-03-2023  12:39           712,464 Newtonsoft.Json.dll
+07-05-2025  16:15    <DIR>          nl
+28-06-2024  08:22           123,432 NuGet.Common.dll
+28-06-2024  08:23           179,752 NuGet.Configuration.dll
+28-06-2024  08:24            97,304 NuGet.DependencyResolver.Core.dll
+28-06-2024  08:24           133,152 NuGet.Frameworks.dll
+28-06-2024  08:24            59,440 NuGet.LibraryModel.dll
+28-06-2024  08:24           689,712 NuGet.Packaging.dll
+28-06-2024  08:24           255,008 NuGet.ProjectModel.dll
+28-06-2024  08:24           790,960 NuGet.Protocol.dll
+28-06-2024  08:25            68,544 NuGet.Versioning.dll
+07-05-2025  16:15    <DIR>          pl
+29-04-2025  14:50           116,454 policy_backend.deps.json
+29-04-2025  14:50            27,648 policy_backend.dll
+29-04-2025  14:50           142,848 policy_backend.exe
+29-04-2025  14:50            29,292 policy_backend.pdb
+29-04-2025  14:50               592 policy_backend.runtimeconfig.json
+29-04-2025  14:50               853 policy_backend.staticwebassets.runtime.json
+07-05-2025  16:15           116,271 policy_portal_api.deps.json
+09-05-2025  11:55            34,816 policy_portal_api.dll
+09-05-2025  11:55           139,264 policy_portal_api.exe
+09-05-2025  11:55            29,712 policy_portal_api.pdb
+07-05-2025  16:15               592 policy_portal_api.runtimeconfig.json
+07-05-2025  16:15             4,680 policy_portal_api.staticwebassets.endpoints.json
+07-05-2025  16:15               873 policy_portal_api.staticwebassets.runtime.json
+02-03-2025  23:20           504,832 Pomelo.EntityFrameworkCore.MySql.dll
+07-05-2025  16:15    <DIR>          pt
+07-05-2025  16:15    <DIR>          pt-BR
+07-05-2025  16:15    <DIR>          ro
+07-05-2025  16:15    <DIR>          ru
+05-05-2025  15:16    <DIR>          runtimes
+07-05-2025  16:15    <DIR>          sk
+07-05-2025  16:15    <DIR>          sl
+07-05-2025  16:15    <DIR>          sr
+07-05-2025  16:15    <DIR>          sr-Latn
+07-05-2025  16:15    <DIR>          sv
+19-07-2022  20:51            15,360 Swashbuckle.AspNetCore.Swagger.dll
+19-07-2022  20:51            96,768 Swashbuckle.AspNetCore.SwaggerGen.dll
+19-07-2022  20:51         3,416,576 Swashbuckle.AspNetCore.SwaggerUI.dll
+20-10-2020  00:18           183,176 System.CodeDom.dll
+18-10-2022  21:45            20,096 System.Composition.AttributedModel.dll
+18-10-2022  21:45            53,880 System.Composition.Convention.dll
+18-10-2022  21:46            55,440 System.Composition.Hosting.dll
+18-10-2022  21:45            26,240 System.Composition.Runtime.dll
+18-10-2022  21:46            65,168 System.Composition.TypedParts.dll
+18-10-2022  21:47           439,424 System.Configuration.ConfigurationManager.dll
+18-10-2022  21:47           173,696 System.Drawing.Common.dll
+14-06-2024  01:04            97,048 System.Formats.Asn1.dll
+17-10-2023  07:22            81,952 System.IdentityModel.Tokens.Jwt.dll
+18-10-2022  21:46           242,296 System.Reflection.MetadataLoadContext.dll
+18-10-2022  21:46            21,648 System.Security.Cryptography.ProtectedData.dll
+18-10-2022  21:47           110,736 System.Security.Permissions.dll
+18-10-2022  21:47            27,824 System.Windows.Extensions.dll
+07-05-2025  16:15    <DIR>          th-TH
+07-05-2025  16:15    <DIR>          tr
+07-05-2025  16:15    <DIR>          uk
+07-05-2025  16:15    <DIR>          uz-Cyrl-UZ
+07-05-2025  16:15    <DIR>          uz-Latn-UZ
+07-05-2025  16:15    <DIR>          vi
+07-05-2025  16:15    <DIR>          zh-CN
+07-05-2025  16:15    <DIR>          zh-Hans
+07-05-2025  16:15    <DIR>          zh-Hant
+             100 File(s)     44,393,394 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\af
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            16,488 Humanizer.resources.dll
+               1 File(s)         16,488 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\ar
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            21,608 Humanizer.resources.dll
+               1 File(s)         21,608 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\az
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            16,488 Humanizer.resources.dll
+               1 File(s)         16,488 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\bg
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            17,000 Humanizer.resources.dll
+               1 File(s)         17,000 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\bn-BD
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            17,000 Humanizer.resources.dll
+               1 File(s)         17,000 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\cs
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            18,536 Humanizer.resources.dll
+08-11-2023  23:28            46,240 Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+08-11-2023  23:26           421,552 Microsoft.CodeAnalysis.CSharp.resources.dll
+08-11-2023  23:26            18,080 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+08-11-2023  23:22           191,240 Microsoft.CodeAnalysis.Features.resources.dll
+08-11-2023  23:16            46,752 Microsoft.CodeAnalysis.resources.dll
+08-11-2023  23:22            18,192 Microsoft.CodeAnalysis.Scripting.resources.dll
+08-11-2023  23:21            48,304 Microsoft.CodeAnalysis.Workspaces.resources.dll
+               8 File(s)        808,896 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\da
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            17,512 Humanizer.resources.dll
+               1 File(s)         17,512 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\de
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            19,560 Humanizer.resources.dll
+08-11-2023  23:28            46,768 Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+08-11-2023  23:26           450,208 Microsoft.CodeAnalysis.CSharp.resources.dll
+08-11-2023  23:26            18,080 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+08-11-2023  23:22           201,504 Microsoft.CodeAnalysis.Features.resources.dll
+08-11-2023  23:16            48,304 Microsoft.CodeAnalysis.resources.dll
+08-11-2023  23:22            18,608 Microsoft.CodeAnalysis.Scripting.resources.dll
+08-11-2023  23:21            49,824 Microsoft.CodeAnalysis.Workspaces.resources.dll
+               8 File(s)        852,856 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\el
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            17,512 Humanizer.resources.dll
+               1 File(s)         17,512 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\es
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            33,384 Humanizer.resources.dll
+08-11-2023  23:28            47,264 Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+08-11-2023  23:26           440,480 Microsoft.CodeAnalysis.CSharp.resources.dll
+08-11-2023  23:26            18,080 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+08-11-2023  23:22           198,928 Microsoft.CodeAnalysis.Features.resources.dll
+08-11-2023  23:16            48,304 Microsoft.CodeAnalysis.resources.dll
+08-11-2023  23:22            18,096 Microsoft.CodeAnalysis.Scripting.resources.dll
+08-11-2023  23:21            49,824 Microsoft.CodeAnalysis.Workspaces.resources.dll
+               8 File(s)        854,360 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\fa
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            17,000 Humanizer.resources.dll
+               1 File(s)         17,000 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\fi-FI
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            13,928 Humanizer.resources.dll
+               1 File(s)         13,928 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\fr
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            19,048 Humanizer.resources.dll
+08-11-2023  23:28            47,776 Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+08-11-2023  23:26           451,232 Microsoft.CodeAnalysis.CSharp.resources.dll
+08-11-2023  23:26            18,192 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+08-11-2023  23:22           205,584 Microsoft.CodeAnalysis.Features.resources.dll
+08-11-2023  23:16            48,800 Microsoft.CodeAnalysis.resources.dll
+08-11-2023  23:22            18,608 Microsoft.CodeAnalysis.Scripting.resources.dll
+08-11-2023  23:22            50,848 Microsoft.CodeAnalysis.Workspaces.resources.dll
+               8 File(s)        860,088 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\fr-BE
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            17,000 Humanizer.resources.dll
+               1 File(s)         17,000 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\he
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            21,096 Humanizer.resources.dll
+               1 File(s)         21,096 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\hr
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            19,048 Humanizer.resources.dll
+               1 File(s)         19,048 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\hu
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            16,488 Humanizer.resources.dll
+               1 File(s)         16,488 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\hy
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            17,000 Humanizer.resources.dll
+               1 File(s)         17,000 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\id
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            17,000 Humanizer.resources.dll
+               1 File(s)         17,000 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\is
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            24,168 Humanizer.resources.dll
+               1 File(s)         24,168 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\it
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            16,488 Humanizer.resources.dll
+08-11-2023  23:28            47,376 Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+08-11-2023  23:26           447,240 Microsoft.CodeAnalysis.CSharp.resources.dll
+08-11-2023  23:26            18,096 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+08-11-2023  23:22           200,968 Microsoft.CodeAnalysis.Features.resources.dll
+08-11-2023  23:16            48,800 Microsoft.CodeAnalysis.resources.dll
+08-11-2023  23:22            18,592 Microsoft.CodeAnalysis.Scripting.resources.dll
+08-11-2023  23:22            50,336 Microsoft.CodeAnalysis.Workspaces.resources.dll
+               8 File(s)        847,896 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\ja
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            16,488 Humanizer.resources.dll
+08-11-2023  23:28            48,912 Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+08-11-2023  23:26           492,704 Microsoft.CodeAnalysis.CSharp.resources.dll
+08-11-2023  23:26            18,096 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+08-11-2023  23:22           211,216 Microsoft.CodeAnalysis.Features.resources.dll
+08-11-2023  23:16            51,872 Microsoft.CodeAnalysis.resources.dll
+08-11-2023  23:22            18,608 Microsoft.CodeAnalysis.Scripting.resources.dll
+08-11-2023  23:22            53,408 Microsoft.CodeAnalysis.Workspaces.resources.dll
+               8 File(s)        911,304 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\ko
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+08-11-2023  23:28            46,368 Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+08-11-2023  23:26           452,272 Microsoft.CodeAnalysis.CSharp.resources.dll
+08-11-2023  23:26            18,192 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+08-11-2023  23:22           196,256 Microsoft.CodeAnalysis.Features.resources.dll
+08-11-2023  23:16            48,800 Microsoft.CodeAnalysis.resources.dll
+08-11-2023  23:22            18,592 Microsoft.CodeAnalysis.Scripting.resources.dll
+08-11-2023  23:22            50,336 Microsoft.CodeAnalysis.Workspaces.resources.dll
+               7 File(s)        830,816 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\ko-KR
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            26,728 Humanizer.resources.dll
+               1 File(s)         26,728 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\ku
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            30,312 Humanizer.resources.dll
+               1 File(s)         30,312 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\lv
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            27,240 Humanizer.resources.dll
+               1 File(s)         27,240 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\ms-MY
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            27,240 Humanizer.resources.dll
+               1 File(s)         27,240 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\mt
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            29,800 Humanizer.resources.dll
+               1 File(s)         29,800 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\nb
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            17,512 Humanizer.resources.dll
+               1 File(s)         17,512 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\nb-NO
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            17,512 Humanizer.resources.dll
+               1 File(s)         17,512 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\nl
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            16,488 Humanizer.resources.dll
+               1 File(s)         16,488 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\pl
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            18,536 Humanizer.resources.dll
+08-11-2023  23:28            47,368 Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+08-11-2023  23:26           453,280 Microsoft.CodeAnalysis.CSharp.resources.dll
+08-11-2023  23:26            18,208 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+08-11-2023  23:22           198,408 Microsoft.CodeAnalysis.Features.resources.dll
+08-11-2023  23:16            48,816 Microsoft.CodeAnalysis.resources.dll
+08-11-2023  23:22            18,592 Microsoft.CodeAnalysis.Scripting.resources.dll
+08-11-2023  23:22            49,840 Microsoft.CodeAnalysis.Workspaces.resources.dll
+               8 File(s)        853,048 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\pt
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            16,488 Humanizer.resources.dll
+               1 File(s)         16,488 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\pt-BR
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+08-11-2023  23:28            46,864 Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+08-11-2023  23:26           432,800 Microsoft.CodeAnalysis.CSharp.resources.dll
+08-11-2023  23:26            18,096 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+08-11-2023  23:22           196,888 Microsoft.CodeAnalysis.Features.resources.dll
+08-11-2023  23:16            47,264 Microsoft.CodeAnalysis.resources.dll
+08-11-2023  23:22            18,080 Microsoft.CodeAnalysis.Scripting.resources.dll
+08-11-2023  23:22            49,312 Microsoft.CodeAnalysis.Workspaces.resources.dll
+               7 File(s)        809,304 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\ro
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            16,488 Humanizer.resources.dll
+               1 File(s)         16,488 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\ru
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            21,608 Humanizer.resources.dll
+08-11-2023  23:28            55,048 Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+08-11-2023  23:26           595,104 Microsoft.CodeAnalysis.CSharp.resources.dll
+08-11-2023  23:26            18,704 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+08-11-2023  23:22           261,392 Microsoft.CodeAnalysis.Features.resources.dll
+08-11-2023  23:16            58,528 Microsoft.CodeAnalysis.resources.dll
+08-11-2023  23:22            19,616 Microsoft.CodeAnalysis.Scripting.resources.dll
+08-11-2023  23:22            57,504 Microsoft.CodeAnalysis.Workspaces.resources.dll
+               8 File(s)      1,087,504 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\runtimes
+
+05-05-2025  15:16    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+05-05-2025  15:16    <DIR>          win
+               0 File(s)              0 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\runtimes\win
+
+05-05-2025  15:16    <DIR>          .
+05-05-2025  15:16    <DIR>          ..
+05-05-2025  15:16    <DIR>          lib
+               0 File(s)              0 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\runtimes\win\lib
+
+05-05-2025  15:16    <DIR>          .
+05-05-2025  15:16    <DIR>          ..
+07-05-2025  16:15    <DIR>          net7.0
+               0 File(s)              0 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\runtimes\win\lib\net7.0
+
+07-05-2025  16:15    <DIR>          .
+05-05-2025  15:16    <DIR>          ..
+18-10-2022  21:47            58,496 Microsoft.Win32.SystemEvents.dll
+18-10-2022  21:47           614,536 System.Drawing.Common.dll
+18-10-2022  21:47            36,472 System.Security.Cryptography.ProtectedData.dll
+18-10-2022  21:47            53,888 System.Windows.Extensions.dll
+               4 File(s)        763,392 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\sk
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            18,536 Humanizer.resources.dll
+               1 File(s)         18,536 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\sl
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            21,096 Humanizer.resources.dll
+               1 File(s)         21,096 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\sr
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            19,048 Humanizer.resources.dll
+               1 File(s)         19,048 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\sr-Latn
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            18,536 Humanizer.resources.dll
+               1 File(s)         18,536 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\sv
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            16,488 Humanizer.resources.dll
+               1 File(s)         16,488 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\th-TH
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            29,800 Humanizer.resources.dll
+               1 File(s)         29,800 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\tr
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            16,488 Humanizer.resources.dll
+08-11-2023  23:28            46,344 Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+08-11-2023  23:26           429,216 Microsoft.CodeAnalysis.CSharp.resources.dll
+08-11-2023  23:26            18,192 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+08-11-2023  23:22           192,784 Microsoft.CodeAnalysis.Features.resources.dll
+08-11-2023  23:16            46,752 Microsoft.CodeAnalysis.resources.dll
+08-11-2023  23:22            18,080 Microsoft.CodeAnalysis.Scripting.resources.dll
+08-11-2023  23:22            48,288 Microsoft.CodeAnalysis.Workspaces.resources.dll
+               8 File(s)        816,144 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\uk
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            21,608 Humanizer.resources.dll
+               1 File(s)         21,608 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\uz-Cyrl-UZ
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            17,000 Humanizer.resources.dll
+               1 File(s)         17,000 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\uz-Latn-UZ
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            16,488 Humanizer.resources.dll
+               1 File(s)         16,488 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\vi
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            17,000 Humanizer.resources.dll
+               1 File(s)         17,000 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\zh-CN
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            16,488 Humanizer.resources.dll
+               1 File(s)         16,488 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\zh-Hans
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            16,488 Humanizer.resources.dll
+08-11-2023  23:28            44,296 Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+08-11-2023  23:26           382,128 Microsoft.CodeAnalysis.CSharp.resources.dll
+08-11-2023  23:26            18,080 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+08-11-2023  23:22           172,304 Microsoft.CodeAnalysis.Features.resources.dll
+08-11-2023  23:16            43,680 Microsoft.CodeAnalysis.resources.dll
+08-11-2023  23:22            18,080 Microsoft.CodeAnalysis.Scripting.resources.dll
+08-11-2023  23:22            46,240 Microsoft.CodeAnalysis.Workspaces.resources.dll
+               8 File(s)        741,296 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\zh-Hant
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  11:55    <DIR>          ..
+29-01-2022  20:34            16,488 Humanizer.resources.dll
+08-11-2023  23:28            44,312 Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+08-11-2023  23:26           381,600 Microsoft.CodeAnalysis.CSharp.resources.dll
+08-11-2023  23:26            18,192 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+08-11-2023  23:22           174,360 Microsoft.CodeAnalysis.Features.resources.dll
+08-11-2023  23:16            44,192 Microsoft.CodeAnalysis.resources.dll
+08-11-2023  23:22            18,080 Microsoft.CodeAnalysis.Scripting.resources.dll
+08-11-2023  23:22            46,256 Microsoft.CodeAnalysis.Workspaces.resources.dll
+               8 File(s)        743,480 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\Controllers
+
+09-05-2025  14:40    <DIR>          .
+09-05-2025  14:40    <DIR>          ..
+09-05-2025  14:40             3,845 PolicyController.cs
+09-05-2025  12:55             3,424 UsersController.cs
+               2 File(s)          7,269 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\Data
+
+08-05-2025  17:06    <DIR>          .
+09-05-2025  14:40    <DIR>          ..
+08-05-2025  17:06               510 ApplicationDbContext.cs
+               1 File(s)            510 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\Migrations
+
+07-05-2025  11:29    <DIR>          .
+09-05-2025  14:40    <DIR>          ..
+               0 File(s)              0 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\Models
+
+09-05-2025  12:55    <DIR>          .
+09-05-2025  14:40    <DIR>          ..
+09-05-2025  12:55               599 User.cs
+09-05-2025  12:55               632 UserDTO.cs
+               2 File(s)          1,231 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\obj
+
+09-05-2025  12:54    <DIR>          .
+09-05-2025  14:40    <DIR>          ..
+05-05-2025  15:16    <DIR>          Debug
+29-04-2025  14:23             1,729 policy_backend.csproj.EntityFrameworkCore.targets
+29-04-2025  14:50             3,909 policy_backend.csproj.nuget.dgspec.json
+29-04-2025  11:42             3,954 policy_backend.csproj.nuget.g.props
+29-04-2025  11:42             2,007 policy_backend.csproj.nuget.g.targets
+06-05-2025  11:14             1,729 policy_portal_api.csproj.EntityFrameworkCore.targets
+09-05-2025  12:54            10,179 policy_portal_api.csproj.nuget.dgspec.json
+06-05-2025  10:46             4,122 policy_portal_api.csproj.nuget.g.props
+30-04-2025  09:14             2,007 policy_portal_api.csproj.nuget.g.targets
+09-05-2025  12:53           361,208 project.assets.json
+09-05-2025  12:54            21,356 project.nuget.cache
+              10 File(s)        412,200 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\obj\Debug
+
+05-05-2025  15:16    <DIR>          .
+09-05-2025  12:54    <DIR>          ..
+09-05-2025  14:41    <DIR>          net8.0
+               0 File(s)              0 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\obj\Debug\net8.0
+
+09-05-2025  14:41    <DIR>          .
+05-05-2025  15:16    <DIR>          ..
+06-05-2025  10:45               198 .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+09-05-2025  11:55             1,714 ApiEndpoints.json
+09-05-2025  11:55           139,264 apphost.exe
+06-05-2025  10:47    <DIR>          EndpointInfo
+30-04-2025  09:05             1,016 policy_backend.AssemblyInfo.cs
+30-04-2025  09:05                66 policy_backend.AssemblyInfoInputs.cache
+30-04-2025  09:14           114,034 policy_backend.assets.cache
+29-04-2025  14:50            53,536 policy_backend.csproj.AssemblyReference.cache
+29-04-2025  14:50                 0 policy_backend.csproj.CopyComplete
+29-04-2025  14:50                66 policy_backend.csproj.CoreCompileInputs.cache
+29-04-2025  14:50            25,289 policy_backend.csproj.FileListAbsolute.txt
+29-04-2025  14:50            27,648 policy_backend.dll
+29-04-2025  14:50             1,295 policy_backend.GeneratedMSBuildEditorConfig.editorconfig
+29-04-2025  14:50                66 policy_backend.genruntimeconfig.cache
+29-04-2025  10:00               770 policy_backend.GlobalUsings.g.cs
+29-04-2025  14:50                 0 policy_backend.MvcApplicationPartsAssemblyInfo.cache
+29-04-2025  14:50               625 policy_backend.MvcApplicationPartsAssemblyInfo.cs
+29-04-2025  14:50            29,292 policy_backend.pdb
+07-05-2025  16:15                 0 policy_p.AB85503E.Up2Date
+09-05-2025  11:45             1,025 policy_portal_api.AssemblyInfo.cs
+09-05-2025  11:45                66 policy_portal_api.AssemblyInfoInputs.cache
+09-05-2025  12:53           114,168 policy_portal_api.assets.cache
+09-05-2025  14:41            46,754 policy_portal_api.csproj.AssemblyReference.cache
+09-05-2025  11:55                 0 policy_portal_api.csproj.BuildWithSkipAnalyzers
+30-04-2025  11:48                 0 policy_portal_api.csproj.CopyComplete
+07-05-2025  16:15                66 policy_portal_api.csproj.CoreCompileInputs.cache
+07-05-2025  16:15            54,650 policy_portal_api.csproj.FileListAbsolute.txt
+09-05-2025  11:55            34,816 policy_portal_api.dll
+07-05-2025  16:15             1,420 policy_portal_api.GeneratedMSBuildEditorConfig.editorconfig
+07-05-2025  16:15                66 policy_portal_api.genruntimeconfig.cache
+30-04-2025  09:13               770 policy_portal_api.GlobalUsings.g.cs
+07-05-2025  16:15                 0 policy_portal_api.MvcApplicationPartsAssemblyInfo.cache
+07-05-2025  16:15               625 policy_portal_api.MvcApplicationPartsAssemblyInfo.cs
+09-05-2025  11:55            29,712 policy_portal_api.pdb
+09-05-2025  11:55               153 policy_portal_api.sourcelink.json
+07-05-2025  16:15    <DIR>          ref
+07-05-2025  16:15    <DIR>          refint
+05-05-2025  15:16    <DIR>          scopedcss
+07-05-2025  16:15    <DIR>          staticwebassets
+07-05-2025  16:15             4,680 staticwebassets.build.endpoints.json
+07-05-2025  16:15             8,706 staticwebassets.build.json
+07-05-2025  16:15               873 staticwebassets.development.json
+06-05-2025  10:47                 0 staticwebassets.references.upToDateCheck.txt
+06-05-2025  10:46                 0 staticwebassets.removed.txt
+              39 File(s)        693,429 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\obj\Debug\net8.0\EndpointInfo
+
+06-05-2025  10:47    <DIR>          .
+09-05-2025  14:41    <DIR>          ..
+09-05-2025  11:55             3,941 policy_portal_api.json
+09-05-2025  11:55                24 policy_portal_api.OpenApiFiles.cache
+               2 File(s)          3,965 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\obj\Debug\net8.0\ref
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  14:41    <DIR>          ..
+29-04-2025  14:50            11,264 policy_backend.dll
+09-05-2025  11:55            10,752 policy_portal_api.dll
+               2 File(s)         22,016 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\obj\Debug\net8.0\refint
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  14:41    <DIR>          ..
+29-04-2025  14:50            11,264 policy_backend.dll
+09-05-2025  11:55            10,752 policy_portal_api.dll
+               2 File(s)         22,016 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\obj\Debug\net8.0\scopedcss
+
+05-05-2025  15:16    <DIR>          .
+09-05-2025  14:41    <DIR>          ..
+07-05-2025  16:15    <DIR>          bundle
+               0 File(s)              0 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\obj\Debug\net8.0\scopedcss\bundle
+
+07-05-2025  16:15    <DIR>          .
+05-05-2025  15:16    <DIR>          ..
+29-04-2025  14:50               122 policy_backend.styles.css
+07-05-2025  16:15               122 policy_portal_api.styles.css
+               2 File(s)            244 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\obj\Debug\net8.0\staticwebassets
+
+07-05-2025  16:15    <DIR>          .
+09-05-2025  14:41    <DIR>          ..
+29-04-2025  14:50                91 msbuild.build.policy_backend.props
+07-05-2025  16:15               166 msbuild.build.policy_portal_api.props
+29-04-2025  14:50                78 msbuild.buildMultiTargeting.policy_backend.props
+07-05-2025  16:15                81 msbuild.buildMultiTargeting.policy_portal_api.props
+29-04-2025  14:50                92 msbuild.buildTransitive.policy_backend.props
+07-05-2025  16:15                95 msbuild.buildTransitive.policy_portal_api.props
+               6 File(s)            603 bytes
+
+ Directory of D:\Rohan_backup\intern\policy_backend\policy_backend\Properties
+
+05-05-2025  15:16    <DIR>          .
+09-05-2025  14:40    <DIR>          ..
+29-04-2025  10:00             1,125 launchSettings.json
+               1 File(s)          1,125 bytes
+
+     Total Files Listed:
+             393 File(s)     59,771,834 bytes
+             308 Dir(s)  292,880,302,080 bytes free

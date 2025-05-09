@@ -2650,6 +2650,33 @@
             "rid": "win"
           }
         }
+      },
+      "Business_Logic/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Data_Logic": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Business_Logic.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Business_Logic.dll": {}
+        }
+      },
+      "Data_Logic/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "8.0.13",
+          "Pomelo.EntityFrameworkCore.MySql": "8.0.3"
+        },
+        "compile": {
+          "bin/placeholder/Data_Logic.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Data_Logic.dll": {}
+        }
       }
     }
   },
@@ -7339,11 +7366,22 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "Business_Logic/1.0.0": {
+      "type": "project",
+      "path": "../Business_Logic/Business_Logic.csproj",
+      "msbuildProject": "../Business_Logic/Business_Logic.csproj"
+    },
+    "Data_Logic/1.0.0": {
+      "type": "project",
+      "path": "../Data_Logic/Data_Logic.csproj",
+      "msbuildProject": "../Data_Logic/Data_Logic.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
       "BCrypt.Net-Next >= 4.0.3",
+      "Business_Logic >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 8.0.0",
       "Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter >= 8.0.11",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 8.0.11",
@@ -7386,7 +7424,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Rohan_backup\\intern\\policy_backend\\Business_Logic\\Business_Logic.csproj": {
+              "projectPath": "D:\\Rohan_backup\\intern\\policy_backend\\Business_Logic\\Business_Logic.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
