@@ -36,6 +36,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<PolicyRepository>();
 builder.Services.AddScoped<PolicyServices>();
+builder.Services.AddScoped<UserRepository>();
+builder.Services.AddScoped<UserServices>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("PolicyConnection"),
         new MySqlServerVersion(new Version(8, 0, 31))

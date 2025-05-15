@@ -46,7 +46,7 @@
     "Parameters": [
       {
         "Name": "loginDto",
-        "Type": "policy_backend.Models.LoginDTO",
+        "Type": "Data_Logic.Models.LoginDTO",
         "IsRequired": true
       }
     ],
@@ -62,7 +62,7 @@
     "Parameters": [
       {
         "Name": "user",
-        "Type": "policy_backend.Models.User",
+        "Type": "Data_Logic.Models.User",
         "IsRequired": true
       }
     ],

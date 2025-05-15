@@ -517,3 +517,7 @@ D:\Rohan_backup\intern\policy_backend\policy_backend\obj\Debug\net8.0\policy_por
 D:\Rohan_backup\intern\policy_backend\policy_backend\obj\Debug\net8.0\policy_portal_api.genruntimeconfig.cache
 D:\Rohan_backup\intern\policy_backend\policy_backend\obj\Debug\net8.0\ref\policy_portal_api.dll
 D:\Rohan_backup\intern\policy_backend\policy_backend\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\Business_Logic.dll
+D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\Data_Logic.dll
+D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\Business_Logic.pdb
+D:\Rohan_backup\intern\policy_backend\policy_backend\bin\Debug\net8.0\Data_Logic.pdb

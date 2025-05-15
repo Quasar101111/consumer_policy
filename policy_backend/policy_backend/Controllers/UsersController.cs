@@ -4,9 +4,10 @@ using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using policy_backend.Data;
-using policy_backend.Models;
 
+using Business_Logic.Services;
+using Data_Logic;
+using Data_Logic.Models;
 
 
 namespace policy_backend.Controllers
@@ -15,11 +16,13 @@ namespace policy_backend.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
+        //private readonly UserServices _userServices ;
         private readonly ApplicationDbContext _context;
         private IConfiguration _config;
 
         public UsersController(ApplicationDbContext context, IConfiguration config)
         {
+            //_userServices = userServices;
             _context = context;
             _config = config;
         }

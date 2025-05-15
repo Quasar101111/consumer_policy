@@ -3,9 +3,10 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-add-policy',
-  imports: [NavbarComponent,FormsModule],
+  imports: [NavbarComponent,FormsModule,CommonModule],
   templateUrl: './add-policy.component.html',
   styleUrl: './add-policy.component.scss'
 })
@@ -13,32 +14,47 @@ export class AddPolicyComponent {
   policyData = {
     policyNumber: '',
     chassisNumber: '',
+    
   };
+  result= '';
+  errorMessage = '';
 
   submitted = false;
   constructor(private apiService : ApiService, private router: Router){}
  
   onSubmit() {
+      this.result= '';
+      this.errorMessage = '';
   if (this.policyData.policyNumber && this.policyData.chassisNumber) {
     console.log('Form submitted:', this.policyData);
     this.submitted = true;
 
     this.apiService.checkPolicy(this.policyData).subscribe({
       next: (response) => {
-        if (response && response.vehicle && response.policy) { // Access 'message' correctly
+        if (response && response.vehicle && response.policy) { 
           console.log('Policy response:', response.vehicle, response.policy);
           
-          alert(`Policy and vehicle found:\n
-            Vehicle Registration: ${response.vehicle.registrationNumber}\n
-            Policy Effective Date: ${response.policy.policyEffectiveDate}`);
+         
+          
+            this.result = `Policy and vehicle found:\n
+            Vehicle Registration: ${response.vehicle.registrationNumber}
+            Date of Purchase: ${response.vehicle.dateOfPurchase?.split('T')[0]}
+            Ex-Showroom Price: ₹${response.vehicle.exShowroomPrice}
+            Policy Effective Date: ${response.policy.policyEffectiveDate}
+            Policy Expiration Date: ${response.policy.policyExpirationDate}
+            Total Premium: ₹${response.policy.totalPremium}`;
+
+
    
         } 
         else if (response && response.message) {
-          alert(response.message); // Display the message from the backend
+          this.errorMessage = response.message;
+          
         }
         
         else {
           alert('Unexpected response from the server.');
+          
           console.error('Unexpected response:', response);
         }
       },
