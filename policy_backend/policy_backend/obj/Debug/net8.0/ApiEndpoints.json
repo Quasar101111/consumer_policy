@@ -21,9 +21,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "policy_backend.Controllers.UsersController",
-    "Method": "checkUsername",
-    "RelativePath": "api/Users/check-username/{username}",
+    "ContainingType": "policy_portal_api.UserController.UserController",
+    "Method": "CheckUsername",
+    "RelativePath": "api/User/check-username/{username}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -37,9 +37,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "policy_backend.Controllers.UsersController",
+    "ContainingType": "policy_portal_api.UserController.UserController",
     "Method": "Login",
-    "RelativePath": "api/Users/login",
+    "RelativePath": "api/User/login",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -53,9 +53,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "policy_backend.Controllers.UsersController",
+    "ContainingType": "policy_portal_api.UserController.UserController",
     "Method": "Register",
-    "RelativePath": "api/Users/register",
+    "RelativePath": "api/User/register",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,

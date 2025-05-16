@@ -13,17 +13,72 @@ namespace Business_Logic.Services
 {
     public class UserServices
     {
-        //        private readonly UserRepository _repository;
-        //        private readonly IConfiguration _configuration;
+        private readonly UserRepository _repository;
+        private readonly IConfiguration _config;
 
-        //        public UserServices(UserRepository repository, IConfiguration configuration)
-        //        {
-        //            _repository = repository;
-        //            _configuration = configuration;
-        //        }
-        //        //public async Task<(bool success, string message)> Register(User user) { 
+        public UserServices(UserRepository repository, IConfiguration configuration)
+        {
+            _repository = repository;
+            _config = configuration;
+        }
+        public async Task<(bool success, string message)> Register(User user)
+        {
+            if (await _repository.EmailExists(user.Email)) {
 
-        //        //}
+                return (false, "Email already exists");
+            }
+            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+            user.CreatedAt = DateTime.UtcNow;
+
+            await _repository.CreateUser(user);
+            return (true, "User registered successfully");
+        }
+        public async Task<(bool success, string? token, string? username, string? message)> Login(LoginDTO loginDTO) { 
+            
+            var user = await _repository.FindByUsername(loginDTO.Username);
+            if (user == null) {
+                return (false, null, null, "Invalid username or password");
+            }
+            var token = GenerateJwtToken(user);
+            return (true, token, user.Username, "Login Successful");
+
+        
+        }
+        public async Task<(bool available, string message)> CheckUsernameAvailability(string username)
+        {
+            var exists = await _repository.UserNameExists(username);
+             var message = "";
+            if (exists)
+            {
+                 message = "Username already taken";
+            }
+            else {
+                 message = "Username available";
+            }
+            return (!exists,message);
+        }
+        private string GenerateJwtToken(User user) {
+
+            var claims = new[] {
+                new Claim(ClaimTypes.Name, user.Username),
+                new Claim(ClaimTypes.Email, user.Email),
+            };
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(
+               issuer: _config["Jwt:Issuer"],
+               audience: _config["Jwt:Audience"],
+               claims: claims,
+               expires: DateTime.UtcNow.AddHours(2),
+               signingCredentials: creds
+           );
+            return new JwtSecurityTokenHandler().WriteToken(token);
+
+
+        }
+
 
     }
 }

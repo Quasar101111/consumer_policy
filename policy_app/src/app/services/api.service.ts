@@ -8,7 +8,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ApiService {
-  private baseUrl = 'https://localhost:7225/api/Users';
+  private baseUrl = 'https://localhost:7225/api/User';
   private baseUrlPolicy = 'https://localhost:7225/api/Policy';
 
   constructor( private http: HttpClient) { }

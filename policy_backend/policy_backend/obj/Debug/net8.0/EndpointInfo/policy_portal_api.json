@@ -35,10 +35,10 @@
         }
       }
     },
-    "/api/Users/register": {
+    "/api/User/register": {
       "post": {
         "tags": [
-          "Users"
+          "User"
         ],
         "requestBody": {
           "content": {
@@ -66,10 +66,10 @@
         }
       }
     },
-    "/api/Users/login": {
+    "/api/User/login": {
       "post": {
         "tags": [
-          "Users"
+          "User"
         ],
         "requestBody": {
           "content": {
@@ -97,10 +97,10 @@
         }
       }
     },
-    "/api/Users/check-username/{username}": {
+    "/api/User/check-username/{username}": {
       "get": {
         "tags": [
-          "Users"
+          "User"
         ],
         "parameters": [
           {
