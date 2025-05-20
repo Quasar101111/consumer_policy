@@ -57,6 +57,7 @@ namespace Business_Logic.Services
             }
             return (!exists,message);
         }
+
         private string GenerateJwtToken(User user) {
 
             var claims = new[] {

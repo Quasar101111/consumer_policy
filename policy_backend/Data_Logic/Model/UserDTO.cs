@@ -4,6 +4,9 @@ namespace Data_Logic.Models
 {
     public class UserDTO
     {
+
+        public int UserId { get; set; }
+        
         [StringLength(100)]
         public string Username { get; set; }
 

@@ -8,6 +8,9 @@ namespace Data_Logic.Models
     {
         [Key]
         [Required]
+        public int UserId { get; set; }
+
+        [Required]
         [StringLength(100)]
         public string Username { get; set; }
 

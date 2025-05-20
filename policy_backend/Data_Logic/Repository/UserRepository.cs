@@ -36,9 +36,23 @@ namespace Data_Logic.Repository
 
         public async Task<User ?> FindByUsername(string username)
         {
-            return await _context.Users.FindAsync(username);
+            return await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
         }
 
+        public async Task<string> GetUserIds(string username)
+        {
+            if (string.IsNullOrEmpty(username))
+            {
+                return null;
+            }
+
+            var user = await _context.Users
+                .Where(u => u.Username == username)
+                .Select(u => u.UserId.ToString())
+                .FirstOrDefaultAsync();
+
+            return user;
+        }
 
 
 

@@ -27,6 +27,14 @@ export class ApiService {
     return this.http.get(`${this.baseUrlPolicy}/findPolicy/${data.policyNumber}/${data.chassisNumber}`);
   }
 
+  addPolicy(policyNumber: string, userName: string): Observable<any> {
+    const encodedUsername = encodeURIComponent(userName); 
+    const url = `${this.baseUrlPolicy}/addpolicy/${policyNumber}/${encodedUsername}`;
+    return this.http.post(url, {}).pipe(
+        catchError(this.handleError)
+    );
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
 

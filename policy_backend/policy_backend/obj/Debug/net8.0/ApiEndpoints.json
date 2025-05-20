@@ -1,6 +1,27 @@
 [
   {
     "ContainingType": "policy_portal_api.Controllers.PolicyController",
+    "Method": "AddPolicy",
+    "RelativePath": "api/Policy/addpolicy/{policyno}/{username}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "policyno",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "policy_portal_api.Controllers.PolicyController",
     "Method": "FindPolicy",
     "RelativePath": "api/Policy/findpolicy/{policyno}/{chassisno}",
     "HttpMethod": "GET",

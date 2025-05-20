@@ -35,6 +35,20 @@ namespace policy_portal_api.Controllers
 
 
         }
+        [HttpPost("addpolicy/{policyno}/{username}")]
+        public async Task<IActionResult> AddPolicy(string policyno, string username)
+        {
+            try
+            {
+
+                var result = await _PolicyServices.AddUserPolicy(policyno, username);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = "Error occurred", Error = ex.Message });
+            }
+        }
 
         
     }

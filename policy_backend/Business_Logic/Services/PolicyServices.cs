@@ -7,10 +7,12 @@ namespace Business_Logic.Services
     public class PolicyServices 
     {
         private readonly PolicyRepository _repository;
+        private readonly UserRepository _userRepository;
 
-        public PolicyServices(PolicyRepository repository)
+        public PolicyServices(PolicyRepository repository, UserRepository userRepository)
         {
             _repository = repository;
+            _userRepository = userRepository;
         }
 
         public async Task<object> FindPolicy(string policyno, string chassisno)
@@ -33,5 +35,31 @@ namespace Business_Logic.Services
 
             return await _repository.GetBasicDetails(policyno, chassisno);
         }
+
+        public async Task<object> AddUserPolicy(string policyno, string username) { 
+            var userid= await _userRepository.GetUserIds(username);
+            if (userid == null) {
+                return new { Message = "Username not found" };
+            }
+            
+                var result = await _repository.AddPolicy(policyno, userid);
+                if (result == 1)
+                {
+                    return new { Message = "Policy is added " };
+                }
+
+                else if (result == 2)
+                {
+                    return new { Message = "Already Added" };
+                }
+                else
+                {
+                    return new { Message = "Failed to add policy. Try again." };
+                }
+
+
+        }
+           
+        
     }
 }

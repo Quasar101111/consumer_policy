@@ -18,7 +18,7 @@ export class AddPolicyComponent {
   };
   result= '';
   errorMessage = '';
-
+  username= '';
   submitted = false;
   constructor(private apiService : ApiService, private router: Router){}
  
@@ -43,7 +43,7 @@ export class AddPolicyComponent {
             Policy Effective Date: ${response.policy.policyEffectiveDate}
             Policy Expiration Date: ${response.policy.policyExpirationDate}
             Total Premium: ₹${response.policy.totalPremium}`;
-
+         
 
    
         } 
@@ -66,8 +66,33 @@ export class AddPolicyComponent {
   } else {
     alert('Please fill in all required fields.');
   }
-}  
+}
 
+addPolicy() {
+  
+  this.username = localStorage.getItem('username') || '';
+  console.log('Policy response:', this.policyData.policyNumber, this.username);
+  this.apiService.addPolicy(this.policyData.policyNumber, this.username).subscribe({
+    next: (response) => {
+    if (response && response.message) {  
+     if (response.message === 'Policy is added') {
+          this.result = 'Policy added successfully!';
+          this.errorMessage = '';
+        } else if (response.message === 'Already Added') {
+          this.errorMessage = 'This policy is already added to your account';
+          this.result = '';
+        } else {
+          this.errorMessage = response.message;
+          this.result = '';
+        }
+        console.log('Server response:', response);
+      } else {
+        this.errorMessage = 'Unexpected response from the server';
+        console.error('Unexpected response:', response);
+      }
+    }
+});
+}
 
 
 
