@@ -1,0 +1,100 @@
+<app-navbar ></app-navbar>
+
+<div class="container mt-4">
+    <ul class="nav nav-tabs" id="policyTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab" aria-controls="overview" aria-selected="true">
+                Poliicy Holder Details
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="details-tab" data-bs-toggle="tab" data-bs-target="#details" type="button" role="tab" aria-controls="details" aria-selected="false">
+                Details
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="documents-tab" data-bs-toggle="tab" data-bs-target="#documents" type="button" role="tab" aria-controls="documents" aria-selected="false">
+                Documents
+            </button>
+        </li>
+    </ul>
+    <div class="tab-content p-3 border border-top-0 rounded-bottom shadow-sm" id="policyTabContent">
+        <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+            <!-- Overview content goes here -->
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <label class="form-label fw-bold">First Name</label>
+                    <div class="form-control-plaintext">John</div>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label fw-bold">Last Name</label>
+                    <div class="form-control-plaintext">Doe</div>
+                </div>
+                <div class="col-12">
+                    <label class="form-label fw-bold">Address Line 1</label>
+                    <div class="form-control-plaintext">123 Main St</div>
+                </div>
+                <div class="col-6">
+                    <label class="form-label fw-bold">Address Line 2</label>
+                    <div class="form-control-plaintext">Apt 4B</div>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label fw-bold">City</label>
+                    <div class="form-control-plaintext">Mumbai</div>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label fw-bold">State</label>
+                    <div class="form-control-plaintext">Maharashtra</div>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label fw-bold">Pincode</label>
+                    <div class="form-control-plaintext">400001</div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">Mobile No</label>
+                    <div class="form-control-plaintext">9876543210</div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">Email</label>
+                    <div class="form-control-plaintext"></div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">Aadhar Number</label>
+                    <div class="form-control-plaintext">1234-5678-9012</div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">License Number</label>
+                    <div class="form-control-plaintext">MH12 20190012345</div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">PAN Number</label>
+                    <div class="form-control-plaintext">ABCDE1234F</div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">Account Number</label>
+                    <div class="form-control-plaintext">123456789012</div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">IFSC Code</label>
+                    <div class="form-control-plaintext">SBIN0001234</div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">Bank Name</label>
+                    <div class="form-control-plaintext">State Bank of India</div>
+                </div>
+                <div class="col-12">
+                    <label class="form-label fw-bold">Bank Address</label>
+                    <div class="form-control-plaintext">SBI Main Branch, Mumbai</div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="details" role="tabpanel" aria-labelledby="details-tab">
+            <!-- Details content goes here -->
+              <p class="text-muted">Overview content...</p>
+        </div>
+        <div class="tab-pane fade" id="documents" role="tabpanel" aria-labelledby="documents-tab">
+            <!-- Documents content goes here -->
+            <p class="text-muted">Documents content...</p>
+        </div>
+    </div>
+</div>

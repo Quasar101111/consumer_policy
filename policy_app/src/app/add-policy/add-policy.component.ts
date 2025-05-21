@@ -4,9 +4,10 @@ import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-add-policy',
-  imports: [NavbarComponent,FormsModule,CommonModule],
+  imports: [NavbarComponent,FormsModule,CommonModule,],
   templateUrl: './add-policy.component.html',
   styleUrl: './add-policy.component.scss'
 })
@@ -20,7 +21,7 @@ export class AddPolicyComponent {
   errorMessage = '';
   username= '';
   submitted = false;
-  constructor(private apiService : ApiService, private router: Router){}
+  constructor(private apiService : ApiService, private router: Router, private toastr : ToastrService){}
  
   onSubmit() {
       this.result= '';
@@ -34,7 +35,13 @@ export class AddPolicyComponent {
         if (response && response.vehicle && response.policy) { 
           console.log('Policy response:', response.vehicle, response.policy);
           
-         
+          this.toastr.success('Policy and vehicle found successfully!',"Data found",{
+            timeOut: 3000,
+            positionClass: 'toast-top-center', 
+            progressBar: true,
+            closeButton: true,
+            
+          });
           
             this.result = `Policy and vehicle found:\n
             Vehicle Registration: ${response.vehicle.registrationNumber}
@@ -48,13 +55,14 @@ export class AddPolicyComponent {
    
         } 
         else if (response && response.message) {
-          this.errorMessage = response.message;
+          // this.errorMessage = response.message;
+          this.toastr.warning(this.errorMessage,"Warning");
           
         }
         
         else {
           alert('Unexpected response from the server.');
-          
+          this.toastr.error('Unexpected response from the server.',"Error");
           console.error('Unexpected response:', response);
         }
       },

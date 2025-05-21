@@ -24,11 +24,9 @@ namespace Business_Logic.Services
             if (policyExists == 0 && chassisExists == 0)
                 return new { Message = "Policy and vehicle not found" };
 
-            if (policyExists == 0)
-                return new { Message = "Policy not found" };
+            if (policyExists == 0 || chassisExists == 0)
+                return new { Message = "Policy  or Vehicle not found" };
 
-            if (chassisExists == 0)
-                return new { Message = "Vehicle not found" };
 
             if (policyVehicleExists == 0)
                 return new { Message = "Policy and vehicle do not match" };

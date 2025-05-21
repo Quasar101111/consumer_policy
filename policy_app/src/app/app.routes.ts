@@ -5,6 +5,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AddPolicyComponent } from './add-policy/add-policy.component';
+import { ViewPolicyComponent } from './view-policy/view-policy.component';
 export const routes: Routes = [
 
     {path:'login',component:LoginComponent},
@@ -13,6 +14,7 @@ export const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     {path:'home',component:HomeComponent},
     {path:'navbar',component:NavbarComponent},
-    {path:'add-policy',component:AddPolicyComponent}
+    {path:'add-policy',component:AddPolicyComponent},
+    {path:'view-policy',component:ViewPolicyComponent},
 
 ];

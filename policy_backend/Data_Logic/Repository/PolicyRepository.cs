@@ -198,7 +198,8 @@ namespace Data_Logic.Repository
         {
             try
             {
-         
+                //Console.WriteLine($"Inserting into portal_userpolicylist: UserId = {userid}, PolicyNumber = {policyno}");
+
                 var connection = _context.Database.GetDbConnection();
                 if (connection.State != System.Data.ConnectionState.Open)
                 {
@@ -255,6 +256,7 @@ namespace Data_Logic.Repository
 
                     else
                     {
+                         
 
                         using (var insertCmd = connection.CreateCommand())
                         {
