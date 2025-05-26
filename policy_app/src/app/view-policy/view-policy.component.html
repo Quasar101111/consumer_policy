@@ -1,100 +1,197 @@
-<app-navbar ></app-navbar>
+<app-navbar></app-navbar>
+
+<div class="container mt-4">
+  <label for="citySelect" class="form-label">Select City</label>
+  <ng-select
+    [items]="cities"
+    [bindLabel]="'name'"
+    [bindValue]="'id'"
+    [(ngModel)]="selectedCity"
+    [searchable]="true"
+    placeholder="Select a city"
+    id="citySelect">
+  </ng-select>
+</div>
 
 <div class="container mt-4">
     <ul class="nav nav-tabs" id="policyTab" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab" aria-controls="overview" aria-selected="true">
+            <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview"
+                type="button" role="tab" aria-controls="overview" aria-selected="true">
                 Poliicy Holder Details
             </button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="details-tab" data-bs-toggle="tab" data-bs-target="#details" type="button" role="tab" aria-controls="details" aria-selected="false">
-                Details
+            <button class="nav-link" id="details-tab" data-bs-toggle="tab" data-bs-target="#details" type="button"
+                role="tab" aria-controls="details" aria-selected="false">
+                Policy Details
             </button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="documents-tab" data-bs-toggle="tab" data-bs-target="#documents" type="button" role="tab" aria-controls="documents" aria-selected="false">
-                Documents
+            <button class="nav-link" id="documents-tab" data-bs-toggle="tab" data-bs-target="#documents" type="button"
+                role="tab" aria-controls="documents" aria-selected="false">
+                Description
+            </button>
+        </li>
+
+         <li class="nav-item" role="presentation">
+            <button class="nav-link" id="vehicle-tab" data-bs-toggle="tab" data-bs-target="#vehicle" type="button"
+                role="tab" aria-controls="vehicle" aria-selected="false">
+                Vehicle Details
             </button>
         </li>
     </ul>
     <div class="tab-content p-3 border border-top-0 rounded-bottom shadow-sm" id="policyTabContent">
         <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
             <!-- Overview content goes here -->
-            <div class="row g-3">
-                <div class="col-md-4">
-                    <label class="form-label fw-bold">First Name</label>
-                    <div class="form-control-plaintext">John</div>
-                </div>
-                <div class="col-md-4">
-                    <label class="form-label fw-bold">Last Name</label>
-                    <div class="form-control-plaintext">Doe</div>
-                </div>
-                <div class="col-12">
-                    <label class="form-label fw-bold">Address Line 1</label>
-                    <div class="form-control-plaintext">123 Main St</div>
-                </div>
-                <div class="col-6">
-                    <label class="form-label fw-bold">Address Line 2</label>
-                    <div class="form-control-plaintext">Apt 4B</div>
-                </div>
-                <div class="col-md-2">
-                    <label class="form-label fw-bold">City</label>
-                    <div class="form-control-plaintext">Mumbai</div>
-                </div>
-                <div class="col-md-4">
-                    <label class="form-label fw-bold">State</label>
-                    <div class="form-control-plaintext">Maharashtra</div>
-                </div>
-                <div class="col-md-4">
-                    <label class="form-label fw-bold">Pincode</label>
-                    <div class="form-control-plaintext">400001</div>
-                </div>
+            <div class="row g-4">
                 <div class="col-md-6">
-                    <label class="form-label fw-bold">Mobile No</label>
-                    <div class="form-control-plaintext">9876543210</div>
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">Personal Information</h5>
+                            <p><strong>First Name:</strong> John</p>
+                            <p><strong>Last Name:</strong> Doe</p>
+                            <p><strong>Mobile No:</strong> 9876543210</p>
+                            <p><strong>Email:</strong> <span class="text-warning">Not provided</span></p>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="col-md-6">
-                    <label class="form-label fw-bold">Email</label>
-                    <div class="form-control-plaintext"></div>
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">Address</h5>
+                            <p><strong>Address Line 1:</strong> 123 Main St</p>
+                            <p><strong>Address Line 2:</strong> Apt 4B</p>
+                            <p><strong>City:</strong> ERNAKULAM</p>
+                            <p><strong>State:</strong> Kerala</p>
+                            <p><strong>Pincode:</strong> 400001</p>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="col-md-6">
-                    <label class="form-label fw-bold">Aadhar Number</label>
-                    <div class="form-control-plaintext">1234-5678-9012</div>
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">Identity Details</h5>
+                            <p><strong>Aadhar Number:</strong> 1234-5678-9012</p>
+                            <p><strong>License Number:</strong> MH12 20190012345</p>
+                            <p><strong>PAN Number:</strong> ABCDE1234F</p>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="col-md-6">
-                    <label class="form-label fw-bold">License Number</label>
-                    <div class="form-control-plaintext">MH12 20190012345</div>
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">Bank Details</h5>
+                            <p><strong>Account Number:</strong> 123456789012</p>
+                            <p><strong>IFSC Code:</strong> SBIN0001234</p>
+                            <p><strong>Bank Name:</strong> State Bank of India</p>
+                            <p><strong>Bank Address:</strong> SBI Main Branch, Kerala</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <label class="form-label fw-bold">PAN Number</label>
-                    <div class="form-control-plaintext">ABCDE1234F</div>
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label fw-bold">Account Number</label>
-                    <div class="form-control-plaintext">123456789012</div>
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label fw-bold">IFSC Code</label>
-                    <div class="form-control-plaintext">SBIN0001234</div>
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label fw-bold">Bank Name</label>
-                    <div class="form-control-plaintext">State Bank of India</div>
-                </div>
-                <div class="col-12">
-                    <label class="form-label fw-bold">Bank Address</label>
-                    <div class="form-control-plaintext">SBI Main Branch, Mumbai</div>
+            </div>
+
+        </div>
+        <div class="tab-pane fade" id="details" role="tabpanel" aria-labelledby="details-tab">
+            <div class="row g-4">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title mb-3">Policy Information</h5>
+                    <p><strong>Policy Number:</strong> POL12345678</p>
+                    <p><strong>Policy Effective Date:</strong> 2024-01-01</p>
+                    <p><strong>Policy Expiration Date:</strong> 2025-01-01</p>
+                    <p><strong>Term:</strong> 12 Months</p>
                 </div>
             </div>
         </div>
-        <div class="tab-pane fade" id="details" role="tabpanel" aria-labelledby="details-tab">
-            <!-- Details content goes here -->
-              <p class="text-muted">Overview content...</p>
+
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title mb-3">Policy Status</h5>
+                    <p><strong>Status:</strong> Active</p>
+                    <p><strong>Total Premium:</strong> ₹ 12,000.00</p>
+                    <p><strong>Payment Plan:</strong> Annual Payment</p>
+                </div>
+            </div>
+        </div>
+    </div>
         </div>
         <div class="tab-pane fade" id="documents" role="tabpanel" aria-labelledby="documents-tab">
-            <!-- Documents content goes here -->
-            <p class="text-muted">Documents content...</p>
+            <div class="row g-4">
+        <div class="col-md-12">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title mb-3">Coverage Details</h5>
+                    <ul class="list-group list-group-flush">
+                       <li></li>
+                    </ul>
+                </div>
+            </div>
         </div>
+    </div>
+        </div>
+
+        <div class="tab-pane fade" id="vehicle" role="tabpanel" aria-labelledby="vehicle-tab">
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title mb-3">Vehicle & Policy Info</h5>
+                    <p><strong>Policy Number:</strong> POL12345678</p>
+                    <p><strong>Vehicle Type:</strong> SUV</p>
+                    <p><strong>Registration Number:</strong> MH12AB1234</p>
+                    <p><strong>Date of Purchase:</strong> 2023-04-15</p>
+                    <p><strong>RTO Name:</strong> ERKM</p>
+                    <p><strong>City:</strong> ERKM</p>
+                    <p><strong>State:</strong> Kerala</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title mb-3">Vehicle Specifications</h5>
+                    <p><strong>Brand:</strong> Hyundai</p>
+                    <p><strong>Model Name:</strong> Creta</p>
+                    <p><strong>Variant:</strong> ABCD</p>
+                    <p><strong>Body Type:</strong> Crossover</p>
+                    <p><strong>Fuel Type:</strong> Petrol</p>
+                    <p><strong>Transmission Type:</strong> Automatic</p>
+                    <p><strong>Color:</strong> White</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title mb-3">Technical Details</h5>
+                    <p><strong>Chasis Number:</strong> MA1TA123456789123</p>
+                    <p><strong>Engine Number:</strong> ENGMH123456789</p>
+                    <p><strong>Cubic Capacity:</strong> 1497 CC</p>
+                    <p><strong>Seating Capacity:</strong> 5</p>
+                    <p><strong>Year of Manufacture:</strong> 2023</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title mb-3">Valuation</h5>
+                    <p><strong>IDV:</strong> ₹10,50,000.00</p>
+                    <p><strong>Ex-Showroom Price:</strong> ₹11,00,000.00</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
     </div>
 </div>
