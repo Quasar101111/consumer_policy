@@ -54,18 +54,14 @@ namespace Data_Logic.Repository
             return user;
         }
 
-        public async Task<int> ChangePassword(string username, string oldPassword, string newPassword) { 
-            var user = await _context.Users.SingleOrDefaultAsync(u => u.Username == username);
-            if (user == null) { 
-               return 0; 
-            }
-            if (user.Password != oldPassword) {
-                return 1;
-            }
-            user.Password = newPassword;
+        public async Task<bool > ChangePassword(User user) {
+
+
+            _context.Users.Update(user);
             await _context.SaveChangesAsync();
-            
-            return 2;
+            return true;
+
+          
         }
 
 

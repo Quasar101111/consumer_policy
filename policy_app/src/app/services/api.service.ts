@@ -35,6 +35,16 @@ export class ApiService {
     );
   }
 
+  changePassword(passwordData: { username: string; oldPassword: string; newPassword: string }): Observable<any>{
+    return this.http.post(`${this.baseUrl}/change-password`,passwordData);
+  }
+
+  viewPolicyNumbers(userName: string): Observable<any> {
+    const encodedUsername = encodeURIComponent(userName);
+    return this.http.get(`${this.baseUrlPolicy}/viewpolicyno/${encodedUsername}`);
+
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
 

@@ -30,4 +30,19 @@ namespace Data_Logic.Models
         public string Password { get; set; }
 
     }
+
+    public class ChangePasswordDTO
+    {
+        [Required]
+        [StringLength(100)]
+        public string Username { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        public string CurrentPassword { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        public string NewPassword { get; set; }
+    }
 }

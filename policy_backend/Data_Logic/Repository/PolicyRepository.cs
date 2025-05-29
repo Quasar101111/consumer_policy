@@ -289,6 +289,49 @@ namespace Data_Logic.Repository
 
         }
 
+        public async Task<List<string>> ViewPolicyNumber(string userid) {
+            try
+            {
+                var connection = _context.Database.GetDbConnection();
+                if (connection.State != System.Data.ConnectionState.Open)
+                {
+                    await connection.OpenAsync();
+                }
+
+                var policyNumbers = new List<string>();
+
+
+                using (var readCmd = connection.CreateCommand()) {
+
+                    readCmd.CommandText = @"
+                        SELECT PolicyNumber FROM portal_userpolicylist
+                        WHERE UserId = @p1
+                    ";
+                    var param = readCmd.CreateParameter();
+                    param.ParameterName = "@p1";
+                    param.Value = userid;
+                    readCmd.Parameters.Add(param);
+
+
+                    using (var reader = await readCmd.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            policyNumbers.Add(reader["PolicyNumber"].ToString());
+                        }
+                    }
+                }
+                return policyNumbers;
+
+
+            }
+            catch (Exception ex) { 
+                Console.WriteLine(ex.Message);
+                throw;
+                
+            }
+        }
+
         
 
     }

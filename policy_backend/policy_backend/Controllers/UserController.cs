@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Business_Logic.Services;
 using Data_Logic.Models;
+using Humanizer;
 
 namespace policy_portal_api.UserController
 {
@@ -45,6 +46,21 @@ namespace policy_portal_api.UserController
 
             return Ok(new { message });
         }
+
+        [HttpPost("change-password")]
+        public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordDTO dto)
+        {
+            var result = await _userServices.ChangePassword(dto.Username, dto.CurrentPassword, dto.NewPassword);
+
+            return result switch
+            {
+                0 => Ok(new { Message = "Password changed successfully." }),
+                1 => BadRequest(new { Message = "User not found or incorrect current password." }),
+                2 => StatusCode(500, new { Message = "Failed to change the password. Try again later." }),
+                _ => StatusCode(500, new { Message = "Unexpected error." }) 
+            };
+        }
+
 
     }
 }

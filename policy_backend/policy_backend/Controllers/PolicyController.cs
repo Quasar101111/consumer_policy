@@ -50,6 +50,17 @@ namespace policy_portal_api.Controllers
             }
         }
 
+
+        [HttpGet("viewpolicyno/{username}")]
+        public async Task<IActionResult> ViewPolicyNumber(string username) {
+            var (success, message, result) = await _PolicyServices.ViewPolicyNo(username);
+
+            if (!success)
+                return NotFound(new { Message = message });
+
+            return Ok(result);
+        }
+
         
     }
 }
