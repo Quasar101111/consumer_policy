@@ -70,6 +70,7 @@ namespace Business_Logic.Services
         public async Task< int > ChangePassword( string username,  string oldPassword, string newPassword)
         {
             var user = await _repository.FindByUsername(username);
+           
             if (user == null)
             {
                 return 1;
@@ -82,7 +83,7 @@ namespace Business_Logic.Services
             user.Password = BCrypt.Net.BCrypt.HashPassword(newPassword);
             bool result = await _repository.ChangePassword(user);
 
-
+           
             if (result)
             {
                 return 0;

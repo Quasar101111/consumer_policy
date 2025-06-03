@@ -1,0 +1,37 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title mb-3">Manage Your Added Policies</h5>
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>SN No</th>
+            <th>Policy Number</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let policy of policies; let i = index">
+  <td>{{ i + 1 }}</td>
+  <td>{{ policy.policyNumber }}</td>
+  <td>
+    <button class="btn btn-outline-danger btn-sm me-2 shadow-sm rounded-pill" (click)="deletePolicy(i)">
+      <i class="bi bi-trash"></i> Delete
+    </button>
+    <button class="btn btn-sm shadow-sm rounded-pill"
+            [ngClass]="policy.status === 'Active' ? 'btn-outline-warning' : 'btn-outline-success'"
+            (click)="togglePolicy(i)">
+      <i class="bi" [ngClass]="policy.status === 'Active' ? 'bi-toggle-off' : 'bi-toggle-on'"></i>
+      {{ policy.status === 'Active' ? 'Disable' : 'Enable' }}
+    </button>
+  </td>
+</tr>
+        </tbody>
+      </table>
+      <div *ngIf="policies.length === 0" class="text-center text-muted">
+        No policies found.
+      </div>
+    </div>
+  </div>
+</div>
+

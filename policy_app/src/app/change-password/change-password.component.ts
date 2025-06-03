@@ -20,6 +20,7 @@ export class ChangePasswordComponent {
     newPassword: '',
     confirmPassword: ''
   };
+  message = '';
   constructor(private apiService: ApiService, private router: Router, private toastr : ToastrService) { }
   onSubmit() {
 
@@ -37,23 +38,30 @@ export class ChangePasswordComponent {
     
     const passwordVal={
        username,
-      oldPassword : this.passwordData.oldPassword,
+      currentPassword : this.passwordData.oldPassword,
       newPassword : this. passwordData.newPassword
     }
+   
     this.apiService.changePassword(passwordVal).subscribe({
   next: (response) => {
-    if (response === 0) {
-      this.toastr.success('Password Changed');
+      if (response.message === "Password changed successfully.") {
+      this.toastr.success(response.message);
       this.router.navigate(['/home']);
-    } else if (response === 1) {
-      this.toastr.error('Current password is incorrect');
-    } else {
-      this.toastr.error('Failed to change password');
+    }
+    
+    
+    else {
+      this.toastr.error(response.message);
     }
   },
   error: (error) => {
-    this.toastr.error('An error occurred');
-    console.error('Error changing password:', error);
+    if (error.status === 400 ) {
+      this.toastr.error(error.Message ||'Current password may be incorrect'); 
+    } else if (error.error?.Message) {
+      this.toastr.error(error.Message);
+    } else {
+      this.toastr.error('Password change failed. Please try again.');
+    }
   }
 });
 
@@ -76,7 +84,7 @@ export class ChangePasswordComponent {
       return false;
     }
 
-    if (this.passwordData.newPassword.length < 6) {
+    if (this.passwordData.newPassword.length < 5) {
       this.toastr.error('Password must be at least 6 characters long');
       return false;
     }

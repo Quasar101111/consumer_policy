@@ -61,6 +61,18 @@ namespace policy_portal_api.Controllers
             return Ok(result);
         }
 
+        [HttpGet("policynostatus/{username}")]
+        public async Task<IActionResult> ViewPolicyNoWithStatus(string username) {
+            var (success, result) = await _PolicyServices.GetPolicyNumbersWithStatus(username);
+
+            if (!success)
+                return NotFound(new { Message = "No policy added" });
+
+            return Ok(result);
+        }
+
+
+
         
     }
 }

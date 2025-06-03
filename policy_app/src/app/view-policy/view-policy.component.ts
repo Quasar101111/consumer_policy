@@ -9,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-view-policy',
-  imports: [NavbarComponent,CommonModule,NgSelectModule, FormsModule],
+  imports: [NavbarComponent,CommonModule,NgSelectModule,FormsModule,CommonModule],
   templateUrl: './view-policy.component.html',
   styleUrl: './view-policy.component.scss'
 })
@@ -30,10 +30,10 @@ export class ViewPolicyComponent {
     this.apiService.viewPolicyNumbers(this.username).subscribe({next :(response)=> {
       console.log('API response:', response); 
        if (Array.isArray(response)) {
-        this.policies = response;}
+        this.policies = response;
+        this.selectedPolicy = this.policies[0];
+      }
         
-      
-    
       
      },
     error: (err) => {
@@ -52,6 +52,18 @@ export class ViewPolicyComponent {
 
     })
 
+  }
+
+  onPolicySelect() {
+    if(!this.selectedPolicy) {
+      console.error('No policy selected');
+      this.errorOccurred = true;
+      this.errMsg = 'Please select a policy to view details.';
+      return
+    }
+    this.errorOccurred = false;
+
+    console.log('Selected policy:', this.selectedPolicy);
   }
 
 

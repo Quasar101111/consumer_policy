@@ -35,13 +35,19 @@ export class ApiService {
     );
   }
 
-  changePassword(passwordData: { username: string; oldPassword: string; newPassword: string }): Observable<any>{
-    return this.http.post(`${this.baseUrl}/change-password`,passwordData);
+  changePassword(passwordData: any): Observable<any>{
+    return this.http.post(`${this.baseUrl}/change-password`,passwordData).pipe(catchError(this.handleError));
   }
 
   viewPolicyNumbers(userName: string): Observable<any> {
     const encodedUsername = encodeURIComponent(userName);
     return this.http.get(`${this.baseUrlPolicy}/viewpolicyno/${encodedUsername}`);
+
+  }
+
+  viewPolicyNumbersWithStatus(userName:string): Observable<any>{
+    const encodedUsername = encodeURIComponent(userName); 
+    return this.http.get(`${this.baseUrlPolicy}/policynostatus/${encodedUsername}`);
 
   }
 

@@ -7,7 +7,8 @@
             <h5 class="card-title mb-3">Select Policy</h5>
 
             <ng-select [items]="policies" [searchable]="true" [clearable]="true" placeholder="Select a policy number"
-                id="policySelect">
+            (change)="onPolicySelect()"  
+            [(ngModel)]="selectedPolicy" id="policySelect">
             </ng-select>
             <div *ngIf="errorOccurred" #nopolicy>
                 <p class="text-danger">{{ errMsg }}</p>

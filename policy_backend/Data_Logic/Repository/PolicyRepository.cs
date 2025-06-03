@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 
 using Data_Logic;
+using Data_Logic.Models;
 
 namespace Data_Logic.Repository
 {
@@ -330,6 +331,79 @@ namespace Data_Logic.Repository
                 throw;
                 
             }
+        }
+
+        public async Task<object> PolicyHolderDetails(string policyno) {
+
+            object policyHolder = null;
+            try
+            {
+                var connection = _context.Database.GetDbConnection();
+                if (connection.State != System.Data.ConnectionState.Open)
+                {
+                    await connection.OpenAsync();
+                }
+
+                
+
+
+                using (var readCmd = connection.CreateCommand())
+                {
+
+                    readCmd.CommandText = @"
+                       SELECT 
+                        mc.FirstName,mc.LastName,mc.AddressLine1,mc.AddressLine2,mc.City,mc.State,mc.Pincode,mc.MobileNo,mc.Email,
+                        mi.AadharNumber,mi.LicenseNumber,mi.PANNumber,mi.AccountNumber,mi.IFSCCode,mi.BankName,mi.BankAddress
+                        FROM masterinsured mi
+                        JOIN mastercontact mc ON mi.MasterContactId = mc.MasterContactId WHERE mi.PolicyNumber=@p1;
+                    ";
+                    var param = readCmd.CreateParameter();
+                    param.ParameterName = "@p1";
+                    param.Value = policyno;
+                    readCmd.Parameters.Add(param);
+
+
+                    using (var reader = await readCmd.ExecuteReaderAsync())
+                    {
+                        if (await reader.ReadAsync())
+                        {
+                            policyHolder = new
+                            {
+                                FirstName = reader["FirstName"].ToString(),
+                                LastName = reader["LastName"].ToString(),
+                                AddressLine1 = reader["AddressLine1"].ToString(),
+                                AddressLine2 = reader["AddressLine2"].ToString(),
+                                City = reader["City"].ToString(),
+                                State = reader["State"].ToString(),
+                                Pincode = reader["Pincode"].ToString(),
+                                MobileNo = reader["MobileNo"].ToString(),
+                                Email = reader["Email"].ToString(),
+                                AadharNumber = reader["AadharNumber"].ToString(),
+                                LicenseNumber = reader["LicenseNumber"].ToString(),
+                                PANNumber = reader["PANNumber"].ToString(),
+                                AccountNumber = reader["AccountNumber"].ToString(),
+                                IFSCCode = reader["IFSCCode"].ToString(),
+                                BankName = reader["BankName"].ToString(),
+                                BankAddress = reader["BankAddress"].ToString(),
+                                RegistrationNumber = reader["RegistrationNumber"].ToString(),
+                                DateOfPurchase = Convert.ToDateTime(reader["DateOfPurchase"]).Date,
+                                ExShowroomPrice = Convert.ToDecimal(reader["ExShowroomPrice"])
+
+                            };
+                        }
+                    }
+                }
+                return policyHolder;
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+
+            }
+
         }
 
         

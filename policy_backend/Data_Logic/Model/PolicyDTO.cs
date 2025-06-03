@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Data_Logic.Model
 {
-    public class PolicyNumberDTO
+    public class PolicyInfo
     {
-        public string? PolicyNumber { get; set; }
-        public string? Message { get; set; }
+        public string PolicyNumber { get; set; } = string.Empty;
+        public string Status { get; set; } = string.Empty;
     }
 }

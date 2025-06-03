@@ -5,9 +5,10 @@ import { ApiService } from '../services/api.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
+import { ManagePolicyComponent } from '../manage-policy/manage-policy.component';
 @Component({
   selector: 'app-add-policy',
-  imports: [NavbarComponent,FormsModule,CommonModule,],
+  imports: [NavbarComponent,FormsModule,CommonModule,ManagePolicyComponent],
   templateUrl: './add-policy.component.html',
   styleUrl: './add-policy.component.scss'
 })

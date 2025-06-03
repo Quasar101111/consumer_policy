@@ -7,6 +7,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AddPolicyComponent } from './add-policy/add-policy.component';
 import { ViewPolicyComponent } from './view-policy/view-policy.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+
 export const routes: Routes = [
 
     {path:'login',component:LoginComponent},

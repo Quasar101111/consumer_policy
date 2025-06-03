@@ -51,7 +51,7 @@ namespace policy_portal_api.UserController
         public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordDTO dto)
         {
             var result = await _userServices.ChangePassword(dto.Username, dto.CurrentPassword, dto.NewPassword);
-
+            
             return result switch
             {
                 0 => Ok(new { Message = "Password changed successfully." }),

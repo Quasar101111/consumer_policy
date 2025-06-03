@@ -1,4 +1,5 @@
-﻿using Data_Logic.Repository;
+﻿using Data_Logic.Model;
+using Data_Logic.Repository;
 
 using System;
 using System.Threading.Tasks;
@@ -9,13 +10,14 @@ namespace Business_Logic.Services
     {
         private readonly PolicyRepository _repository;
         private readonly UserRepository _userRepository;
+        private readonly PolicyViewRepository _policyViewRepository;
       
 
-        public PolicyServices(PolicyRepository repository, UserRepository userRepository)
+        public PolicyServices(PolicyRepository repository, UserRepository userRepository, PolicyViewRepository policyViewRepository )
         {
             _repository = repository;
             _userRepository = userRepository;
-
+            _policyViewRepository = policyViewRepository;
         }
 
         public async Task<object> FindPolicy(string policyno, string chassisno)
@@ -73,7 +75,21 @@ namespace Business_Logic.Services
             }
             return ( true, null,result);
         }
-           
-        
+
+        public async Task<(bool success, List<PolicyInfo>? result)> GetPolicyNumbersWithStatus(string username)
+        {
+            var userId = await _userRepository.GetUserIds(username);
+
+            var result = await _policyViewRepository.GetPolicyNumbersWithStatus(userId);
+
+            if (result == null || result.Count == 0)
+            {
+                return (false, null);
+            }
+
+            return (true, result);
+        }
+
+
     }
 }
