@@ -7,3 +7,11 @@ Current Features
 User Registration
 
 User Login
+
+Change Password 
+
+Add Policy
+
+View Policy
+
+Manage Policy
