@@ -24,6 +24,7 @@ namespace policy_portal_api.Controllers
             {
 
                 var result = await _PolicyServices.FindPolicy(policyno, chassisno);
+                Console.WriteLine(result);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -71,8 +72,48 @@ namespace policy_portal_api.Controllers
             return Ok(result);
         }
 
+        [HttpPost("togglestatus")]
+        public async Task<IActionResult> TogglePolicy([FromQuery] int id )
+        {
+            var success = await _PolicyServices.ToggleStatus(id);
+
+            if (!success)
+                return NotFound(new { Message = "Unable to change the status" });
+
+            return Ok(success);
+        }
 
 
-        
-    }
+        [HttpDelete("deletepolicy/{id}")]
+        public async Task<IActionResult> DeletePolicy(int id)
+        {
+            var success = await _PolicyServices.DeletePolicy(id);
+
+            if (!success)
+                return NotFound(new { Message = "Policy not found or could not be deleted." });
+
+            return Ok(new { Message = "Policy deleted successfully." });
+        }
+
+        [HttpGet("policydetails/{policyno}")]
+        public async Task<IActionResult> PolicyDetails(string policyno)
+        {
+            try
+            {
+
+                var result = await _PolicyServices.PolicyDetails(policyno);
+                Console.WriteLine(result);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = "Error occurred", Error = ex.Message });
+            }
+
+        }
+
+
+
+
+        }
 }

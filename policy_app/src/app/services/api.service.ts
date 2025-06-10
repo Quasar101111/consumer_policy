@@ -36,7 +36,7 @@ export class ApiService {
   }
 
   changePassword(passwordData: any): Observable<any>{
-    return this.http.post(`${this.baseUrl}/change-password`,passwordData).pipe(catchError(this.handleError));
+    return this.http.post(`${this.baseUrl}/change-password`,passwordData);
   }
 
   viewPolicyNumbers(userName: string): Observable<any> {
@@ -50,6 +50,20 @@ export class ApiService {
     return this.http.get(`${this.baseUrlPolicy}/policynostatus/${encodedUsername}`);
 
   }
+
+  toggleStatus(id: number): Observable<any> {
+  return this.http.post(`${this.baseUrlPolicy}/togglestatus?id=${id}`, {});
+}
+
+  deletePolicy(id: number): Observable<any> {
+  return this.http.delete(`${this.baseUrlPolicy}/deletepolicy/${id}`);
+}
+
+policyDetails(policyNumber: string): Observable<any> {
+  const encodedPolicyNumber = encodeURIComponent(policyNumber);
+  return this.http.get(`${this.baseUrlPolicy}/policydetails/${encodedPolicyNumber}`);
+}
+
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {

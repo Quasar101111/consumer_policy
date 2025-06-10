@@ -22,6 +22,22 @@
   },
   {
     "ContainingType": "policy_portal_api.Controllers.PolicyController",
+    "Method": "DeletePolicy",
+    "RelativePath": "api/Policy/deletepolicy/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "policy_portal_api.Controllers.PolicyController",
     "Method": "FindPolicy",
     "RelativePath": "api/Policy/findpolicy/{policyno}/{chassisno}",
     "HttpMethod": "GET",
@@ -53,6 +69,22 @@
         "Name": "username",
         "Type": "System.String",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "policy_portal_api.Controllers.PolicyController",
+    "Method": "TogglePolicy",
+    "RelativePath": "api/Policy/togglestatus",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

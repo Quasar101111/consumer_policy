@@ -8,6 +8,8 @@ namespace Data_Logic.Model
 {
     public class PolicyInfo
     {
+
+        public int PolicyId { get; set; }
         public string PolicyNumber { get; set; } = string.Empty;
         public string Status { get; set; } = string.Empty;
     }

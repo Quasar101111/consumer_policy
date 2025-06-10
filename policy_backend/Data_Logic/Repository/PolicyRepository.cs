@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 using Data_Logic;
 using Data_Logic.Models;
+using Data_Logic.Model;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Data_Logic.Repository
 {
@@ -145,7 +147,8 @@ namespace Data_Logic.Repository
                     }
                 }
             }
-
+            Console.WriteLine( policyDetails);
+            Console.WriteLine(vehicleDetails);
             return new
             {
                 Vehicle = vehicleDetails,
@@ -236,10 +239,10 @@ namespace Data_Logic.Repository
                     SET Status = 'Active'
                     WHERE UserId = @userId AND PolicyNumber = @policyNo";
 
-                            var updateUserParam = updateCmd.CreateParameter();
-                            updateUserParam.ParameterName = "@userId";
-                            updateUserParam.Value = userid;
-                            updateCmd.Parameters.Add(updateUserParam);
+                            var updateId = updateCmd.CreateParameter();
+                            updateId.ParameterName = "@userId";
+                            updateId.Value = userid;
+                            updateCmd.Parameters.Add(updateId);
 
                             var updatePolicyParam = updateCmd.CreateParameter();
                             updatePolicyParam.ParameterName = "@policyNo";
@@ -306,7 +309,7 @@ namespace Data_Logic.Repository
 
                     readCmd.CommandText = @"
                         SELECT PolicyNumber FROM portal_userpolicylist
-                        WHERE UserId = @p1
+                        WHERE UserId = @p1 AND Status = 'Active'
                     ";
                     var param = readCmd.CreateParameter();
                     param.ParameterName = "@p1";
@@ -333,80 +336,113 @@ namespace Data_Logic.Repository
             }
         }
 
-        public async Task<object> PolicyHolderDetails(string policyno) {
 
-            object policyHolder = null;
+
+
+       
+
+        public async Task<bool> ToggleStatus(int id)
+        {
             try
             {
-                var connection = _context.Database.GetDbConnection();
+
+                var status = "";
+                using (var connection = _context.Database.GetDbConnection())
+                {
+                    if (connection.State != System.Data.ConnectionState.Open)
+                    {
+                        await connection.OpenAsync();
+                    }
+
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.CommandText = @"
+                     SELECT Status FROM portal_userpolicylist
+                       WHERE Id = @id ";
+                        var param = command.CreateParameter();
+                        param.ParameterName = "@id";
+                        param.Value = id;
+                        command.Parameters.Add(param);
+
+                        using (var read = await command.ExecuteReaderAsync())
+                        {
+                            if (await read.ReadAsync())
+                            {
+                                status = read["Status"].ToString();
+                            }
+                        }
+                    }
+
+                    status = status == "Active" ? "Inactive" : "Active";
+                    
+
+                    using (var updateCmd = connection.CreateCommand())
+                    {
+                        updateCmd.CommandText = @"
+                    UPDATE portal_userpolicylist
+                    SET Status = @status
+                    WHERE Id = @policyId ";
+
+                        var updateId = updateCmd.CreateParameter();
+                        updateId.ParameterName = "@policyId";
+                        updateId.Value = id;
+                        updateCmd.Parameters.Add(updateId);
+
+
+                        var updateStatus = updateCmd.CreateParameter();
+                        updateStatus.ParameterName = "@status";
+                        updateStatus.Value = status;
+                        updateCmd.Parameters.Add(updateStatus);
+
+
+                        await updateCmd.ExecuteNonQueryAsync();
+                        
+                    }
+                    return true;
+                }
+                
+            } 
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+        }
+
+
+        public async Task<bool> DeletePolicy(int id)
+        {
+            try
+            {
+                using var connection = _context.Database.GetDbConnection();
                 if (connection.State != System.Data.ConnectionState.Open)
                 {
                     await connection.OpenAsync();
                 }
 
-                
+                using var command = connection.CreateCommand();
+                command.CommandText = @"
+                    DELETE FROM portal_userpolicylist
+                    WHERE Id = @id";
 
+                var param = command.CreateParameter();
+                param.ParameterName = "@id";
+                param.Value = id;
+                command.Parameters.Add(param);
 
-                using (var readCmd = connection.CreateCommand())
-                {
-
-                    readCmd.CommandText = @"
-                       SELECT 
-                        mc.FirstName,mc.LastName,mc.AddressLine1,mc.AddressLine2,mc.City,mc.State,mc.Pincode,mc.MobileNo,mc.Email,
-                        mi.AadharNumber,mi.LicenseNumber,mi.PANNumber,mi.AccountNumber,mi.IFSCCode,mi.BankName,mi.BankAddress
-                        FROM masterinsured mi
-                        JOIN mastercontact mc ON mi.MasterContactId = mc.MasterContactId WHERE mi.PolicyNumber=@p1;
-                    ";
-                    var param = readCmd.CreateParameter();
-                    param.ParameterName = "@p1";
-                    param.Value = policyno;
-                    readCmd.Parameters.Add(param);
-
-
-                    using (var reader = await readCmd.ExecuteReaderAsync())
-                    {
-                        if (await reader.ReadAsync())
-                        {
-                            policyHolder = new
-                            {
-                                FirstName = reader["FirstName"].ToString(),
-                                LastName = reader["LastName"].ToString(),
-                                AddressLine1 = reader["AddressLine1"].ToString(),
-                                AddressLine2 = reader["AddressLine2"].ToString(),
-                                City = reader["City"].ToString(),
-                                State = reader["State"].ToString(),
-                                Pincode = reader["Pincode"].ToString(),
-                                MobileNo = reader["MobileNo"].ToString(),
-                                Email = reader["Email"].ToString(),
-                                AadharNumber = reader["AadharNumber"].ToString(),
-                                LicenseNumber = reader["LicenseNumber"].ToString(),
-                                PANNumber = reader["PANNumber"].ToString(),
-                                AccountNumber = reader["AccountNumber"].ToString(),
-                                IFSCCode = reader["IFSCCode"].ToString(),
-                                BankName = reader["BankName"].ToString(),
-                                BankAddress = reader["BankAddress"].ToString(),
-                                RegistrationNumber = reader["RegistrationNumber"].ToString(),
-                                DateOfPurchase = Convert.ToDateTime(reader["DateOfPurchase"]).Date,
-                                ExShowroomPrice = Convert.ToDecimal(reader["ExShowroomPrice"])
-
-                            };
-                        }
-                    }
-                }
-                return policyHolder;
-
-
+                var rowsAffected = await command.ExecuteNonQueryAsync();
+                return rowsAffected > 0;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                throw;
-
+                Console.WriteLine($"Error deleting policy: {ex.Message}");
+                return false;
             }
-
         }
 
-        
+
+
+
 
     }
 }

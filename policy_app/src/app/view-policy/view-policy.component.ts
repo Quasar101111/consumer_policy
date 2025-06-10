@@ -17,6 +17,8 @@ import { ToastrService } from 'ngx-toastr';
 export class ViewPolicyComponent {
 
   policies: string[] = [];
+ 
+  policyDetails :any;
   selectedPolicy: string = '';
   errorOccurred = false;
   errMsg = '';
@@ -32,6 +34,7 @@ export class ViewPolicyComponent {
        if (Array.isArray(response)) {
         this.policies = response;
         this.selectedPolicy = this.policies[0];
+        this.getPolicyDetails()
       }
         
       
@@ -54,7 +57,22 @@ export class ViewPolicyComponent {
 
   }
 
+  getPolicyDetails(){
+    this.apiService.policyDetails('PAU0000002904').subscribe({
+      next: (response) => {
+          if(response)
+            
+          this.policyDetails =response;
+          console.log(this.policyDetails);
+
+      }
+      });
+
+  }
+
   onPolicySelect() {
+
+
     if(!this.selectedPolicy) {
       console.error('No policy selected');
       this.errorOccurred = true;
@@ -62,6 +80,9 @@ export class ViewPolicyComponent {
       return
     }
     this.errorOccurred = false;
+    this.getPolicyDetails();
+    
+    
 
     console.log('Selected policy:', this.selectedPolicy);
   }

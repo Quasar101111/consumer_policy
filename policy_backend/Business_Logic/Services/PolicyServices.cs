@@ -26,8 +26,8 @@ namespace Business_Logic.Services
             int chassisExists = await _repository.CheckChassisExists(chassisno);
             int policyVehicleExists = await _repository.CheckPolicyVehicleExists(policyno, chassisno);
 
-            if (policyExists == 0 && chassisExists == 0)
-                return new { Message = "Policy and vehicle not found" };
+            //if (policyExists == 0 && chassisExists == 0)
+            //    return new { Message = "Policy and vehicle not found" };
 
             if (policyExists == 0 || chassisExists == 0)
                 return new { Message = "Policy  or Vehicle not found" };
@@ -89,6 +89,39 @@ namespace Business_Logic.Services
 
             return (true, result);
         }
+
+        public async Task<bool> ToggleStatus(int id) { 
+                    var result = await _repository.ToggleStatus(id);
+                    if(!result)
+            {  return false; }
+            return result;
+            
+        }
+
+
+        public async Task<bool> DeletePolicy(int id)
+        {
+            var result = await _repository.DeletePolicy(id);
+            return result;
+        }
+
+        public async Task<object> PolicyDetails(string policyNumber) {
+
+            var res1 = await _policyViewRepository.PolicyHolderDetails(policyNumber);
+            var res2 = await _policyViewRepository.PolicyDetails(policyNumber);
+            var res3 = await _policyViewRepository.CoverageDetails(policyNumber);
+            var res4 = await _policyViewRepository.VehicleDetails(policyNumber);
+
+            return new
+            {
+                policyholder = res1,
+                PolicyDetails = res2,
+                coverageDetails = res3,
+                vehicleDetails = res4
+            };
+
+        }
+
 
 
     }

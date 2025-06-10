@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ViewChild } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
@@ -23,7 +23,9 @@ export class AddPolicyComponent {
   username= '';
   submitted = false;
   constructor(private apiService : ApiService, private router: Router, private toastr : ToastrService){}
- 
+
+   @ViewChild('managePolicy') managePolicyComponent!: ManagePolicyComponent;
+
   onSubmit() {
       this.result= '';
       this.errorMessage = '';
@@ -57,7 +59,7 @@ export class AddPolicyComponent {
         } 
         else if (response && response.message) {
           // this.errorMessage = response.message;
-          this.toastr.warning(this.errorMessage,"Warning");
+          this.toastr.warning("Please make sure policy  and chassis number are correct","Warning");
           
         }
         
@@ -83,23 +85,27 @@ addPolicy() {
   console.log('Policy response:', this.policyData.policyNumber, this.username);
   this.apiService.addPolicy(this.policyData.policyNumber, this.username).subscribe({
     next: (response) => {
-    if (response && response.message) {  
-     if (response.message === 'Policy is added') {
-          this.result = 'Policy added successfully!';
-          this.errorMessage = '';
-        } else if (response.message === 'Already Added') {
-          this.errorMessage = 'This policy is already added to your account';
-          this.result = '';
-        } else {
-          this.errorMessage = response.message;
-          this.result = '';
-        }
-        console.log('Server response:', response);
-      } else {
-        this.errorMessage = 'Unexpected response from the server';
-        console.error('Unexpected response:', response);
+  if (response && response.message) {
+    const msg = response.message.trim();
+    if (msg === 'Policy is added') {
+      
+      this.toastr.success("Policy added");
+      if (this.managePolicyComponent) {
+        this.managePolicyComponent.ngOnInit();
       }
+    } else if (msg === 'Already Added') {
+      this.errorMessage = 'This policy is already added to your account';
+      this.toastr.warning("Policy is already added");
+      this.result = '';
+    } else {
+      this.errorMessage = 'Unexpected response from the server';
+      console.error('Unexpected response:', response);
     }
+  } else {
+    this.errorMessage = 'Unexpected response from the server';
+    console.error('Unexpected response:', response);
+  }
+}
 });
 }
 

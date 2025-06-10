@@ -19,10 +19,10 @@
       <i class="bi bi-trash"></i> Delete
     </button>
     <button class="btn btn-sm shadow-sm rounded-pill"
-            [ngClass]="policy.status === 'Active' ? 'btn-outline-warning' : 'btn-outline-success'"
+            [ngClass]="policy.status === 'Active' ? 'btn-outline-success' : 'btn-outline-warning'"
             (click)="togglePolicy(i)">
-      <i class="bi" [ngClass]="policy.status === 'Active' ? 'bi-toggle-off' : 'bi-toggle-on'"></i>
-      {{ policy.status === 'Active' ? 'Disable' : 'Enable' }}
+      <i class="bi" [ngClass]="policy.status === 'Active' ? 'bi-toggle-on' : 'bi-toggle-off'"></i>
+      {{ policy.status === 'Active' ? 'Enabled' : 'Disabled' }}
     </button>
   </td>
 </tr>

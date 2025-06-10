@@ -1,14 +1,13 @@
 <app-navbar></app-navbar>
 
 
-<div class="container mt-4" >
+<div class="container mt-4">
     <div class="card" id="select">
         <div class="card-body">
             <h5 class="card-title mb-3">Select Policy</h5>
 
             <ng-select [items]="policies" [searchable]="true" [clearable]="true" placeholder="Select a policy number"
-            (change)="onPolicySelect()"  
-            [(ngModel)]="selectedPolicy" id="policySelect">
+                (change)="onPolicySelect()" [(ngModel)]="selectedPolicy" id="policySelect">
             </ng-select>
             <div *ngIf="errorOccurred" #nopolicy>
                 <p class="text-danger">{{ errMsg }}</p>
@@ -17,6 +16,9 @@
         </div>
     </div>
 </div>
+<ng-template #noValue>
+    <span class="text-warning"> Not provided</span>
+</ng-template>
 <div class="container mt-4">
     <ul class="nav nav-tabs" id="policyTab" role="tablist">
         <li class="nav-item" role="presentation">
@@ -48,51 +50,104 @@
     <div class="tab-content p-3 border border-top-0 rounded-bottom shadow-sm" id="policyTabContent">
         <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
             <!-- Overview content goes here -->
-            <div class="row g-4">
-                <div class="col-md-6">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title mb-3">Personal Information</h5>
-                            <p><strong>First Name:</strong> John</p>
-                            <p><strong>Last Name:</strong> Doe</p>
-                            <p><strong>Mobile No:</strong> 9876543210</p>
-                            <p><strong>Email:</strong> <span class="text-warning">Not provided</span></p>
+            <div *ngIf="policyDetails">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title mb-3">Personal Information</h5>
+                                <p><strong>First Name:</strong>
+                                  <span *ngIf="policyDetails?.policyholder?.firstName; else noValue">
+                                    {{ policyDetails.policyholder.firstName }}
+                                  </span>
+                                </p>
+                                <p><strong>Last Name:</strong>
+                                  <span *ngIf="policyDetails?.policyholder?.lastName; else noValue">
+                                    {{ policyDetails.policyholder.lastName }}
+                                  </span>
+                                </p>
+                                <p><strong>Mobile No:</strong>
+                                  <span *ngIf="policyDetails?.policyholder?.mobileNo; else noValue">
+                                    {{ policyDetails.policyholder.mobileNo }}
+                                  </span>
+                                </p>
+                                <p><strong>Email:</strong>
+                                  <span *ngIf="policyDetails?.policyholder?.email; else noValue">
+                                    {{ policyDetails.policyholder.email }}
+                                  </span>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-md-6">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title mb-3">Address</h5>
-                            <p><strong>Address Line 1:</strong> 123 Main St</p>
-                            <p><strong>Address Line 2:</strong> Apt 4B</p>
-                            <p><strong>City:</strong> ERNAKULAM</p>
-                            <p><strong>State:</strong> Kerala</p>
-                            <p><strong>Pincode:</strong> 400001</p>
+                    <div class="col-md-6">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title mb-3">Address</h5>
+                                <p><strong>Address Line 1:</strong>
+                                  <span *ngIf="policyDetails?.policyholder?.addressLine1; else noValue">
+                                    {{ policyDetails.policyholder.addressLine1 }}
+                                  </span>
+                                </p>
+                                <p><strong>Address Line 2:</strong>
+                                  <span *ngIf="policyDetails?.policyholder?.addressLine2; else noValue">
+                                    {{ policyDetails.policyholder.addressLine2 }}
+                                  </span>
+                                </p>
+                                <p><strong>City:</strong>
+                                  <span *ngIf="policyDetails?.policyholder?.city; else noValue">
+                                    {{ policyDetails.policyholder.city }}
+                                  </span>
+                                </p>
+                                <p><strong>State:</strong>
+                                  <span *ngIf="policyDetails?.policyholder?.state; else noValue">
+                                    {{ policyDetails.policyholder.state }}
+                                  </span>
+                                </p>
+                                <p><strong>Pincode:</strong>
+                                  <span *ngIf="policyDetails?.policyholder?.pincode; else noValue">
+                                    {{ policyDetails.policyholder.pincode }}
+                                  </span>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-md-6">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title mb-3">Identity Details</h5>
-                            <p><strong>Aadhar Number:</strong> 1234-5678-9012</p>
-                            <p><strong>License Number:</strong> MH12 20190012345</p>
-                            <p><strong>PAN Number:</strong> ABCDE1234F</p>
+                    <div class="col-md-6">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title mb-3">Identity Details</h5>
+                                <p><strong>Aadhar Number:</strong> <span
+                                        *ngIf="policyDetails?.policyholder?.Aadhar; else noValue">
+                                        {{ policyDetails.policyholder.Aadhar }}
+                                    </span></p>
+                                <p><strong>License Number:</strong> <span
+                                        *ngIf="policyDetails?.policyholder?.licenseNumber; else noValue">
+                                        {{ policyDetails.policyholder.licenseNumber }}
+                                    </span></p>
+                                <p><strong>PAN Number:</strong> <span
+                                        *ngIf="policyDetails?.policyholder?.panNumber; else noValue">
+                                        {{ policyDetails.policyholder.panNumber }}
+                                    </span></p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-md-6">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title mb-3">Bank Details</h5>
-                            <p><strong>Account Number:</strong> 123456789012</p>
-                            <p><strong>IFSC Code:</strong> SBIN0001234</p>
-                            <p><strong>Bank Name:</strong> State Bank of India</p>
-                            <p><strong>Bank Address:</strong> SBI Main Branch, Kerala</p>
+                    <div class="col-md-6">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title mb-3">Bank Details</h5>
+                                <p><strong>Account Number:</strong> <span
+                                        *ngIf="policyDetails?.policyholder?.accountNumber; else noValue">
+                                        {{ policyDetails.policyholder.accountNumber }}
+                                    </span></p>
+                                <p><strong>IFSC Code:</strong> <span
+                                        *ngIf="policyDetails?.policyholder?.ifscCode; else noValue">
+                                        {{ policyDetails.policyholder.ifscCode }}
+                                    </span></p>
+                                <p><strong>Bank Name:</strong> State Bank of India</p>
+                                <p><strong>Bank Address:</strong> SBI Main Branch, Kerala</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -100,40 +155,45 @@
 
         </div>
         <div class="tab-pane fade" id="details" role="tabpanel" aria-labelledby="details-tab">
-            <div class="row g-4">
-                <div class="col-md-6">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title mb-3">Policy Information</h5>
-                            <p><strong>Policy Number:</strong> POL12345678</p>
-                            <p><strong>Policy Effective Date:</strong> 2024-01-01</p>
-                            <p><strong>Policy Expiration Date:</strong> 2025-01-01</p>
-                            <p><strong>Term:</strong> 12 Months</p>
+            <div *ngIf="policyDetails">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title mb-3">Policy Information</h5>
+                                <p><strong>Policy Number:</strong> {{ policyDetails.policyDetails.policyNumber }}</p>
+                                <p><strong>Policy Effective Date:</strong> {{
+                                    policyDetails.policyDetails.policyEffectiveDt | date }}</p>
+                                <p><strong>Policy Expiration Date:</strong> {{
+                                    policyDetails.policyDetails.policyExpirationDt | date }}</p>
+                                <p><strong>Term:</strong> {{ policyDetails.policyDetails.term }} years</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title mb-3">Policy Status</h5>
-                            <p><strong>Status:</strong> Active</p>
-                            <p><strong>Total Premium:</strong> ₹ 12,000.00</p>
-                            <p><strong>Payment Plan:</strong> Annual Payment</p>
+                    <div class="col-md-6">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title mb-3">Policy Status</h5>
+                                <p><strong>Status:</strong> {{ policyDetails.policyDetails.status }}</p>
+                                <p><strong>Total Premium:</strong> ₹{{ policyDetails.policyDetails.totalPremium }}</p>
+                                <p><strong>Payment Plan:</strong> {{ policyDetails.policyDetails.payPlan }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="tab-pane fade" id="documents" role="tabpanel" aria-labelledby="documents-tab">
-            <div class="row g-4">
-                <div class="col-md-12">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title mb-3">Coverage Details</h5>
-                            <ul class="list-group list-group-flush">
-                                <li></li>
-                            </ul>
+            <div *ngIf="policyDetails">
+                <div class="row g-4">
+                    <div class="col-md-12">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title mb-3">Coverage Details</h5>
+                                <ul class="list-group list-group-flush">
+                                    <li></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -141,60 +201,146 @@
         </div>
 
         <div class="tab-pane fade" id="vehicle" role="tabpanel" aria-labelledby="vehicle-tab">
+          <div *ngIf="policyDetails">
             <div class="row g-4">
-                <div class="col-md-6">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title mb-3">Vehicle & Policy Info</h5>
-                            <p><strong>Policy Number:</strong> POL12345678</p>
-                            <p><strong>Vehicle Type:</strong> SUV</p>
-                            <p><strong>Registration Number:</strong> MH12AB1234</p>
-                            <p><strong>Date of Purchase:</strong> 2023-04-15</p>
-                            <p><strong>RTO Name:</strong> ERKM</p>
-                            <p><strong>City:</strong> ERKM</p>
-                            <p><strong>State:</strong> Kerala</p>
-                        </div>
-                    </div>
+              <div class="col-md-6">
+                <div class="card shadow-sm">
+                  <div class="card-body">
+                    <h5 class="card-title mb-3">Vehicle & Policy Info</h5>
+                    <p><strong>Policy Number:</strong>
+                      <span *ngIf="policyDetails?.vehicleDetails?.policyNumber; else noValue">
+                        {{ policyDetails.vehicleDetails.policyNumber }}
+                      </span>
+                    </p>
+                    <p><strong>Vehicle Type:</strong>
+                      <span *ngIf="policyDetails?.vehicleDetails?.vehicleType; else noValue">
+                        {{ policyDetails.vehicleDetails.vehicleType }}
+                      </span>
+                    </p>
+                    <p><strong>Registration Number:</strong>
+                      <span *ngIf="policyDetails?.vehicleDetails?.registrationNumber; else noValue">
+                        {{ policyDetails.vehicleDetails.registrationNumber }}
+                      </span>
+                    </p>
+                    <p><strong>Date of Purchase:</strong>
+                      <span *ngIf="policyDetails?.vehicleDetails?.dateOfPurchase; else noValue">
+                        {{ policyDetails.vehicleDetails.dateOfPurchase | date }}
+                      </span>
+                    </p>
+                    <p><strong>RTO Name:</strong>
+                      <span *ngIf="policyDetails?.vehicleDetails?.rtoName; else noValue">
+                        {{ policyDetails.vehicleDetails.rtoName }}
+                      </span>
+                    </p>
+                    <p><strong>City:</strong>
+                      <span *ngIf="policyDetails?.vehicleDetails?.city; else noValue">
+                        {{ policyDetails.vehicleDetails.city }}
+                      </span>
+                    </p>
+                    <p><strong>State:</strong>
+                      <span *ngIf="policyDetails?.vehicleDetails?.state; else noValue">
+                        {{ policyDetails.vehicleDetails.state }}
+                      </span>
+                    </p>
+                  </div>
                 </div>
+              </div>
 
-                <div class="col-md-6">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title mb-3">Vehicle Specifications</h5>
-                            <p><strong>Brand:</strong> Hyundai</p>
-                            <p><strong>Model Name:</strong> Creta</p>
-                            <p><strong>Variant:</strong> ABCD</p>
-                            <p><strong>Body Type:</strong> Crossover</p>
-                            <p><strong>Fuel Type:</strong> Petrol</p>
-                            <p><strong>Transmission Type:</strong> Automatic</p>
-                            <p><strong>Color:</strong> White</p>
-                        </div>
-                    </div>
+              <div class="col-md-6">
+                <div class="card shadow-sm">
+                  <div class="card-body">
+                    <h5 class="card-title mb-3">Vehicle Specifications</h5>
+                    <p><strong>Brand:</strong>
+                      <span *ngIf="policyDetails?.vehicleDetails?.brand; else noValue">
+                        {{ policyDetails.vehicleDetails.brand }}
+                      </span>
+                    </p>
+                    <p><strong>Model Name:</strong>
+                      <span *ngIf="policyDetails?.vehicleDetails?.modelName; else noValue">
+                        {{ policyDetails.vehicleDetails.modelName }}
+                      </span>
+                    </p>
+                    <p><strong>Variant:</strong>
+                      <span *ngIf="policyDetails?.vehicleDetails?.variant; else noValue">
+                        {{ policyDetails.vehicleDetails.variant }}
+                      </span>
+                    </p>
+                    <p><strong>Body Type:</strong>
+                      <span *ngIf="policyDetails?.vehicleDetails?.bodyType; else noValue">
+                        {{ policyDetails.vehicleDetails.bodyType }}
+                      </span>
+                    </p>
+                    <p><strong>Fuel Type:</strong>
+                      <span *ngIf="policyDetails?.vehicleDetails?.fuelType; else noValue">
+                        {{ policyDetails.vehicleDetails.fuelType }}
+                      </span>
+                    </p>
+                    <p><strong>Transmission Type:</strong>
+                      <span *ngIf="policyDetails?.vehicleDetails?.transmissionType; else noValue">
+                        {{ policyDetails.vehicleDetails.transmissionType }}
+                      </span>
+                    </p>
+                    <p><strong>Color:</strong>
+                      <span *ngIf="policyDetails?.vehicleDetails?.color; else noValue">
+                        {{ policyDetails.vehicleDetails.color }}
+                      </span>
+                    </p>
+                  </div>
                 </div>
+              </div>
 
-                <div class="col-md-6">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title mb-3">Technical Details</h5>
-                            <p><strong>Chasis Number:</strong> MA1TA123456789123</p>
-                            <p><strong>Engine Number:</strong> ENGMH123456789</p>
-                            <p><strong>Cubic Capacity:</strong> 1497 CC</p>
-                            <p><strong>Seating Capacity:</strong> 5</p>
-                            <p><strong>Year of Manufacture:</strong> 2023</p>
-                        </div>
-                    </div>
+              <div class="col-md-6">
+                <div class="card shadow-sm">
+                  <div class="card-body">
+                    <h5 class="card-title mb-3">Technical Details</h5>
+                    <p><strong>Chasis Number:</strong>
+                      <span *ngIf="policyDetails?.vehicleDetails?.chasisNumber; else noValue">
+                        {{ policyDetails.vehicleDetails.chasisNumber }}
+                      </span>
+                    </p>
+                    <p><strong>Engine Number:</strong>
+                      <span *ngIf="policyDetails?.vehicleDetails?.engineNumber; else noValue">
+                        {{ policyDetails.vehicleDetails.engineNumber }}
+                      </span>
+                    </p>
+                    <p><strong>Cubic Capacity:</strong>
+                      <span *ngIf="policyDetails?.vehicleDetails?.cubicCapacity; else noValue">
+                        {{ policyDetails.vehicleDetails.cubicCapacity }}
+                      </span>
+                    </p>
+                    <p><strong>Seating Capacity:</strong>
+                      <span *ngIf="policyDetails?.vehicleDetails?.seatingCapacity; else noValue">
+                        {{ policyDetails.vehicleDetails.seatingCapacity }}
+                      </span>
+                    </p>
+                    <p><strong>Year of Manufacture:</strong>
+                      <span *ngIf="policyDetails?.vehicleDetails?.yearOfManufacture; else noValue">
+                        {{ policyDetails.vehicleDetails.yearOfManufacture }}
+                      </span>
+                    </p>
+                  </div>
                 </div>
+              </div>
 
-                <div class="col-md-6">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title mb-3">Valuation</h5>
-                            <p><strong>IDV:</strong> ₹10,50,000.00</p>
-                            <p><strong>Ex-Showroom Price:</strong> ₹11,00,000.00</p>
-                        </div>
-                    </div>
+              <div class="col-md-6">
+                <div class="card shadow-sm">
+                  <div class="card-body">
+                    <h5 class="card-title mb-3">Valuation</h5>
+                    <p><strong>IDV:</strong>
+                      <span *ngIf="policyDetails?.vehicleDetails?.idv; else noValue">
+                        ₹{{ policyDetails.vehicleDetails.idv }}
+                      </span>
+                    </p>
+                    <p><strong>Ex-Showroom Price:</strong>
+                      <span *ngIf="policyDetails?.vehicleDetails?.exShowroomPrice; else noValue">
+                        ₹{{ policyDetails.vehicleDetails.exShowroomPrice }}
+                      </span>
+                    </p>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
 
     </div>

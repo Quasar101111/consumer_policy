@@ -48,6 +48,7 @@ export class ChangePasswordComponent {
       this.toastr.success(response.message);
       this.router.navigate(['/home']);
     }
+   
     
     
     else {
@@ -55,13 +56,14 @@ export class ChangePasswordComponent {
     }
   },
   error: (error) => {
-    if (error.status === 400 ) {
-      this.toastr.error(error.Message ||'Current password may be incorrect'); 
-    } else if (error.error?.Message) {
-      this.toastr.error(error.Message);
-    } else {
-      this.toastr.error('Password change failed. Please try again.');
-    }
+    if (error.status === 400) {
+    const backendMessage =  'Current password may be incorrect';
+    this.toastr.error(backendMessage);
+  } else if (error.error?.message) {
+    this.toastr.error(error.error.message);
+  } else {
+    this.toastr.error('Password change failed. Please try again.');
+  }
   }
 });
 
