@@ -58,7 +58,7 @@ export class ViewPolicyComponent {
   }
 
   getPolicyDetails(){
-    this.apiService.policyDetails('PAU0000002904').subscribe({
+    this.apiService.policyDetails(this.selectedPolicy).subscribe({
       next: (response) => {
           if(response)
             

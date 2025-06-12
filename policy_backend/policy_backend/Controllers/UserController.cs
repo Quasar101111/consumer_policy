@@ -2,9 +2,11 @@
 using Business_Logic.Services;
 using Data_Logic.Models;
 using Humanizer;
+using Microsoft.AspNetCore.Authorization;
 
 namespace policy_portal_api.UserController
 {
+    
     [Route("api/[controller]")]
     [ApiController]
 
@@ -47,6 +49,7 @@ namespace policy_portal_api.UserController
             return Ok(new { message });
         }
 
+        [Authorize]
         [HttpPost("change-password")]
         public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordDTO dto)
         {

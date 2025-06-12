@@ -29,7 +29,7 @@ export class HomeComponent {
       this.msg = value;
     });
    
-    
+    console.log(localStorage.getItem('token'));
     
   }
   

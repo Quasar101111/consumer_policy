@@ -149,7 +149,7 @@ namespace Data_Logic.Repository
 
                     readCmd.CommandText = @"
                       SELECT 
-                            mp.PolicyNumber,mp.PolicyEffectiveDt,mp.PolicyExpirationDt,mp.Term,mp.Status,mp.TotalPremium,pp.PayPlan
+                            mp.PolicyNumber,mp.PolicyEffectiveDt,mp.PolicyExpirationDt,mp.Term,mp.PolicyStatus,mp.TotalPremium,pp.PayPlan
                         FROM masterpolicy mp
                         LEFT JOIN payplan pp ON mp.PayPlanId = pp.PayPlanId
                         WHERE mp.PolicyNumber = @p1;
@@ -171,7 +171,7 @@ namespace Data_Logic.Repository
                                 PolicyEffectiveDt = reader["PolicyEffectiveDt"] as DateTime?,
                                 PolicyExpirationDt = reader["PolicyExpirationDt"] as DateTime?,
                                 Term = reader["Term"]?.ToString(),
-                                Status = reader["Status"]?.ToString(),
+                                Status = reader["PolicyStatus"]?.ToString(),
                                 TotalPremium = reader["TotalPremium"] as decimal?,
                                 PayPlan = reader["PayPlan"]?.ToString(),
 

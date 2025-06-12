@@ -1,10 +1,12 @@
 ﻿using Business_Logic.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 
 namespace policy_portal_api.Controllers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
 
@@ -17,6 +19,7 @@ namespace policy_portal_api.Controllers
             _PolicyServices = PolicyServices;
         }
 
+        [Authorize]
         [HttpGet("findpolicy/{policyno}/{chassisno}")]
         public async Task<IActionResult> FindPolicy(string policyno, string chassisno)
         {
@@ -36,6 +39,8 @@ namespace policy_portal_api.Controllers
 
 
         }
+
+        [Authorize]
         [HttpPost("addpolicy/{policyno}/{username}")]
         public async Task<IActionResult> AddPolicy(string policyno, string username)
         {
@@ -51,7 +56,7 @@ namespace policy_portal_api.Controllers
             }
         }
 
-
+        [Authorize]
         [HttpGet("viewpolicyno/{username}")]
         public async Task<IActionResult> ViewPolicyNumber(string username) {
             var (success, message, result) = await _PolicyServices.ViewPolicyNo(username);
@@ -62,6 +67,7 @@ namespace policy_portal_api.Controllers
             return Ok(result);
         }
 
+        [Authorize]
         [HttpGet("policynostatus/{username}")]
         public async Task<IActionResult> ViewPolicyNoWithStatus(string username) {
             var (success, result) = await _PolicyServices.GetPolicyNumbersWithStatus(username);
@@ -72,6 +78,7 @@ namespace policy_portal_api.Controllers
             return Ok(result);
         }
 
+        [Authorize]
         [HttpPost("togglestatus")]
         public async Task<IActionResult> TogglePolicy([FromQuery] int id )
         {
@@ -83,7 +90,7 @@ namespace policy_portal_api.Controllers
             return Ok(success);
         }
 
-
+        [Authorize]
         [HttpDelete("deletepolicy/{id}")]
         public async Task<IActionResult> DeletePolicy(int id)
         {
@@ -95,6 +102,7 @@ namespace policy_portal_api.Controllers
             return Ok(new { Message = "Policy deleted successfully." });
         }
 
+        [Authorize]
         [HttpGet("policydetails/{policyno}")]
         public async Task<IActionResult> PolicyDetails(string policyno)
         {
@@ -112,8 +120,9 @@ namespace policy_portal_api.Controllers
 
         }
 
-
+       
 
 
         }
 }
+ 

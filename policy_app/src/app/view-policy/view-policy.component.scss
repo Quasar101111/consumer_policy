@@ -12,5 +12,23 @@
 
 #select{
     background-color: rgb(179, 179, 177);
+    z-index: 10;
 }
 
+ .card {
+      border: none;
+      border-radius: 1rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+
+    }
+    .card-body {
+        background-color: rgb(163, 160, 160, 0.08);
+        border-radius: 1rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }

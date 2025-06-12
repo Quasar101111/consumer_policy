@@ -8,7 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ManagePolicyComponent } from '../manage-policy/manage-policy.component';
 @Component({
   selector: 'app-add-policy',
-  imports: [NavbarComponent,FormsModule,CommonModule,ManagePolicyComponent],
+  imports: [NavbarComponent,FormsModule,CommonModule],
   templateUrl: './add-policy.component.html',
   styleUrl: './add-policy.component.scss'
 })
@@ -92,6 +92,7 @@ addPolicy() {
       this.toastr.success("Policy added");
       if (this.managePolicyComponent) {
         this.managePolicyComponent.ngOnInit();
+        this.router.navigate(['/manage-policy']);
       }
     } else if (msg === 'Already Added') {
       this.errorMessage = 'This policy is already added to your account';

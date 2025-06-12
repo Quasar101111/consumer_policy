@@ -1,24 +1,23 @@
 <app-navbar></app-navbar>
 
-
 <div class="container mt-4">
     <div class="card" id="select">
         <div class="card-body">
             <h5 class="card-title mb-3">Select Policy</h5>
-
             <ng-select [items]="policies" [searchable]="true" [clearable]="true" placeholder="Select a policy number"
-                (change)="onPolicySelect()" [(ngModel)]="selectedPolicy" id="policySelect">
+                (change)="onPolicySelect()" [(ngModel)]="selectedPolicy" id="policySelect" aria-label="Policy Number Selection">
             </ng-select>
             <div *ngIf="errorOccurred" #nopolicy>
                 <p class="text-danger">{{ errMsg }}</p>
-
             </div>
         </div>
     </div>
 </div>
+
 <ng-template #noValue>
-    <span class="text-warning"> Not provided</span>
+    <span class="text-warning">Not provided</span>
 </ng-template>
+
 <div class="container mt-4">
     <ul class="nav nav-tabs" id="policyTab" role="tablist">
         <li class="nav-item" role="presentation">
@@ -34,12 +33,11 @@
             </button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="documents-tab" data-bs-toggle="tab" data-bs-target="#documents" type="button"
-                role="tab" aria-controls="documents" aria-selected="false">
+            <button class="nav-link" id="documents-tab" data-bs-toggle="tab" data-bs-target="#documents"
+                type="button" role="tab" aria-controls="documents" aria-selected="false">
                 Description
             </button>
         </li>
-
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="vehicle-tab" data-bs-toggle="tab" data-bs-target="#vehicle" type="button"
                 role="tab" aria-controls="vehicle" aria-selected="false">
@@ -47,35 +45,43 @@
             </button>
         </li>
     </ul>
+
     <div class="tab-content p-3 border border-top-0 rounded-bottom shadow-sm" id="policyTabContent">
+
+        <!-- Policy Holder Details Tab -->
         <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
-            <!-- Overview content goes here -->
             <div *ngIf="policyDetails">
                 <div class="row g-4">
                     <div class="col-md-6">
                         <div class="card shadow-sm">
                             <div class="card-body">
                                 <h5 class="card-title mb-3">Personal Information</h5>
-                                <p><strong>First Name:</strong>
-                                  <span *ngIf="policyDetails?.policyholder?.firstName; else noValue">
-                                    {{ policyDetails.policyholder.firstName }}
-                                  </span>
-                                </p>
-                                <p><strong>Last Name:</strong>
-                                  <span *ngIf="policyDetails?.policyholder?.lastName; else noValue">
-                                    {{ policyDetails.policyholder.lastName }}
-                                  </span>
-                                </p>
-                                <p><strong>Mobile No:</strong>
-                                  <span *ngIf="policyDetails?.policyholder?.mobileNo; else noValue">
-                                    {{ policyDetails.policyholder.mobileNo }}
-                                  </span>
-                                </p>
-                                <p><strong>Email:</strong>
-                                  <span *ngIf="policyDetails?.policyholder?.email; else noValue">
-                                    {{ policyDetails.policyholder.email }}
-                                  </span>
-                                </p>
+                                <dl>
+                                    <dt>First Name:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.policyholder?.firstName; else noValue">
+                                            {{ policyDetails.policyholder.firstName }}
+                                        </span>
+                                    </dd>
+                                    <dt>Last Name:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.policyholder?.lastName; else noValue">
+                                            {{ policyDetails.policyholder.lastName }}
+                                        </span>
+                                    </dd>
+                                    <dt>Mobile No:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.policyholder?.mobileNo; else noValue">
+                                            {{ policyDetails.policyholder.mobileNo }}
+                                        </span>
+                                    </dd>
+                                    <dt>Email:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.policyholder?.email; else noValue">
+                                            {{ policyDetails.policyholder.email }}
+                                        </span>
+                                    </dd>
+                                </dl>
                             </div>
                         </div>
                     </div>
@@ -84,31 +90,38 @@
                         <div class="card shadow-sm">
                             <div class="card-body">
                                 <h5 class="card-title mb-3">Address</h5>
-                                <p><strong>Address Line 1:</strong>
-                                  <span *ngIf="policyDetails?.policyholder?.addressLine1; else noValue">
-                                    {{ policyDetails.policyholder.addressLine1 }}
-                                  </span>
-                                </p>
-                                <p><strong>Address Line 2:</strong>
-                                  <span *ngIf="policyDetails?.policyholder?.addressLine2; else noValue">
-                                    {{ policyDetails.policyholder.addressLine2 }}
-                                  </span>
-                                </p>
-                                <p><strong>City:</strong>
-                                  <span *ngIf="policyDetails?.policyholder?.city; else noValue">
-                                    {{ policyDetails.policyholder.city }}
-                                  </span>
-                                </p>
-                                <p><strong>State:</strong>
-                                  <span *ngIf="policyDetails?.policyholder?.state; else noValue">
-                                    {{ policyDetails.policyholder.state }}
-                                  </span>
-                                </p>
-                                <p><strong>Pincode:</strong>
-                                  <span *ngIf="policyDetails?.policyholder?.pincode; else noValue">
-                                    {{ policyDetails.policyholder.pincode }}
-                                  </span>
-                                </p>
+                                <dl>
+                                    <dt>Address Line 1:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.policyholder?.addressLine1; else noValue">
+                                            {{ policyDetails.policyholder.addressLine1 }}
+                                        </span>
+                                    </dd>
+                                    <dt>Address Line 2:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.policyholder?.addressLine2; else noValue">
+                                            {{ policyDetails.policyholder.addressLine2 }}
+                                        </span>
+                                    </dd>
+                                    <dt>City:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.policyholder?.city; else noValue">
+                                            {{ policyDetails.policyholder.city }}
+                                        </span>
+                                    </dd>
+                                    <dt>State:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.policyholder?.state; else noValue">
+                                            {{ policyDetails.policyholder.state }}
+                                        </span>
+                                    </dd>
+                                    <dt>Pincode:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.policyholder?.pincode; else noValue">
+                                            {{ policyDetails.policyholder.pincode }}
+                                        </span>
+                                    </dd>
+                                </dl>
                             </div>
                         </div>
                     </div>
@@ -117,18 +130,26 @@
                         <div class="card shadow-sm">
                             <div class="card-body">
                                 <h5 class="card-title mb-3">Identity Details</h5>
-                                <p><strong>Aadhar Number:</strong> <span
-                                        *ngIf="policyDetails?.policyholder?.Aadhar; else noValue">
-                                        {{ policyDetails.policyholder.Aadhar }}
-                                    </span></p>
-                                <p><strong>License Number:</strong> <span
-                                        *ngIf="policyDetails?.policyholder?.licenseNumber; else noValue">
-                                        {{ policyDetails.policyholder.licenseNumber }}
-                                    </span></p>
-                                <p><strong>PAN Number:</strong> <span
-                                        *ngIf="policyDetails?.policyholder?.panNumber; else noValue">
-                                        {{ policyDetails.policyholder.panNumber }}
-                                    </span></p>
+                                <dl>
+                                    <dt>Aadhar Number:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.policyholder?.Aadhar; else noValue">
+                                            {{ policyDetails.policyholder.Aadhar }}
+                                        </span>
+                                    </dd>
+                                    <dt>License Number:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.policyholder?.licenseNumber; else noValue">
+                                            {{ policyDetails.policyholder.licenseNumber }}
+                                        </span>
+                                    </dd>
+                                    <dt>PAN Number:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.policyholder?.panNumber; else noValue">
+                                            {{ policyDetails.policyholder.panNumber }}
+                                        </span>
+                                    </dd>
+                                </dl>
                             </div>
                         </div>
                     </div>
@@ -137,23 +158,32 @@
                         <div class="card shadow-sm">
                             <div class="card-body">
                                 <h5 class="card-title mb-3">Bank Details</h5>
-                                <p><strong>Account Number:</strong> <span
-                                        *ngIf="policyDetails?.policyholder?.accountNumber; else noValue">
-                                        {{ policyDetails.policyholder.accountNumber }}
-                                    </span></p>
-                                <p><strong>IFSC Code:</strong> <span
-                                        *ngIf="policyDetails?.policyholder?.ifscCode; else noValue">
-                                        {{ policyDetails.policyholder.ifscCode }}
-                                    </span></p>
-                                <p><strong>Bank Name:</strong> State Bank of India</p>
-                                <p><strong>Bank Address:</strong> SBI Main Branch, Kerala</p>
+                                <dl>
+                                    <dt>Account Number:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.policyholder?.accountNumber; else noValue">
+                                            {{ policyDetails.policyholder.accountNumber }}
+                                        </span>
+                                    </dd>
+                                    <dt>IFSC Code:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.policyholder?.ifscCode; else noValue">
+                                            {{ policyDetails.policyholder.ifscCode }}
+                                        </span>
+                                    </dd>
+                                    <dt>Bank Name:</dt>
+                                    <dd>State Bank of India</dd>
+                                    <dt>Bank Address:</dt>
+                                    <dd>SBI Main Branch, Kerala</dd>
+                                </dl>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
+
+        <!-- Policy Details Tab -->
         <div class="tab-pane fade" id="details" role="tabpanel" aria-labelledby="details-tab">
             <div *ngIf="policyDetails">
                 <div class="row g-4">
@@ -161,12 +191,32 @@
                         <div class="card shadow-sm">
                             <div class="card-body">
                                 <h5 class="card-title mb-3">Policy Information</h5>
-                                <p><strong>Policy Number:</strong> {{ policyDetails.policyDetails.policyNumber }}</p>
-                                <p><strong>Policy Effective Date:</strong> {{
-                                    policyDetails.policyDetails.policyEffectiveDt | date }}</p>
-                                <p><strong>Policy Expiration Date:</strong> {{
-                                    policyDetails.policyDetails.policyExpirationDt | date }}</p>
-                                <p><strong>Term:</strong> {{ policyDetails.policyDetails.term }} years</p>
+                                <dl>
+                                    <dt>Policy Number:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.policyDetails?.policyNumber; else noValue">
+                                            {{ policyDetails.policyDetails.policyNumber }}
+                                        </span>
+                                    </dd>
+                                    <dt>Policy Effective Date:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.policyDetails?.policyEffectiveDt; else noValue">
+                                            {{ policyDetails.policyDetails.policyEffectiveDt | date }}
+                                        </span>
+                                    </dd>
+                                    <dt>Policy Expiration Date:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.policyDetails?.policyExpirationDt; else noValue">
+                                            {{ policyDetails.policyDetails.policyExpirationDt | date }}
+                                        </span>
+                                    </dd>
+                                    <dt>Term:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.policyDetails?.term; else noValue">
+                                            {{ policyDetails.policyDetails.term }} year(s)
+                                        </span>
+                                    </dd>
+                                </dl>
                             </div>
                         </div>
                     </div>
@@ -174,24 +224,46 @@
                         <div class="card shadow-sm">
                             <div class="card-body">
                                 <h5 class="card-title mb-3">Policy Status</h5>
-                                <p><strong>Status:</strong> {{ policyDetails.policyDetails.status }}</p>
-                                <p><strong>Total Premium:</strong> ₹{{ policyDetails.policyDetails.totalPremium }}</p>
-                                <p><strong>Payment Plan:</strong> {{ policyDetails.policyDetails.payPlan }}</p>
+                                <dl>
+                                    <dt>Status:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.policyDetails?.status; else noValue">
+                                            {{ policyDetails.policyDetails.status }}
+                                        </span>
+                                    </dd>
+                                    <dt>Total Premium:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.policyDetails?.totalPremium; else noValue">
+                                            ₹{{ policyDetails.policyDetails.totalPremium }}
+                                        </span>
+                                    </dd>
+                                    <dt>Payment Plan:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.policyDetails?.payPlan; else noValue">
+                                            {{ policyDetails.policyDetails.payPlan }}
+                                        </span>
+                                    </dd>
+                                </dl>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Description Tab -->
         <div class="tab-pane fade" id="documents" role="tabpanel" aria-labelledby="documents-tab">
-            <div *ngIf="policyDetails">
+            <div *ngIf="policyDetails?.coverageDetails?.description">
                 <div class="row g-4">
                     <div class="col-md-12">
                         <div class="card shadow-sm">
                             <div class="card-body">
                                 <h5 class="card-title mb-3">Coverage Details</h5>
                                 <ul class="list-group list-group-flush">
-                                    <li></li>
+                                    <li class="list-group-item"
+                                        *ngFor="let desc of policyDetails.coverageDetails.description.split(',')">
+                                        {{ desc.trim() }}
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -200,148 +272,177 @@
             </div>
         </div>
 
+        <!-- Vehicle Details Tab -->
         <div class="tab-pane fade" id="vehicle" role="tabpanel" aria-labelledby="vehicle-tab">
-          <div *ngIf="policyDetails">
-            <div class="row g-4">
-              <div class="col-md-6">
-                <div class="card shadow-sm">
-                  <div class="card-body">
-                    <h5 class="card-title mb-3">Vehicle & Policy Info</h5>
-                    <p><strong>Policy Number:</strong>
-                      <span *ngIf="policyDetails?.vehicleDetails?.policyNumber; else noValue">
-                        {{ policyDetails.vehicleDetails.policyNumber }}
-                      </span>
-                    </p>
-                    <p><strong>Vehicle Type:</strong>
-                      <span *ngIf="policyDetails?.vehicleDetails?.vehicleType; else noValue">
-                        {{ policyDetails.vehicleDetails.vehicleType }}
-                      </span>
-                    </p>
-                    <p><strong>Registration Number:</strong>
-                      <span *ngIf="policyDetails?.vehicleDetails?.registrationNumber; else noValue">
-                        {{ policyDetails.vehicleDetails.registrationNumber }}
-                      </span>
-                    </p>
-                    <p><strong>Date of Purchase:</strong>
-                      <span *ngIf="policyDetails?.vehicleDetails?.dateOfPurchase; else noValue">
-                        {{ policyDetails.vehicleDetails.dateOfPurchase | date }}
-                      </span>
-                    </p>
-                    <p><strong>RTO Name:</strong>
-                      <span *ngIf="policyDetails?.vehicleDetails?.rtoName; else noValue">
-                        {{ policyDetails.vehicleDetails.rtoName }}
-                      </span>
-                    </p>
-                    <p><strong>City:</strong>
-                      <span *ngIf="policyDetails?.vehicleDetails?.city; else noValue">
-                        {{ policyDetails.vehicleDetails.city }}
-                      </span>
-                    </p>
-                    <p><strong>State:</strong>
-                      <span *ngIf="policyDetails?.vehicleDetails?.state; else noValue">
-                        {{ policyDetails.vehicleDetails.state }}
-                      </span>
-                    </p>
-                  </div>
-                </div>
-              </div>
+            <div *ngIf="policyDetails">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title mb-3">Vehicle & Policy Info</h5>
+                                <dl>
+                                    <dt>Policy Number:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.vehicleDetails?.policyNumber; else noValue">
+                                            {{ policyDetails.vehicleDetails.policyNumber }}
+                                        </span>
+                                    </dd>
+                                    <dt>Vehicle Type:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.vehicleDetails?.vehicleType; else noValue">
+                                            {{ policyDetails.vehicleDetails.vehicleType }}
+                                        </span>
+                                    </dd>
+                                    <dt>Registration Number:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.vehicleDetails?.registrationNumber; else noValue">
+                                            {{ policyDetails.vehicleDetails.registrationNumber }}
+                                        </span>
+                                    </dd>
+                                    <dt>Date of Purchase:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.vehicleDetails?.dateOfPurchase; else noValue">
+                                            {{ policyDetails.vehicleDetails.dateOfPurchase | date }}
+                                        </span>
+                                    </dd>
+                                    <dt>RTO Name:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.vehicleDetails?.rtoName; else noValue">
+                                            {{ policyDetails.vehicleDetails.rtoName }}
+                                        </span>
+                                    </dd>
+                                    <dt>City:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.vehicleDetails?.city; else noValue">
+                                            {{ policyDetails.vehicleDetails.city }}
+                                        </span>
+                                    </dd>
+                                    <dt>State:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.vehicleDetails?.state; else noValue">
+                                            {{ policyDetails.vehicleDetails.state }}
+                                        </span>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
 
-              <div class="col-md-6">
-                <div class="card shadow-sm">
-                  <div class="card-body">
-                    <h5 class="card-title mb-3">Vehicle Specifications</h5>
-                    <p><strong>Brand:</strong>
-                      <span *ngIf="policyDetails?.vehicleDetails?.brand; else noValue">
-                        {{ policyDetails.vehicleDetails.brand }}
-                      </span>
-                    </p>
-                    <p><strong>Model Name:</strong>
-                      <span *ngIf="policyDetails?.vehicleDetails?.modelName; else noValue">
-                        {{ policyDetails.vehicleDetails.modelName }}
-                      </span>
-                    </p>
-                    <p><strong>Variant:</strong>
-                      <span *ngIf="policyDetails?.vehicleDetails?.variant; else noValue">
-                        {{ policyDetails.vehicleDetails.variant }}
-                      </span>
-                    </p>
-                    <p><strong>Body Type:</strong>
-                      <span *ngIf="policyDetails?.vehicleDetails?.bodyType; else noValue">
-                        {{ policyDetails.vehicleDetails.bodyType }}
-                      </span>
-                    </p>
-                    <p><strong>Fuel Type:</strong>
-                      <span *ngIf="policyDetails?.vehicleDetails?.fuelType; else noValue">
-                        {{ policyDetails.vehicleDetails.fuelType }}
-                      </span>
-                    </p>
-                    <p><strong>Transmission Type:</strong>
-                      <span *ngIf="policyDetails?.vehicleDetails?.transmissionType; else noValue">
-                        {{ policyDetails.vehicleDetails.transmissionType }}
-                      </span>
-                    </p>
-                    <p><strong>Color:</strong>
-                      <span *ngIf="policyDetails?.vehicleDetails?.color; else noValue">
-                        {{ policyDetails.vehicleDetails.color }}
-                      </span>
-                    </p>
-                  </div>
-                </div>
-              </div>
+                    <div class="col-md-6">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title mb-3">Vehicle Specifications</h5>
+                                <dl>
+                                    <dt>Brand:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.vehicleDetails?.brand; else noValue">
+                                            {{ policyDetails.vehicleDetails.brand }}
+                                        </span>
+                                    </dd>
+                                    <dt>Model Name:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.vehicleDetails?.modelName; else noValue">
+                                            {{ policyDetails.vehicleDetails.modelName }}
+                                        </span>
+                                    </dd>
+                                    <dt>Variant:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.vehicleDetails?.variant; else noValue">
+                                            {{ policyDetails.vehicleDetails.variant }}
+                                        </span>
+                                    </dd>
+                                    <dt>Body Type:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.vehicleDetails?.bodyType; else noValue">
+                                            {{ policyDetails.vehicleDetails.bodyType }}
+                                        </span>
+                                    </dd>
+                                    <dt>Fuel Type:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.vehicleDetails?.fuelType; else noValue">
+                                            {{ policyDetails.vehicleDetails.fuelType }}
+                                        </span>
+                                    </dd>
+                                    <dt>Transmission Type:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.vehicleDetails?.transmissionType; else noValue">
+                                            {{ policyDetails.vehicleDetails.transmissionType }}
+                                        </span>
+                                    </dd>
+                                    <dt>Color:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.vehicleDetails?.color; else noValue">
+                                            {{ policyDetails.vehicleDetails.color }}
+                                        </span>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
 
-              <div class="col-md-6">
-                <div class="card shadow-sm">
-                  <div class="card-body">
-                    <h5 class="card-title mb-3">Technical Details</h5>
-                    <p><strong>Chasis Number:</strong>
-                      <span *ngIf="policyDetails?.vehicleDetails?.chasisNumber; else noValue">
-                        {{ policyDetails.vehicleDetails.chasisNumber }}
-                      </span>
-                    </p>
-                    <p><strong>Engine Number:</strong>
-                      <span *ngIf="policyDetails?.vehicleDetails?.engineNumber; else noValue">
-                        {{ policyDetails.vehicleDetails.engineNumber }}
-                      </span>
-                    </p>
-                    <p><strong>Cubic Capacity:</strong>
-                      <span *ngIf="policyDetails?.vehicleDetails?.cubicCapacity; else noValue">
-                        {{ policyDetails.vehicleDetails.cubicCapacity }}
-                      </span>
-                    </p>
-                    <p><strong>Seating Capacity:</strong>
-                      <span *ngIf="policyDetails?.vehicleDetails?.seatingCapacity; else noValue">
-                        {{ policyDetails.vehicleDetails.seatingCapacity }}
-                      </span>
-                    </p>
-                    <p><strong>Year of Manufacture:</strong>
-                      <span *ngIf="policyDetails?.vehicleDetails?.yearOfManufacture; else noValue">
-                        {{ policyDetails.vehicleDetails.yearOfManufacture }}
-                      </span>
-                    </p>
-                  </div>
-                </div>
-              </div>
+                    <div class="col-md-6">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title mb-3">Technical Details</h5>
+                                <dl>
+                                    <dt>Chasis Number:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.vehicleDetails?.chasisNumber; else noValue">
+                                            {{ policyDetails.vehicleDetails.chasisNumber }}
+                                        </span>
+                                    </dd>
+                                    <dt>Engine Number:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.vehicleDetails?.engineNumber; else noValue">
+                                            {{ policyDetails.vehicleDetails.engineNumber }}
+                                        </span>
+                                    </dd>
+                                    <dt>Cubic Capacity:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.vehicleDetails?.cubicCapacity; else noValue">
+                                            {{ policyDetails.vehicleDetails.cubicCapacity }}
+                                        </span>
+                                    </dd>
+                                    <dt>Seating Capacity:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.vehicleDetails?.seatingCapacity; else noValue">
+                                            {{ policyDetails.vehicleDetails.seatingCapacity }}
+                                        </span>
+                                    </dd>
+                                    <dt>Year of Manufacture:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.vehicleDetails?.yearOfManufacture; else noValue">
+                                            {{ policyDetails.vehicleDetails.yearOfManufacture }}
+                                        </span>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
 
-              <div class="col-md-6">
-                <div class="card shadow-sm">
-                  <div class="card-body">
-                    <h5 class="card-title mb-3">Valuation</h5>
-                    <p><strong>IDV:</strong>
-                      <span *ngIf="policyDetails?.vehicleDetails?.idv; else noValue">
-                        ₹{{ policyDetails.vehicleDetails.idv }}
-                      </span>
-                    </p>
-                    <p><strong>Ex-Showroom Price:</strong>
-                      <span *ngIf="policyDetails?.vehicleDetails?.exShowroomPrice; else noValue">
-                        ₹{{ policyDetails.vehicleDetails.exShowroomPrice }}
-                      </span>
-                    </p>
-                  </div>
+                    <div class="col-md-6">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title mb-3">Valuation</h5>
+                                <dl>
+                                    <dt>IDV:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.vehicleDetails?.idv; else noValue">
+                                            ₹{{ policyDetails.vehicleDetails.idv }}
+                                        </span>
+                                    </dd>
+                                    <dt>Ex-Showroom Price:</dt>
+                                    <dd>
+                                        <span *ngIf="policyDetails?.vehicleDetails?.exShowroomPrice; else noValue">
+                                            ₹{{ policyDetails.vehicleDetails.exShowroomPrice }}
+                                        </span>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-
     </div>
 </div>

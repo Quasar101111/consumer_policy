@@ -59,6 +59,22 @@
   },
   {
     "ContainingType": "policy_portal_api.Controllers.PolicyController",
+    "Method": "PolicyDetails",
+    "RelativePath": "api/Policy/policydetails/{policyno}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "policyno",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "policy_portal_api.Controllers.PolicyController",
     "Method": "ViewPolicyNoWithStatus",
     "RelativePath": "api/Policy/policynostatus/{username}",
     "HttpMethod": "GET",
