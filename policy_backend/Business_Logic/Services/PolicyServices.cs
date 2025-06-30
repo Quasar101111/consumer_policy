@@ -4,16 +4,17 @@ using Data_Logic.Repository;
 using System;
 using System.Threading.Tasks;
 
+
 namespace Business_Logic.Services
 {
-    public class PolicyServices 
+    public class PolicyServices : IPolicyServices
     {
-        private readonly PolicyRepository _repository;
-        private readonly UserRepository _userRepository;
-        private readonly PolicyViewRepository _policyViewRepository;
-      
+        private readonly IPolicyRepository _repository;
+        private readonly IUserRepository _userRepository;
+        private readonly IPolicyViewRepository _policyViewRepository;
 
-        public PolicyServices(PolicyRepository repository, UserRepository userRepository, PolicyViewRepository policyViewRepository )
+
+        public PolicyServices(IPolicyRepository repository, IUserRepository userRepository, IPolicyViewRepository policyViewRepository)
         {
             _repository = repository;
             _userRepository = userRepository;
@@ -26,8 +27,7 @@ namespace Business_Logic.Services
             int chassisExists = await _repository.CheckChassisExists(chassisno);
             int policyVehicleExists = await _repository.CheckPolicyVehicleExists(policyno, chassisno);
 
-            //if (policyExists == 0 && chassisExists == 0)
-            //    return new { Message = "Policy and vehicle not found" };
+
 
             if (policyExists == 0 || chassisExists == 0)
                 return new { Message = "Policy  or Vehicle not found" };
@@ -39,33 +39,36 @@ namespace Business_Logic.Services
             return await _repository.GetBasicDetails(policyno, chassisno);
         }
 
-        public async Task<object> AddUserPolicy(string policyno, string username) { 
-            var userid= await _userRepository.GetUserIds(username);
-            if (userid == null) {
+        public async Task<object> AddUserPolicy(string policyno, string username)
+        {
+            var userid = await _userRepository.GetUserIds(username);
+            if (userid == null)
+            {
                 return new { Message = "Username not found" };
             }
-            
-                var result = await _repository.AddPolicy(policyno, userid);
-                if (result == 1)
-                {
-                    return new { Message = "Policy is added " };
-                }
 
-                else if (result == 2)
-                {
-                    return new { Message = "Already Added" };
-                }
-                else
-                {
-                    return new { Message = "Failed to add policy. Try again." };
-                }
+            var result = await _repository.AddPolicy(policyno, userid);
+            if (result == 1)
+            {
+                return new { Message = "Policy is added " };
+            }
+
+            else if (result == 2)
+            {
+                return new { Message = "Already Added" };
+            }
+            else
+            {
+                return new { Message = "Failed to add policy. Try again." };
+            }
 
 
         }
 
-        public async Task<(bool success , string ?  message , List<string> ? result)> ViewPolicyNo(string username) {
+        public async Task<(bool success, string? message, List<string>? result)> ViewPolicyNo(string username)
+        {
             var userid = await _userRepository.GetUserIds(username);
-            
+
             var result = await _repository.ViewPolicyNumber(userid);
 
 
@@ -73,7 +76,7 @@ namespace Business_Logic.Services
             {
                 return (false, "No policies found for this user", null);
             }
-            return ( true, null,result);
+            return (true, null, result);
         }
 
         public async Task<(bool success, List<PolicyInfo>? result)> GetPolicyNumbersWithStatus(string username)
@@ -90,12 +93,13 @@ namespace Business_Logic.Services
             return (true, result);
         }
 
-        public async Task<bool> ToggleStatus(int id) { 
-                    var result = await _repository.ToggleStatus(id);
-                    if(!result)
-            {  return false; }
+        public async Task<bool> ToggleStatus(int id)
+        {
+            var result = await _repository.ToggleStatus(id);
+            if (!result)
+            { return false; }
             return result;
-            
+
         }
 
 
@@ -105,7 +109,8 @@ namespace Business_Logic.Services
             return result;
         }
 
-        public async Task<object> PolicyDetails(string policyNumber) {
+        public async Task<object> PolicyDetails(string policyNumber)
+        {
 
             var res1 = await _policyViewRepository.PolicyHolderDetails(policyNumber);
             var res2 = await _policyViewRepository.PolicyDetails(policyNumber);
@@ -119,6 +124,18 @@ namespace Business_Logic.Services
                 coverageDetails = res3,
                 vehicleDetails = res4
             };
+
+        }
+
+        public async Task<int> TotalPremium(string username) {
+            var userid = await _userRepository.GetUserIds(username);
+
+            if (userid == null)
+                { return 0; }
+            var result = await _repository.TotalPremium(userid);
+            Console.WriteLine(result);
+            return result;
+
 
         }
 

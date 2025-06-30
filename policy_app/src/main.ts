@@ -12,7 +12,7 @@ import { provideHttpClient, withInterceptorsFromDi, HTTP_INTERCEPTORS } from "@a
 import { TokenInterceptor } from './app/interceptors/token.interceptor';
 
 export function tokenGetter() {
-  console.log("Token Getter called", localStorage.getItem("token"));
+ 
   return localStorage.getItem("token");
 }
 
@@ -36,10 +36,10 @@ bootstrapApplication(AppComponent, {
 
     provideHttpClient(withInterceptorsFromDi()),
 
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true,
-    }
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: TokenInterceptor,
+    //   multi: true,
+    // }
   ]
 }).catch((err) => console.error(err));

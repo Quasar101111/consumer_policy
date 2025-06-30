@@ -70,7 +70,7 @@ export class ChangePasswordComponent {
   }
 
 
-  private validatePasswords(): boolean {
+   validatePasswords(): boolean {
     if (!this.passwordData.oldPassword) {
       this.toastr.error('Please enter your current password');
       return false;

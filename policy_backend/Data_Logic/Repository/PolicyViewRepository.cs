@@ -9,13 +9,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Data_Logic.Repository
 {
-   
 
-    public class PolicyViewRepository
+
+    public class PolicyViewRepository : IPolicyViewRepository
     {
 
         private readonly ApplicationDbContext _context;
-       
+
 
         public PolicyViewRepository(ApplicationDbContext context)
         {
@@ -44,7 +44,7 @@ namespace Data_Logic.Repository
                     {
                         results.Add(new PolicyInfo
                         {
-                            PolicyId = Convert.ToInt32(reader["Id"]),                           
+                            PolicyId = Convert.ToInt32(reader["Id"]),
                             PolicyNumber = reader["PolicyNumber"]?.ToString() ?? "",
                             Status = reader["Status"]?.ToString() ?? ""
                         });
@@ -109,8 +109,8 @@ namespace Data_Logic.Repository
                                 IFSCCode = reader["IFSCCode"].ToString(),
                                 BankName = reader["BankName"].ToString(),
                                 BankAddress = reader["BankAddress"].ToString(),
-                                
-                                
+
+
 
                             };
                         }
@@ -230,7 +230,7 @@ namespace Data_Logic.Repository
                             {
 
                                 Description = reader["Description"]?.ToString(),
-                                
+
 
 
                             };

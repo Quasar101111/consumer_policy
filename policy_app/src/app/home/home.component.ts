@@ -3,6 +3,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { ApiService } from '../services/api.service'; 
 import { Router } from '@angular/router';
 import { EventService } from '../services/event.service';
+import { CommonModule } from '@angular/common';
 
 declare var bootstrap: any;
 @Component({
@@ -13,11 +14,13 @@ declare var bootstrap: any;
 })
 export class HomeComponent {
   
-  username :string ='';
+  username ="";
   msg :number= 0;
   private modal: any;
-
-  constructor(private eventService: EventService) {}
+  policy:string[] = [];
+  totalPremiumvar :number= 0;
+   
+  constructor(private eventService: EventService, private apiService : ApiService) {}
 
  
   ngOnInit(): void {
@@ -28,9 +31,26 @@ export class HomeComponent {
     this.eventService.welMsgs.subscribe(value => {
       this.msg = value;
     });
-   
-    console.log(localStorage.getItem('token'));
-    
+
+      this.username = localStorage.getItem('username') || '';
+
+    this.apiService.viewPolicyNumbers(this.username).subscribe({next:(response)=>
+    {
+        if (Array.isArray(response)) {
+        this.policy = response;
+        }
+      
+      },
+
+    })
+
+    this.apiService.totalPremium(this.username).subscribe({next: (response)=>{
+
+      if(response){
+        this.totalPremiumvar= response;
+      }
+    }})
+
   }
   
    

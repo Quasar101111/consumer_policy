@@ -12,9 +12,9 @@ namespace policy_portal_api.Controllers
 
     public class PolicyController : ControllerBase
     {
-        private readonly PolicyServices _PolicyServices;
+        private readonly IPolicyServices _PolicyServices;
 
-        public PolicyController(PolicyServices PolicyServices)
+        public PolicyController(IPolicyServices PolicyServices)
         {
             _PolicyServices = PolicyServices;
         }
@@ -120,9 +120,28 @@ namespace policy_portal_api.Controllers
 
         }
 
-       
+        
+        [HttpGet("totalpremium/{username}")]
+        public async Task<IActionResult> TotalPremium(string username)
+        {
+            try
+            {
 
+                var result = await _PolicyServices.TotalPremium(username);
+               
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return StatusCode(500, new { Message = "Error occurred", Error = ex.Message });
+            }
 
         }
+
+
+
+
+    }
 }
  

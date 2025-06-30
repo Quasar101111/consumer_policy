@@ -34,11 +34,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<PolicyRepository>();
-builder.Services.AddScoped<PolicyServices>();
-builder.Services.AddScoped<UserRepository>();
-builder.Services.AddScoped<UserServices>();
-builder.Services.AddScoped<PolicyViewRepository>();
+builder.Services.AddScoped<IPolicyRepository, PolicyRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IPolicyViewRepository, PolicyViewRepository>();
+builder.Services.AddScoped<IPolicyServices, PolicyServices>();
+builder.Services.AddScoped<IUserServices, UserServices>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("PolicyConnection"),
         new MySqlServerVersion(new Version(8, 0, 31))

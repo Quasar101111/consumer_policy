@@ -24,7 +24,7 @@ export class AddPolicyComponent {
   submitted = false;
   constructor(private apiService : ApiService, private router: Router, private toastr : ToastrService){}
 
-   @ViewChild('managePolicy') managePolicyComponent!: ManagePolicyComponent;
+   
 
   onSubmit() {
       this.result= '';
@@ -90,10 +90,10 @@ addPolicy() {
     if (msg === 'Policy is added') {
       
       this.toastr.success("Policy added");
-      if (this.managePolicyComponent) {
-        this.managePolicyComponent.ngOnInit();
+      
+        
         this.router.navigate(['/manage-policy']);
-      }
+      
     } else if (msg === 'Already Added') {
       this.errorMessage = 'This policy is already added to your account';
       this.toastr.warning("Policy is already added");

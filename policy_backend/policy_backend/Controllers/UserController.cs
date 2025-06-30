@@ -11,9 +11,9 @@ namespace policy_portal_api.UserController
     [ApiController]
 
     public class UserController : Controller {
-        private readonly UserServices _userServices;
+        private readonly IUserServices _userServices;
 
-        public UserController(UserServices userServices) {
+        public UserController(IUserServices userServices) {
             _userServices = userServices;
         }
 

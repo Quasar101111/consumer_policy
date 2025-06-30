@@ -42,6 +42,10 @@ testem.log
 .DS_Store
 Thumbs.db
 
+# ASP.net
+**/bin/
+**/obj/
+
 
 appsettings.json
 appsettings.Development.json

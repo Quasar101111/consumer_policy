@@ -9,32 +9,36 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Data_Logic.Repository
 {
-    public class UserRepository
+    public class UserRepository : IUserRepository
     {
         private readonly ApplicationDbContext _context;
 
-        public UserRepository( ApplicationDbContext context) {
-           _context = context;
+        public UserRepository(ApplicationDbContext context)
+        {
+            _context = context;
         }
 
-        public async Task<bool> EmailExists(string email) { 
-        
+        public async Task<bool> EmailExists(string email)
+        {
+
             return await _context.Users.AnyAsync(u => u.Email == email);
         }
 
-        public async Task<bool> UserNameExists(string username) {
+        public async Task<bool> UserNameExists(string username)
+        {
 
             return await _context.Users.AnyAsync(u => u.Username == username);
         }
 
-        public async Task<User> CreateUser(User user) { 
-            
+        public async Task<User> CreateUser(User user)
+        {
+
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
             return user;
         }
 
-        public async Task<User ?> FindByUsername(string username)
+        public async Task<User?> FindByUsername(string username)
         {
             return await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
         }
@@ -54,14 +58,15 @@ namespace Data_Logic.Repository
             return user;
         }
 
-        public async Task<bool > ChangePassword(User user) {
+        public async Task<bool> ChangePassword(User user)
+        {
 
 
             _context.Users.Update(user);
             await _context.SaveChangesAsync();
             return true;
 
-          
+
         }
 
 

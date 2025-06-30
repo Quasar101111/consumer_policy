@@ -12,7 +12,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Data_Logic.Repository
 {
-    public class PolicyRepository
+    public class PolicyRepository : IPolicyRepository
     {
 
         private readonly ApplicationDbContext _context;
@@ -77,7 +77,7 @@ namespace Data_Logic.Repository
                     FROM masterpolicyvehicle pv
                     INNER JOIN masterpolicy p ON pv.MasterPolicyId = p.MasterPolicyId
                     INNER JOIN mastervehicle v ON pv.MasterVehicleId = v.MasterVehicleId
-                    WHERE p.PolicyNumber = @p0 AND v.ChasisNumber = @p1"; 
+                    WHERE p.PolicyNumber = @p0 AND v.ChasisNumber = @p1";
 
                 var param1 = command.CreateParameter();
                 param1.ParameterName = "@p0";
@@ -148,7 +148,7 @@ namespace Data_Logic.Repository
                     }
                 }
             }
-            Console.WriteLine( policyDetails);
+            Console.WriteLine(policyDetails);
             Console.WriteLine(vehicleDetails);
             return new
             {
@@ -159,7 +159,7 @@ namespace Data_Logic.Repository
 
         public async Task<String> GetUserId(string username)
         {
-            
+
             var connection = _context.Database.GetDbConnection();
             if (connection.State != System.Data.ConnectionState.Open)
             {
@@ -261,7 +261,7 @@ namespace Data_Logic.Repository
 
                     else
                     {
-                         
+
 
                         using (var insertCmd = connection.CreateCommand())
                         {
@@ -294,7 +294,8 @@ namespace Data_Logic.Repository
 
         }
 
-        public async Task<List<string>> ViewPolicyNumber(string userid) {
+        public async Task<List<string>> ViewPolicyNumber(string userid)
+        {
             try
             {
                 var connection = _context.Database.GetDbConnection();
@@ -306,7 +307,8 @@ namespace Data_Logic.Repository
                 var policyNumbers = new List<string>();
 
 
-                using (var readCmd = connection.CreateCommand()) {
+                using (var readCmd = connection.CreateCommand())
+                {
 
                     readCmd.CommandText = @"
                         SELECT PolicyNumber FROM portal_userpolicylist
@@ -330,17 +332,18 @@ namespace Data_Logic.Repository
 
 
             }
-            catch (Exception ex) { 
+            catch (Exception ex)
+            {
                 Console.WriteLine(ex.Message);
                 throw;
-                
+
             }
         }
 
 
 
 
-       
+
 
         public async Task<bool> ToggleStatus(int id)
         {
@@ -375,7 +378,7 @@ namespace Data_Logic.Repository
                     }
 
                     status = status == "Active" ? "Inactive" : "Active";
-                    
+
 
                     using (var updateCmd = connection.CreateCommand())
                     {
@@ -397,12 +400,12 @@ namespace Data_Logic.Repository
 
 
                         await updateCmd.ExecuteNonQueryAsync();
-                        
+
                     }
                     return true;
                 }
-                
-            } 
+
+            }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
@@ -438,6 +441,47 @@ namespace Data_Logic.Repository
             {
                 Console.WriteLine($"Error deleting policy: {ex.Message}");
                 return false;
+            }
+        }
+
+
+        public async Task<int> TotalPremium(string userid) {
+
+            try
+            {
+                using var connection = _context.Database.GetDbConnection();
+                if (connection.State != System.Data.ConnectionState.Open)
+                {
+                    await connection.OpenAsync();
+                }
+
+                using var command = connection.CreateCommand();
+                command.CommandText = @"
+                     SELECT SUM(UniquePremiums.TotalPremium) 
+                        FROM (
+                            SELECT mp.PolicyNumber, MAX(mp.TotalPremium) AS TotalPremium
+                            FROM masterpolicy mp
+                            JOIN portal_userpolicylist pupl ON mp.PolicyNumber = pupl.PolicyNumber
+                            WHERE pupl.UserId = @id
+                            GROUP BY mp.PolicyNumber
+                        ) AS UniquePremiums";
+
+                var param = command.CreateParameter();
+                param.ParameterName = "@id";
+                param.Value = userid;
+                command.Parameters.Add(param);
+
+                var totalPremium = await command.ExecuteScalarAsync();
+                if (totalPremium == DBNull.Value || totalPremium == null)
+                {
+                    return 0;
+                }
+                return (int)Math.Round((decimal)totalPremium);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error : {ex.Message}");
+                return 0;
             }
         }
 

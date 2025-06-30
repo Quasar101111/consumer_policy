@@ -65,6 +65,12 @@ policyDetails(policyNumber: string): Observable<any> {
 }
 
 
+totalPremium(userName: string): Observable<any>{
+    const encodedUsername = encodeURIComponent(userName); 
+   return this.http.get(`${this.baseUrlPolicy}/totalpremium/${encodedUsername}`)
+}
+
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
 

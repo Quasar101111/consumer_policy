@@ -78,7 +78,7 @@ export class ManagePolicyComponent {
       this.apiService.deletePolicy(this.policies[this.policyToDeleteIndex].policyId).subscribe({
         next: (response) => {
           console.log(`Policy with ID ${this.policies[pos].policyId} deleted successfully.`);
-          this.toastr.error(`${this.policies[pos].policyId}  is deleted`);
+          this.toastr.error(`${this.policies[pos].policyNumber}  is deleted`);
           this.policies.splice(this.policyToDeleteIndex!, 1);
           this.policyToDeleteIndex = null;
           this.modalRef?.hide();

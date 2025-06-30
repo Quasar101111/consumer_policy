@@ -17,9 +17,9 @@ export const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     {path:'home',component:HomeComponent,canActivate:[AuthGuard]},
     {path:'navbar',component:NavbarComponent,canActivate:[AuthGuard]},
-    {path:'add-policy',component:AddPolicyComponent},
+    {path:'add-policy',component:AddPolicyComponent,canActivate:[AuthGuard]},
     {path:'view-policy',component:ViewPolicyComponent,canActivate:[AuthGuard]},
-    {path:'manage-policy',component:ManagePolicyComponent},
-    {path:'change-password',component:ChangePasswordComponent}
+    {path:'manage-policy',component:ManagePolicyComponent,canActivate:[AuthGuard]},
+    {path:'change-password',component:ChangePasswordComponent,canActivate:[AuthGuard]}
 
 ];
