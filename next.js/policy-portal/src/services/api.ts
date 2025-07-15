@@ -36,6 +36,18 @@ export async function checkUsernameAvailability(userName: string) {
 
 }
 
+export async function register(userData: any) {
+  const response = await fetch(`${baseUrl}/register`,
+     {method :'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(userData) } );
+     if (!response.ok) {
+      const errorMessage = await response.text(); 
+      throw new Error(errorMessage || "Registration failed.");
+     }
+     return await response.json();
+  
+  
+  }
+
 export async function login(userData: any){
     const response= await fetch(`${baseUrl}/login`,
         {method: 'POST', headers: {'Content-Type': 'application/json'},body: JSON.stringify(userData), } )
@@ -71,3 +83,60 @@ export async function viewPolicyNumbers(userName:string){
     }
     return await response.json();
 }  
+
+export async function changePassword(userName: string, currentPassword: string, newPassword: string) {
+  try {
+    const response = await fetch(`${baseUrl}/change-password`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        Username: userName,
+        CurrentPassword: currentPassword,
+        NewPassword: newPassword,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      return {
+        success: false,
+        message: data.message || 'Failed to change password. Please try again later.',
+      };
+    }
+
+    return {
+      success: true,
+      message: data.message || 'Password changed successfully.',
+    };
+  } catch (error) {
+    return {
+      success: false,
+      message: 'Network error. Please try again later.',
+    };
+  }
+}
+
+export async function policyNumbersWithStatus(userName: string) {
+  const encodedUsername = encodeURIComponent(userName);
+  const response = await fetch(`${policyUrl}/policynostatus/${encodedUsername}`);
+  
+  if (!response.ok) {
+    throw new Error(`Error fetching policy numbers with status: ${response.statusText}`);
+  }
+  
+  return await response.json();
+} 
+
+export async function togglePolicyStatus(policyId: number){
+  const response = await fetch(`${policyUrl}/togglestatus?id=${policyId}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+  if (!response.ok) {
+    throw new Error(`Error toggling policy status: ${response.statusText}`);
+  }
+
+  return await response.json();
+}

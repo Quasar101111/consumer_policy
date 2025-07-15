@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import "@/styles/globals.css";
-import{checkUsernameAvailability} from "@/services/api";
+import{checkUsernameAvailability,register} from "@/services/api";
 import Link from "next/link";
+
 
 export default function RegisterPage() {
     const [form, setForm] = useState({ userName: "", email: "", password: "", confirmPassword: "" });
@@ -27,12 +28,7 @@ export default function RegisterPage() {
         
         
 
-        // const DATA_SOURCE_URL = process.env.NEXT_PUBLIC_DATA_SOURCE_USER_URL;
-        // if (!DATA_SOURCE_URL) {
-        //     setusernameError("API URL not set.");
-        //     return;
-        // }
-        // console.log(DATA_SOURCE_URL);
+       
         try {
             
               const res = await checkUsernameAvailability(form.userName);
@@ -101,6 +97,7 @@ export default function RegisterPage() {
             setconfirmpasswordError("");
         }
         if (!isValid) return;
+        const result = await register(form);
 
         const res = await fetch("/api/register", {
             method: "POST",

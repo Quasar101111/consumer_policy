@@ -1,13 +1,14 @@
 'use client';
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faAddressCard,
     faPlus,
     faListCheck,
-    faLock,
     faKey,
+    faHome,
     faRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -18,15 +19,29 @@ function CollapsibleSidebar() {
         setCollapsed(prev => !prev);
     };
 
+    // Sidebar width for fixed positioning
+    const sidebarWidth = collapsed ? 80 : 250;
+
     return (
-        <div style={{ display: 'flex', height: '100vh', position: 'relative' }}>
-            {/* Collapse button OUTSIDE the Sidebar */}
+        <div
+            style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                height: '100vh',
+                width: sidebarWidth,
+                zIndex: 1050,
+                transition: 'width 0.3s',
+                background: 'transparent',
+                display: 'flex',
+            }}
+        >
             <button
                 onClick={toggleSidebar}
                 style={{
                     position: 'absolute',
                     top: '16px',
-                    left: collapsed ? '16px' : '226px', // 250px - button width/2 when expanded, 80px + margin when collapsed
+                    left: collapsed ? '16px' : '226px',
                     transition: 'left 0.3s',
                     width: '36px',
                     height: '36px',
@@ -39,7 +54,7 @@ function CollapsibleSidebar() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    zIndex: 1000,
+                    zIndex: 1100,
                     userSelect: 'none',
                     boxShadow: '0 0 8px rgba(0,0,0,0.15)',
                 }}
@@ -65,20 +80,33 @@ function CollapsibleSidebar() {
                 rootStyles={{
                     position: 'relative',
                     paddingTop: '40px',
+                    height: '100vh',
+                    minHeight: '100vh',
+                    overflowY: 'auto',
                 }}
+
             >
+                <Menu rootStyles={{ marginTop: '10px' }}>
 
-                <Menu
-                    rootStyles={{
-                        marginTop: '10px',
-                    }}
-                >
+                    <MenuItem
+                        icon={<FontAwesomeIcon icon={faHome} />}
+                        component={<Link href="/dashboard" />}
+                    >
+                        Home
+                    </MenuItem>
+                </Menu>
+                <Menu rootStyles={{ marginTop: '10px' }}>
                     <SubMenu label="Policies" icon={<FontAwesomeIcon icon={faAddressCard} />}>
-                        <MenuItem icon={<FontAwesomeIcon icon={faPlus} />}>Add policy</MenuItem>
-                        <MenuItem icon={<FontAwesomeIcon icon={faListCheck} />}>Manage policy</MenuItem>
-                    </SubMenu>
-                    <MenuItem icon={<FontAwesomeIcon icon={faKey} />}>change password</MenuItem>
 
+                        <MenuItem icon={<FontAwesomeIcon icon={faPlus} />}>Add policy</MenuItem>
+                        <MenuItem icon={<FontAwesomeIcon icon={faListCheck} />} component={<Link href="/manage_policies" />}>Manage policy</MenuItem>
+                    </SubMenu>
+                    <MenuItem
+                        icon={<FontAwesomeIcon icon={faKey} />}
+                        component={<Link href="/change_password" />}
+                    >
+                        Change Password
+                    </MenuItem>
                 </Menu>
                 <div
                     style={{
@@ -87,7 +115,7 @@ function CollapsibleSidebar() {
                         width: '100%',
                     }}
                 >
-                    <Menu >
+                    <Menu>
                         <MenuItem
                             style={{
                                 marginTop: 'auto',
@@ -95,23 +123,13 @@ function CollapsibleSidebar() {
                                 backgroundColor: '(191, 200, 214,.9)'
                             }}
                             icon={<FontAwesomeIcon icon={faRightFromBracket} />}
-
                         >
                             Logout
                         </MenuItem>
                     </Menu>
                 </div>
             </Sidebar>
-
-
-         
-
-
-
-
         </div>
-
-        
     );
 }
 
