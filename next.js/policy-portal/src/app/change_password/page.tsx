@@ -84,12 +84,12 @@ export default function ChangePassword() {
   return (
    <div className="flex min-h-screen bg-gray-100">
   
-  <div className="w-64">
+  <div className="w-32">
     <CollapsibleSidebar />
   </div>
 
-  <div className="flex flex-1 items-center justify-center px-12 py-10">
-    <div className="relative w-full max-w-sm sm:max-w-md px-4">
+  <div className=" card flex flex-1 items-center justify-center px-8 py-8">
+    <div className="relative w-full max-w-lg sm:max-w-md px-4">
 
 
      

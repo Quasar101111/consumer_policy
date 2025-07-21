@@ -140,3 +140,36 @@ export async function togglePolicyStatus(policyId: number){
 
   return await response.json();
 }
+
+export async function findPolicy(policyData: { policyNumber: string; chassisNumber: string }) {
+  const response = await fetch(`${policyUrl}/findpolicy/${policyData.policyNumber}/${policyData.chassisNumber}`, {
+    method: 'GET',
+  });
+
+  const data= await response.json();
+  if (!response.ok || data.message) {
+    const errorBody = await response.json().catch(() => ({}));
+   
+    throw new Error(data.message || 'Failed to find policy. Please try again later.');
+    
+  }else{
+     return await data; 
+  }
+ 
+}
+
+export async function addPolicy( policyNumber: string, username: string ) {
+   const encodedUsername = encodeURIComponent(username);
+  const response = await fetch(`${policyUrl}/addpolicy/${policyNumber}/${encodedUsername}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+   
+  });
+
+  if (!response.ok) {
+    const errorBody = await response.json().catch(() => ({}));
+    throw new Error(errorBody.message || 'Failed to add policy. Please try again later.');
+  }
+
+  return await response.json();
+}

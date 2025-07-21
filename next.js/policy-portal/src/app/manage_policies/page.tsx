@@ -6,10 +6,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/navigation';
 import PolicyButtons from './components/policyButtons';
-import DeleteModal from './components/deleteModal';
+import DeletePolicy from './components/deletePolicyConfirm';
 import { policyNumbersWithStatus, togglePolicyStatus } from '@/services/api';
 
-
+import { ToastContainer,toast } from 'react-toastify';
+import Link from 'next/link';
 
 export default function ManagePolicies() {
 
@@ -49,20 +50,26 @@ export default function ManagePolicies() {
   };
 
 
-  const handleToggle = async (policyId: number) => {
-    try {
-      await togglePolicyStatus(policyId);
-      setPolicies((prev) =>
-        prev.map((p) =>
-          p.policyId === policyId
-            ? { ...p, status: p.status === 'Active' ? 'Inactive' : 'Active' }
-            : p
-        )
-      );
-    } catch (err) {
-      console.log(err);
-    }
-  }
+ const handleToggle = (policyId: number) => {
+  const currentPolicy = policies.find(p => p.policyId === policyId);
+  const isActivating = currentPolicy?.status === 'Inactive';
+
+  const togglePromise = togglePolicyStatus(policyId).then(() => {
+    setPolicies((prev) =>
+      prev.map((p) =>
+        p.policyId === policyId
+          ? { ...p, status: isActivating ? 'Active' : 'Inactive' }
+          : p
+      )
+    );
+  });
+
+  toast.promise(togglePromise, {
+    pending: `${isActivating ? 'Activating' : 'Deactivating'} policy...`,
+    success: `Policy ${isActivating ? 'activated' : 'deactivated'}!`,
+    error: 'Failed to update policy status',
+  });
+};
 
 
 
@@ -79,7 +86,7 @@ export default function ManagePolicies() {
             {policies.length} policies
           </span>
 
-          <div className=" w-full flex justify-end mb-4  ">
+          <div className=" w-full flex justify-end mb-4  "><Link href="/add_policy" >
   <button
     type="button"
     className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4
@@ -87,7 +94,7 @@ export default function ManagePolicies() {
       mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
   >
     <FontAwesomeIcon icon={faPlus} /> Add policy
-  </button>
+  </button></Link>
 </div>
         </div>
 
@@ -159,7 +166,7 @@ export default function ManagePolicies() {
                             <div className="flex items-center gap-x-6">
                               <PolicyButtons status={policy.status as 'Active' | 'Inactive'} onDelete={handleDelete} onToggle={() => handleToggle(policy.policyId)}
                                 policyId={policy.policyId} />
-                              <DeleteModal open={showDeleteModal} onClose={handleCloseModal} />
+                              <DeletePolicy open={showDeleteModal} onClose={handleCloseModal} />
                             </div>
                           </td>
                         </tr>
@@ -175,6 +182,7 @@ export default function ManagePolicies() {
       </section>
 
 
+<ToastContainer />
 
     </div>
   );
