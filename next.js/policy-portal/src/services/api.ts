@@ -173,3 +173,15 @@ export async function addPolicy( policyNumber: string, username: string ) {
 
   return await response.json();
 }
+
+
+export async function policyDetails(policyId: number) {
+ const response = await fetch(`${policyUrl}/policydetails/${policyId}`, {
+    method: 'GET',});
+    if(!response.ok){
+      const errorBody = await response.json().catch(() => ({}));
+      throw new Error(errorBody.message);
+    }
+    return response.json();
+
+}

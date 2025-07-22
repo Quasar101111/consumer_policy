@@ -23,18 +23,7 @@ type PolicyResponse = {
     totalPremium: number;
   };
 };
-// const mockPolicyResponse: PolicyResponse = {
-//   vehicle: {
-//     registrationNumber: "MH12AB1234",
-//     dateOfPurchase: "2022-05-10",
-//     exShowroomPrice: 750000,
-//   },
-//   policy: {
-//     policyEffectiveDate: "2024-01-01",
-//     policyExpirationDate: "2025-01-01",
-//     totalPremium: 18650,
-//   },
-// };
+
 export default function AddPolicyPage() {
   const router = useRouter();
 
@@ -169,7 +158,7 @@ export default function AddPolicyPage() {
             <pre className="text-sm whitespace-pre-wrap text-gray-800"><strong>Total Premium:</strong> ₹{formatNumberWithCommas(result.policy.totalPremium)}</pre>
   
             <button
-              onClick={(add_policy)}
+              onClick={add_policy}
               className="mt-4 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded"
             >
               Add this policy
