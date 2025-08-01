@@ -40,8 +40,17 @@ export default function SearchableDropdown({ policies, onSelect }: Props) {
   return (
     <div className="flex justify-center w-full">
       <div className="w-64 bg-white shadow-lg p-1 relative rounded-4xl" ref={dropdownRef}>
+       <label htmlFor="policy-search" className="sr-only">
+          Search Policy
+        </label>
         <input
+          id="policy-search"
           type="text"
+          role="combobox"
+          aria-autocomplete="list"
+          aria-expanded={showOptions}
+          aria-controls="policy-listbox"
+          aria-activedescendant={selected ?? ''}
           className="border p-2 w-full rounded-4xl"
           placeholder="Search policy..."
           value={searchTerm}
@@ -50,10 +59,13 @@ export default function SearchableDropdown({ policies, onSelect }: Props) {
             setShowOptions(true);
           }}
           onFocus={() => setShowOptions(true)}
+          autoComplete="off"
         />
 
+
         {showOptions && filteredOptions.length > 0 && (
-          <ul className="absolute left-0 right-0 bg-white border rounded mt-1 max-h-40 overflow-auto z-10">
+          <ul className="absolute left-0 right-0 bg-white border rounded mt-1 max-h-40 overflow-auto z-10"
+            role="listbox">
             {filteredOptions.map(option => (
               <li
                 key={option}

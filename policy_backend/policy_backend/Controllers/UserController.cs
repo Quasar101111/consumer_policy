@@ -49,7 +49,7 @@ namespace policy_portal_api.UserController
             return Ok(new { message });
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpPost("change-password")]
         public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordDTO dto)
         {

@@ -102,7 +102,7 @@ export default function AddPolicyPage() {
               value={policyData.policyNumber}
               onChange={handleChange}
               placeholder=" "
-              required
+              
               className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent 
               border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0
                focus:border-blue-600 peer"
@@ -124,13 +124,13 @@ export default function AddPolicyPage() {
               value={policyData.chassisNumber}
               onChange={handleChange}
               placeholder=" "
-              required
+              
                className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent 
               border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0
                focus:border-blue-600 peer"
             />
             <label
-              htmlFor="policyNumber"
+              htmlFor="chassisNumber"
               className="absolute text-sm text-gray-500 duration-300 transform scale-75 -translate-y-4 top-2.5 left-2.5 z-10 origin-[0] 
       peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-2.5 peer-focus:scale-75 
       peer-focus:-translate-y-4  peer-focus:text-blue-600"        >
@@ -148,7 +148,7 @@ export default function AddPolicyPage() {
 
         {result && result.vehicle && result.policy && (
           <div className="mt-6 p-4 border border-green-300 bg-green-50 rounded">
-            <h3 className="font-semibold text-green-700 mb-2">Policy Found:</h3>
+            <h3 data-testid="policy-found"  className="font-semibold text-green-700 mb-2">Policy Found:</h3>
            
              <pre className="text-sm whitespace-pre-wrap text-gray-800"><strong>Registration No:</strong> {result.vehicle.registrationNumber}</pre>
             <pre className="text-sm whitespace-pre-wrap text-gray-800"><strong>Date of Purchase:</strong> {formatDate(result.vehicle.dateOfPurchase)}</pre>

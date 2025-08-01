@@ -46,7 +46,7 @@ export default function LoginPage() {
 
             localStorage.setItem("username", res.username);
             localStorage.setItem("token", res.token);
-         
+            
             router.push('/dashboard');
 
         } catch (error: any) {

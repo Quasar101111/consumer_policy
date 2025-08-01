@@ -4,7 +4,11 @@
 
 import { encode } from "punycode";
 import { json } from "stream/consumers";
+import {authFetch} from "./authFetch";
+import { signIn } from "next-auth/react";
 
+import { middleware } from "@/middleware";
+import { sign } from "crypto";
 // };
 
 const baseUrl = 'https://localhost:7225/api/User';
@@ -49,8 +53,10 @@ export async function register(userData: any) {
   }
 
 export async function login(userData: any){
-    const response= await fetch(`${baseUrl}/login`,
-        {method: 'POST', headers: {'Content-Type': 'application/json'},body: JSON.stringify(userData), } )
+    const response= await signIn(`${baseUrl}/login`,
+      //  const response= await fetch('/api/auth/login',
+        {method: 'POST', headers: {'Content-Type': 'application/json'},
+          credentials: 'include', body: JSON.stringify(userData), } )
     
     
      if (!response.ok) {
@@ -64,7 +70,7 @@ export async function login(userData: any){
 
 export async function totalPremium(userName: string){
     const encodedUsername = encodeURIComponent(userName);
-    const response = await fetch(`${policyUrl}/totalpremium/${encodedUsername}`);
+    const response = await authFetch(`${policyUrl}/totalpremium/${encodedUsername}`);
     if(!response.ok){
         return 0;
     }
@@ -75,12 +81,12 @@ export async function totalPremium(userName: string){
 
 export async function viewPolicyNumbers(userName:string){
     const encodedUsername = encodeURIComponent(userName);
-    const response = await fetch(`${policyUrl}/viewpolicyno/${encodedUsername}`);
+    const response = await authFetch(`${policyUrl}/viewpolicyno/${encodedUsername}`);
     if (!response.ok) {
         throw new Error(`Error fetching policy numbers: ${response.statusText}`);
-        return [];
+    }        
         
-    }
+
     return await response.json();
 }  
 
@@ -141,6 +147,19 @@ export async function togglePolicyStatus(policyId: number){
   return await response.json();
 }
 
+export async function deletePolicy(policyId: number) {
+  const response = await fetch(`${policyUrl}/deletepolicy/${policyId}`, {
+    method: 'DELETE',
+   
+  })
+  console.log(response);
+  if (!response.ok) {
+    const errorBody = await response.json().catch(() => ({}));
+    throw new Error(errorBody.message || 'Failed to delete policy. Please try again later.');
+  }
+  return await response.json();
+}
+
 export async function findPolicy(policyData: { policyNumber: string; chassisNumber: string }) {
   const response = await fetch(`${policyUrl}/findpolicy/${policyData.policyNumber}/${policyData.chassisNumber}`, {
     method: 'GET',
@@ -175,8 +194,8 @@ export async function addPolicy( policyNumber: string, username: string ) {
 }
 
 
-export async function policyDetails(policyId: number) {
- const response = await fetch(`${policyUrl}/policydetails/${policyId}`, {
+export async function policyDetails(policyNumber: string) {
+ const response = await fetch(`${policyUrl}/policydetails/${policyNumber}`, {
     method: 'GET',});
     if(!response.ok){
       const errorBody = await response.json().catch(() => ({}));

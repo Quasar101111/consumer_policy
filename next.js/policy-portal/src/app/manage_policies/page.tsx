@@ -7,7 +7,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/navigation';
 import PolicyButtons from './components/policyButtons';
 import DeletePolicy from './components/deletePolicyConfirm';
-import { policyNumbersWithStatus, togglePolicyStatus } from '@/services/api';
+import { policyNumbersWithStatus, togglePolicyStatus,deletePolicy } from '@/services/api';
 
 import { ToastContainer,toast } from 'react-toastify';
 import Link from 'next/link';
@@ -23,6 +23,8 @@ export default function ManagePolicies() {
 
   const [policies, setPolicies] = useState<{ policyId: number, policyNumber: string; status: string }[]>([]);
   const [loading, setLoading] = useState(true);
+ const [policyId, setpolicyId] = useState(0);
+  const[confirmDelete, setconfirmDelete]= useState(false);
 
   useEffect(() => {
     const fetchPolicies = async () => {
@@ -43,11 +45,25 @@ export default function ManagePolicies() {
   const handleDelete = () => {
 
     setShowDeleteModal(true);
+
   };
 
   const handleCloseModal = () => {
     setShowDeleteModal(false);
   };
+
+  const handleConfirmDelete = async(policyId: number) =>{
+  if (policyId === null) return;
+  console.log(policyId);
+
+try{ 
+ 
+  const result = await deletePolicy(policyId);
+  toast.error(result,result.message);}
+  catch(error){
+   console.log(error);
+  }
+  }
 
 
  const handleToggle = (policyId: number) => {
@@ -69,6 +85,9 @@ export default function ManagePolicies() {
     success: `Policy ${isActivating ? 'activated' : 'deactivated'}!`,
     error: 'Failed to update policy status',
   });
+
+
+
 };
 
 
@@ -147,7 +166,7 @@ export default function ManagePolicies() {
                               </div>
                             </div>
                           </td>
-                          <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                          <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap" >
                             <div className={`inline-flex items-center px-3 py-1 rounded-full gap-x-2 ${policy.status === 'Active'
                                 ? 'bg-emerald-100/60'
                                 : 'bg-red-100/60'
@@ -166,7 +185,7 @@ export default function ManagePolicies() {
                             <div className="flex items-center gap-x-6">
                               <PolicyButtons status={policy.status as 'Active' | 'Inactive'} onDelete={handleDelete} onToggle={() => handleToggle(policy.policyId)}
                                 policyId={policy.policyId} />
-                              <DeletePolicy open={showDeleteModal} onClose={handleCloseModal} />
+                              <DeletePolicy open={showDeleteModal} onClose={handleCloseModal} onConfirm={() => handleConfirmDelete(policy.policyId)}    policyId={policy.policyId}/>
                             </div>
                           </td>
                         </tr>

@@ -6,10 +6,14 @@ import { faPlus, faSliders } from '@fortawesome/free-solid-svg-icons';
 import { totalPremium, viewPolicyNumbers } from "@/services/api";
 import { useState, useEffect } from "react";
 import { formatNumberWithCommas } from "@/utils/formatNumber";
+import { useRouter } from "next/navigation";
 
 export default function DashboardPage() {
   const [premium, setpremium] = useState<string>("0");
   const [premiumCount, setpremiumCount] = useState(0);
+   const [authChecked, setAuthChecked] = useState(false);
+  const router = useRouter();
+
 
   useEffect(() => {
     const loadData = async () => {
@@ -22,8 +26,10 @@ export default function DashboardPage() {
       }
     };
     loadData();
+    setAuthChecked(true);
   }, []);
-
+// if(!authChecked) {router.replace("/login");
+      // return;}
   return (
    <div className="flex min-h-screen bg-gray-100">
   <CollapsibleSidebar />

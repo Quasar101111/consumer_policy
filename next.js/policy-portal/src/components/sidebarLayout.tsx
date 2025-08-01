@@ -43,8 +43,8 @@ export default function SidebarLayout() {
         <Menu>
           <MenuItem
             style={{ color: 'red', backgroundColor: 'rgba(191, 200, 214, 0.9)' }}
-            icon={<FontAwesomeIcon icon={faRightFromBracket} />}
-          >
+            icon={<FontAwesomeIcon icon={faRightFromBracket} />} component={<Link href="/logout" />}>
+        
             Logout
           </MenuItem>
         </Menu>
