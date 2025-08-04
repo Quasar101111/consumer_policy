@@ -10,30 +10,49 @@ const authOptions: NextAuthOptions = {
         username: { label: "Username", type: "text" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials) {
-        const res = await fetch("https://localhost:7225/api/User/login", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            username: credentials?.username,
-            password: credentials?.password,
-          }),
-        });
+     async authorize (credentials) {
+        try {
+            process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"; 
+          const res = await fetch("https://localhost:7225/api/User/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              username: credentials?.username,
+              password: credentials?.password,
+            }),
+          });
 
-        const data = await res.json();
+          // Get response data
+          const text = await res.text();
+let data;
 
-        if (res.ok && data?.token) {
+try {
+  data = JSON.parse(text);
+} catch {
+  console.error("Non-JSON response from server:", text);
+  throw new Error("Unexpected server response");
+}
+
+if (!res.ok) {
+  throw new Error(data.message || "Authentication failed");
+}
+          
           return {
-            id: data.id,
-            name: data.username,
-            accessToken: data.token,
+           id: data.username,
+            name: credentials?.username || "",
+            accessToken: data.token
           };
+        } catch (error) {
+          console.error("Authorization error:", error);
+          return null;
         }
-
-        return null;
-      },
+      }
     }),
   ],
+   pages: {
+    signIn: '/login',
+    error: '/login',
+  },
   session: {
     strategy: "jwt",
   },

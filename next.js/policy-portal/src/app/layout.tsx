@@ -1,7 +1,9 @@
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../styles/globals.css";
-import RegisterPage from "./register/page";
+
+import Providers from "@/components/provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +30,9 @@ children
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+         <Providers>
       {children}
+      </Providers>
         
       </body>
     </html>

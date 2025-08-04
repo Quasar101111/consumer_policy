@@ -7,30 +7,52 @@ import { totalPremium, viewPolicyNumbers } from "@/services/api";
 import { useState, useEffect } from "react";
 import { formatNumberWithCommas } from "@/utils/formatNumber";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
+import Link from "next/link";
+import { redirectToLogin } from "@/utils/redirectlogin";
+
 
 export default function DashboardPage() {
   const [premium, setpremium] = useState<string>("0");
   const [premiumCount, setpremiumCount] = useState(0);
    const [authChecked, setAuthChecked] = useState(false);
   const router = useRouter();
+  
+  const { data: session, status } = useSession();
+ 
 
 
-  useEffect(() => {
+ useEffect(() => {
     const loadData = async () => {
-      const username = localStorage.getItem("username");
-      if (username) {
-        const result = await totalPremium(username);
-        setpremium(formatNumberWithCommas(result));
-        const result1 = await viewPolicyNumbers(username);
-        setpremiumCount(result1.length);
+      if (status === "authenticated" && session) {
+        const username = session.user.name;
+        console.log("Authenticated user:", username);
+
+        try {
+          const result = await totalPremium(username);
+          setpremium(formatNumberWithCommas(result));
+
+          const result1 = await viewPolicyNumbers(username);
+          setpremiumCount(result1.length);
+        } catch (error: any) {
+          if (error.name === "AuthError") {
+            redirectToLogin();
+          } else {
+            console.error("Unexpected error:", error);
+          }
+        }
+      }else if (status === "unauthenticated") {
+        console.log("User is not authenticated, redirecting to login");
+        redirectToLogin();
       }
     };
+
     loadData();
     setAuthChecked(true);
-  }, []);
-// if(!authChecked) {router.replace("/login");
-      // return;}
+  }, [session, status]);
+
   return (
+    
    <div className="flex min-h-screen bg-gray-100">
   <CollapsibleSidebar />
  
@@ -57,25 +79,30 @@ export default function DashboardPage() {
       <div className="relative md:absolute md:right-0 md:top-1/2 md:transform md:-translate-y-1/2 text-center">
         <div className="bg-white rounded-full shadow p-4 w-40 h-40 flex flex-col justify-center items-center transition-all duration-300 hover:scale-110 hover:shadow-xl">
           <h3 className="text-sm font-semibold text-gray-600">Add Policy</h3>
+         
+          <Link href="/add_policy" passHref>
           <button
             type="button"
             className="mt-2 text-white bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 shadow-lg rounded-full p-3"
           >
             <FontAwesomeIcon icon={faPlus} />
           </button>
+          </Link>
         </div>
       </div>
 
       {/* Manage Policy */}
       <div className="relative md:absolute md:top-30 md:right-1/2 md:transform md:translate-x-1/2 md:-translate-y-1/2 text-center">
         <div className="bg-white rounded-full shadow p-4 w-40 h-40 flex flex-col justify-center items-center transition-all duration-300 hover:scale-110 hover:shadow-xl">
-          <h3 className="text-sm font-semibold text-gray-600">Manage Policy</h3>
+          <h3 className="text-sm font-semibold text-gray-600">Manage Policies</h3>
+         <Link href="/manage_policies" passHref>
           <button
             type="button"
             className="mt-2 text-white bg-gradient-to-r from-gray-500 via-gray-600 to-gray-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-gray-300 shadow-lg rounded-full p-3"
           >
             <FontAwesomeIcon icon={faSliders} />
           </button>
+          </Link>
         </div>
       </div>
     </div>

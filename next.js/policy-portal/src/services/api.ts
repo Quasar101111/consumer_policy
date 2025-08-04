@@ -7,8 +7,6 @@ import { json } from "stream/consumers";
 import {authFetch} from "./authFetch";
 import { signIn } from "next-auth/react";
 
-import { middleware } from "@/middleware";
-import { sign } from "crypto";
 // };
 
 const baseUrl = 'https://localhost:7225/api/User';
@@ -52,28 +50,31 @@ export async function register(userData: any) {
   
   }
 
-export async function login(userData: any){
-    const response= await signIn(`${baseUrl}/login`,
-      //  const response= await fetch('/api/auth/login',
-        {method: 'POST', headers: {'Content-Type': 'application/json'},
-          credentials: 'include', body: JSON.stringify(userData), } )
-    
-    
-     if (!response.ok) {
-      const errorMessage = await response.text(); 
-      throw new Error(errorMessage || "Login failed.");
-      return "Login failed.";
-    }
-    return await response.json();
+export async function login(userData: { username: string; password: string }) {
+  const response = await signIn("credentials", {
+    redirect: false,
+    username: userData.username,
+    password: userData.password,
+     callbackUrl: '/',
 
+  });
+
+
+  if (!response || !response.ok) {
+    throw new Error("Login failed.");
+  }
+
+  return response;
 }
 
 export async function totalPremium(userName: string){
     const encodedUsername = encodeURIComponent(userName);
     const response = await authFetch(`${policyUrl}/totalpremium/${encodedUsername}`);
+    
     if(!response.ok){
         return 0;
     }
+
     return await response.json();
 }
 

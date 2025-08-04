@@ -5,7 +5,7 @@ import "@/styles/globals.css";
 import Link from "next/link";
 import { login } from "@/services/api";
 import { useRouter } from 'next/navigation';
-
+import { signIn } from 'next-auth/react';
 
 
 
@@ -42,10 +42,14 @@ export default function LoginPage() {
         if (!isValid) return;
 
         try {
-            const res = await login(form);
+           const response = await login({
+        username: form.userName,
+        password: form.password,
+      });
 
-            localStorage.setItem("username", res.username);
-            localStorage.setItem("token", res.token);
+
+            // localStorage.setItem("username", res.username);
+            // localStorage.setItem("token", res.token);
             
             router.push('/dashboard');
 

@@ -57,39 +57,37 @@
 //   return response;
 // }
 // utils/authFetch.ts
-import { getToken } from "next-auth/jwt";
-import { cookies } from "next/headers";
+import { getSession } from "next-auth/react";
 
-export async function authFetch(input: RequestInfo, init: RequestInit = {}) {
-  let token: string | null = null;
+export async function authFetch(url: string, options: RequestInit = {}) {
+  const session = await getSession();
+  console.log("Session in authFetch:", session);
 
-  // Server-side token extraction
-  if (typeof window === "undefined") {
-    const jwt = await getToken({ req: { cookies }, secret: process.env.NEXTAUTH_SECRET });
-    token = jwt?.accessToken ?? null;
-  } else {
-    // Optional client-side fallback
-    token = localStorage.getItem("token");
-  }
-
-  // Append Authorization header
-  const headers = new Headers(init.headers || {});
-  if (token) {
-    headers.set("Authorization", `Bearer ${token}`);
-  }
-
-  const response = await fetch(input, {
-    ...init,
-    headers,
-    credentials: "include", // for cross-origin cookie use
-  });
-
-  // Optional: handle unauthorized on client
-  if (typeof window !== "undefined" && response.status === 401) {
-    localStorage.removeItem("token"); // optional cleanup
+  if (!session?.accessToken) {
     const currentPath = window.location.pathname;
     window.location.href = `/login?redirect=${encodeURIComponent(currentPath)}`;
-    return Promise.reject(new Error("Unauthorized: redirecting to login"));
+    throw new Error("No access token available, redirecting to login");
+  }
+
+  const headers = {
+    ...options.headers,
+    'Authorization': `Bearer ${session.accessToken}`,
+    'Content-Type': 'application/json',
+  };
+
+  const response = await fetch(url, {
+    ...options,
+    headers,
+  });
+
+   if (response.status === 401) {
+    const error = new Error("Unauthorized");
+    error.name = "AuthError";
+    throw error;
+  }
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
   }
 
   return response;
