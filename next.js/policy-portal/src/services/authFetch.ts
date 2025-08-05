@@ -57,11 +57,11 @@
 //   return response;
 // }
 // utils/authFetch.ts
-import { getSession } from "next-auth/react";
+import { getSession, signOut } from "next-auth/react";
 
 export async function authFetch(url: string, options: RequestInit = {}) {
   const session = await getSession();
-  console.log("Session in authFetch:", session);
+
 
   if (!session?.accessToken) {
     const currentPath = window.location.pathname;
@@ -80,14 +80,18 @@ export async function authFetch(url: string, options: RequestInit = {}) {
     headers,
   });
 
-   if (response.status === 401) {
-    const error = new Error("Unauthorized");
-    error.name = "AuthError";
-    throw error;
+   if (response.status === 401 || response.status === 403) {
+     if (typeof window !== "undefined") {
+     console.warn("401 Forbidden logging out");
+     
+    const currentPath = window.location.pathname;
+    console.log("Redirecting to login:", currentPath);
+    signOut({callbackUrl: `/login?redirect=${encodeURIComponent(currentPath)}`});
+      
+     throw new Error("Unauthorized or Forbidden"); 
+    
   }
-
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
+    
   }
 
   return response;

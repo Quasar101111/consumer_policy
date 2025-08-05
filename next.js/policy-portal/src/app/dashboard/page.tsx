@@ -9,7 +9,7 @@ import { formatNumberWithCommas } from "@/utils/formatNumber";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { redirectToLogin } from "@/utils/redirectlogin";
+import { getAuthenticatedUsername } from "@/utils/authenticate";
 
 
 export default function DashboardPage() {
@@ -24,27 +24,30 @@ export default function DashboardPage() {
 
  useEffect(() => {
     const loadData = async () => {
-      if (status === "authenticated" && session) {
-        const username = session.user.name;
-        console.log("Authenticated user:", username);
+      // if (status === "authenticated" && session) {
+      //   const username = session.user.name;
 
         try {
+          const username = await getAuthenticatedUsername(status,session);
+          if (!username) return;
           const result = await totalPremium(username);
           setpremium(formatNumberWithCommas(result));
 
           const result1 = await viewPolicyNumbers(username);
           setpremiumCount(result1.length);
-        } catch (error: any) {
-          if (error.name === "AuthError") {
-            redirectToLogin();
-          } else {
-            console.error("Unexpected error:", error);
           }
+         catch (error: any) {
+          // if (error.name === "AuthError") {
+          //   redirectToLogin();
+          // } else {
+            console.error("Unexpected error:", error);
+          // }
         }
-      }else if (status === "unauthenticated") {
-        console.log("User is not authenticated, redirecting to login");
-        redirectToLogin();
-      }
+      // }else if (status === "unauthenticated") {
+      //   console.log("User is not authenticated, redirecting to login");
+      //   redirectToLogin();
+      // }
+      // }
     };
 
     loadData();

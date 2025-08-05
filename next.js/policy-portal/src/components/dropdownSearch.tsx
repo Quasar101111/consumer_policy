@@ -10,7 +10,7 @@ export default function SearchableDropdown({ policies, onSelect }: Props) {
   const [selected, setSelected] = useState<string | null>(policies[0] ?? null);
   const [searchTerm, setSearchTerm] = useState<string>(policies[0] ?? '');
   const [showOptions, setShowOptions] = useState(false);
-
+  const hasInitialized = useRef(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const filteredOptions = showOptions && searchTerm === selected
@@ -19,15 +19,25 @@ export default function SearchableDropdown({ policies, onSelect }: Props) {
       option.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+  // useEffect(() => {
+  //   if (policies.length > 0) {
+  //     setSelected(policies[0]);
+  //     setSearchTerm(policies[0]);
+  //     if (onSelect) onSelect(policies[0]);
+  //   }
+  // }, [policies, onSelect]);
   useEffect(() => {
-    if (policies.length > 0) {
-      setSelected(policies[0]);
-      setSearchTerm(policies[0]);
-      if (onSelect) onSelect(policies[0]);
-    }
-  }, [policies, onSelect]);
+  if (!hasInitialized.current && policies.length > 0) {
+    hasInitialized.current = true;
+    setSelected(policies[0]);
+    setSearchTerm(policies[0]);
+    // if (onSelect) onSelect(policies[0]);
+     onSelect?.(policies[0]);
+  }
+}, [policies, onSelect]);
 
-  React.useEffect(() => {
+
+  useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setShowOptions(false);
@@ -60,9 +70,32 @@ export default function SearchableDropdown({ policies, onSelect }: Props) {
           }}
           onFocus={() => setShowOptions(true)}
           autoComplete="off"
+          
         />
 
-
+<button
+            type="button"
+            tabIndex={-1}
+            aria-label="Toggle options"
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer bg-transparent border-none p-0"
+            onClick={() => setShowOptions(v => !v)}
+          >
+            <svg
+              width="20"
+              height="20"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
         {showOptions && filteredOptions.length > 0 && (
           <ul className="absolute left-0 right-0 bg-white border rounded mt-1 max-h-40 overflow-auto z-10"
             role="listbox">
