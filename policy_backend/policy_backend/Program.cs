@@ -28,6 +28,42 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+//builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+//    .AddJwtBearer(options =>
+//    {
+//        options.Events = new JwtBearerEvents
+//        {
+//            OnMessageReceived = context =>
+//            {
+//                var token = context.Request.Cookies["token"];
+//                Console.WriteLine("JWT from cookie: " + token);
+//                if (!string.IsNullOrEmpty(token))
+//                {
+//                    context.Token = token;
+//                }
+//                return Task.CompletedTask;
+//            },
+//            OnAuthenticationFailed = context =>
+//            {
+//                Console.WriteLine("Authentication failed: " + context.Exception.Message);
+//                return Task.CompletedTask;
+//            }
+//        };
+
+
+//        options.TokenValidationParameters = new TokenValidationParameters
+//        {
+//            ValidateIssuer = true,
+//            ValidateAudience = true,
+//            ValidateLifetime = true,
+//            ValidateIssuerSigningKey = true,
+//            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+//            ValidAudience = builder.Configuration["Jwt:Audience"],
+//            IssuerSigningKey = new SymmetricSecurityKey(
+//                Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+//        };
+//    });
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

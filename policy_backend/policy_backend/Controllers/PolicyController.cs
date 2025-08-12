@@ -19,7 +19,7 @@ namespace policy_portal_api.Controllers
             _PolicyServices = PolicyServices;
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet("findpolicy/{policyno}/{chassisno}")]
         public async Task<IActionResult> FindPolicy(string policyno, string chassisno)
         {
@@ -40,7 +40,7 @@ namespace policy_portal_api.Controllers
 
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpPost("addpolicy/{policyno}/{username}")]
         public async Task<IActionResult> AddPolicy(string policyno, string username)
         {
@@ -78,7 +78,7 @@ namespace policy_portal_api.Controllers
             return Ok(result);
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpPost("togglestatus")]
         public async Task<IActionResult> TogglePolicy([FromQuery] int id )
         {
@@ -90,7 +90,7 @@ namespace policy_portal_api.Controllers
             return Ok(success);
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpDelete("deletepolicy/{id}")]
         public async Task<IActionResult> DeletePolicy(int id)
         {
@@ -102,7 +102,7 @@ namespace policy_portal_api.Controllers
             return Ok(new { Message = "Policy deleted successfully." });
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet("policydetails/{policyno}")]
         public async Task<IActionResult> PolicyDetails(string policyno)
         {
@@ -120,7 +120,7 @@ namespace policy_portal_api.Controllers
 
         }
 
-        
+        [Authorize]
         [HttpGet("totalpremium/{username}")]
         public async Task<IActionResult> TotalPremium(string username)
         {
