@@ -1,17 +1,15 @@
 
-// export const getUserApiUrl= ()=>{
-//     return process.env.NEXT_PUBLIC_DATA_SOURCE_USER_URL;
 
 import { encode } from "punycode";
 import { json } from "stream/consumers";
-import {authFetch} from "./authFetch";
+import {authFetch,authFetch1} from "./authFetch";
 import { signIn } from "next-auth/react";
 
 // };
 
 const baseUrl = 'https://localhost:7225/api/User';
 const policyUrl = 'https://localhost:7225/api/Policy';
-
+// const policyUrl = process.env.DATA_SOURCE_POLICY_URL ;
 async function handleResponse(response: Response) {
   if (!response.ok) {
     const errorBody = await response.json().catch(() => ({}));

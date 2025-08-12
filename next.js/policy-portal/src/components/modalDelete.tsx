@@ -2,14 +2,25 @@
 import Modal from "@/components/modal";
 import React from "react";
 
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { closeDeleteModal, confirmDelete, openDeleteModal } from '@/redux/slices/deletemodalSlice';
+
+
+
 type DeleteModalProps = {
-  open: boolean;
-  onClose: () => void;
+  // open: boolean;
+  // onClose: () => void;
   onConfirm: () => void;
   children?: React.ReactNode;
 };
 
-export default function DeleteModal({ open, onClose, onConfirm,children }: DeleteModalProps) {
+export default function DeleteModal({  children ,onConfirm}: DeleteModalProps) {
+    const {open}= useAppSelector((state)=>state.deleteModal);
+    const dispatch = useAppDispatch();
+    const onClose= ()=>{
+    dispatch(closeDeleteModal());
+    }
+    
   return (
     <Modal open={open} onClose={onClose} className="confirm delete">
       <div className="text-center">

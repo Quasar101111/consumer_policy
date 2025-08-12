@@ -1,63 +1,7 @@
-// export async function authFetch(input: RequestInfo, init: RequestInit = {}) {
-  
-//   if (typeof window === "undefined") {
-//     return fetch(input, init);
-//   }
 
-
-//   const token = localStorage.getItem("token");
-
-
-//   const headers = new Headers(init.headers || {});
-//   if (token) {
-//     headers.set("Authorization", `Bearer ${token}`);
-//   }
-
-
-//   const response = await fetch(input, {
-//     ...init,
-//     headers,
-//     credentials: "include", // send cookies cross-origin if needed
-//   });
-
-
-//   let urlPath = "";
-//   if (typeof input === "string") {
-//     try {
-//       urlPath = new URL(input, window.location.origin).pathname;
-//     } catch {
-//       // fallback if input is relative path
-//       urlPath = input;
-//     }
-//   } else if ("url" in input) {
-//     try {
-//       urlPath = new URL(input.url, window.location.origin).pathname;
-//     } catch {
-//       urlPath = input.url;
-//     }
-//   }
-
-
-//   if (
-//     response.status === 401 &&
-//     urlPath !== "/api/auth/login" &&
-//     urlPath !== "/api/auth/register"
-//   ) {
- 
-//     localStorage.removeItem("token");
-   
-
-   
-//     const currentPath = window.location.pathname;
-//     window.location.href = `/login?redirect=${encodeURIComponent(currentPath)}`;
-
-//     return Promise.reject(new Error("Unauthorized: redirecting to login"));
-//   }
-
-//   return response;
-// }
 // utils/authFetch.ts
 import { getSession, signOut } from "next-auth/react";
+import { notFound } from "next/navigation";
 
 export async function authFetch(url: string, options: RequestInit = {}) {
   const session = await getSession();
@@ -93,6 +37,60 @@ export async function authFetch(url: string, options: RequestInit = {}) {
   }
     
   }
+
+  return response;
+}
+
+
+// utils/authFetchServer.ts
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { redirect } from "next/navigation";
+
+export async function authFetch1(url: string, options: RequestInit = {}) {
+  const session = await getServerSession(authOptions);
+  
+  // Skip SSL certificate validation in development
+if (process.env.NODE_ENV === 'development') {
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+}
+
+  if (!session?.accessToken) {
+    console.warn("No server-side access token. Consider redirecting.");
+    redirect("/login");
+  }
+
+  const headers = {
+    ...options.headers,
+    Authorization: `Bearer ${session.accessToken}`,
+    "Content-Type": "application/json",
+  };
+
+  const response = await fetch(url, {
+    ...options,
+    headers,
+    cache: 'no-store',
+  });
+
+console.log("authFetch1 -> URL:", url);
+console.log("authFetch1 -> Request Headers:", headers);
+console.log("authFetch1 -> Response Status:", response.status);
+
+  console.log(response);
+      if (response.status === 401 || response.status === 403) {
+    console.warn(`Unauthorized (${response.status}). Redirecting to login.`);
+    redirect("/login");
+  }
+    if(response.status === 500){
+    notFound();
+  }
+  if (!response.ok) {
+    throw new Error(`Failed with status ${response.status},${response.statusText}`);
+  }
+
+
+
+  
 
   return response;
 }

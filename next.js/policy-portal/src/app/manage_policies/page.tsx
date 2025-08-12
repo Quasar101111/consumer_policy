@@ -1,3 +1,4 @@
+//manage_policies/page.tsx
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -6,17 +7,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/navigation';
 import PolicyButtons from './components/policyButtons';
-import DeletePolicy from './components/deletePolicyConfirm';
+import DeletePolicy from './components/deletePolicyCom';
 import { policyNumbersWithStatus, togglePolicyStatus,deletePolicy } from '@/services/api';
 
 import { ToastContainer,toast } from 'react-toastify';
 import Link from 'next/link';
+import { getAuthenticatedUsername } from '@/utils/authenticate';
+import { useSession } from 'next-auth/react';
 
-export default function ManagePolicies() {
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { closeDeleteModal, openDeleteModal,confirmDelete } from '@/redux/slices/deletemodalSlice';
+export default  function ManagePolicies() {
 
 
   const router = useRouter();
-
+  const dispatch = useAppDispatch();
+  
+  const {open,Id}= useAppSelector((state)=>state.deleteModal);
   const [status, setStatus] = useState<'Active' | 'Inactive'>('Active');
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
@@ -24,13 +31,18 @@ export default function ManagePolicies() {
   const [policies, setPolicies] = useState<{ policyId: number, policyNumber: string; status: string }[]>([]);
   const [loading, setLoading] = useState(true);
  const [policyId, setpolicyId] = useState(0);
-  const[confirmDelete, setconfirmDelete]= useState(false);
+  // const[confirmDelete, setconfirmDelete]= useState(false);
+    const { data: session ,status:sessionStatus } = useSession();
+   
 
+           
   useEffect(() => {
     const fetchPolicies = async () => {
       try {
-        const username = localStorage.getItem('username');
+          const username = await getAuthenticatedUsername(sessionStatus,session,);
         if (!username) return;
+        console.log(username);
+        
         const data = await policyNumbersWithStatus(username);
         setPolicies(data);
 
@@ -40,29 +52,32 @@ export default function ManagePolicies() {
       }
     };
     fetchPolicies();
-  }, []);
+  }, [session,sessionStatus]);
   console.log(policies);
-  const handleDelete = () => {
-
-    setShowDeleteModal(true);
+  
+  const handleDelete = (policyId:number) => {
+   const Id= policyId.toString();
+    dispatch(openDeleteModal({policyId:Id}));
 
   };
 
   const handleCloseModal = () => {
-    setShowDeleteModal(false);
+    dispatch(closeDeleteModal());
   };
 
-  const handleConfirmDelete = async(policyId: number) =>{
-  if (policyId === null) return;
-  console.log(policyId);
+  const handleConfirmDelete = async() =>{
+  // if (policyId === null) return;
+ 
+  dispatch(confirmDelete());
+   const policyId = Number(Id);
+    console.log(policyId);
 
-try{ 
+
+
  
   const result = await deletePolicy(policyId);
-  toast.error(result,result.message);}
-  catch(error){
-   console.log(error);
-  }
+  toast.error(result,result.message);
+ 
   }
 
 
@@ -183,9 +198,10 @@ try{
                           </td>
                           <td className="px-4 py-4 text-sm whitespace-nowrap">
                             <div className="flex items-center gap-x-6">
-                              <PolicyButtons status={policy.status as 'Active' | 'Inactive'} onDelete={handleDelete} onToggle={() => handleToggle(policy.policyId)}
+                              <PolicyButtons status={policy.status as 'Active' | 'Inactive'} 
+                              onDelete={()=>handleDelete(policy.policyId)} onToggle={() => handleToggle(policy.policyId)}
                                 policyId={policy.policyId} />
-                              <DeletePolicy open={showDeleteModal} onClose={handleCloseModal} onConfirm={() => handleConfirmDelete(policy.policyId)}    policyId={policy.policyId}/>
+                              <DeletePolicy   onConfirm={() => handleConfirmDelete()}    />
                             </div>
                           </td>
                         </tr>

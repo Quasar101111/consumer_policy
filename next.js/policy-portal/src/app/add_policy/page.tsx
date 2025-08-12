@@ -7,9 +7,11 @@ import { ToastContainer, toast } from 'react-toastify';
 import CollapsibleSidebar from '@/components/sidebar';
 import 'react-toastify/dist/ReactToastify.css';
 import { findPolicy ,addPolicy} from '@/services/api';
+import { getAuthenticatedUsername } from '@/utils/authenticate';
 
 import {formatNumberWithCommas} from '@/utils/formatNumber'; 
 import {formatDate} from '@/utils/formatDate'; 
+import { useSession } from 'next-auth/react';
 
 type PolicyResponse = {
   vehicle: {
@@ -33,7 +35,7 @@ export default function AddPolicyPage() {
   });
 
   const [result, setResult] = useState<PolicyResponse | null >(null);
- 
+    const { data: session ,status:sessionStatus } = useSession(); 
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPolicyData({ ...policyData, [e.target.name]: e.target.value });
@@ -64,12 +66,10 @@ export default function AddPolicyPage() {
   };
 
  const add_policy = async () => {
-  const username = localStorage.getItem('username');
+  const username = await getAuthenticatedUsername(sessionStatus,session,);
+        if (!username) return;
   console.log(username);
-  if (!username) {
-    toast.error("Username not found. Please log in again.");
-    return;
-  }
+ 
 
   try {
     const data = await addPolicy(policyData.policyNumber, username);

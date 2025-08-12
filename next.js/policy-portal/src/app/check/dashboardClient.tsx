@@ -1,43 +1,19 @@
 
-import { totalPremium, viewPolicyNumbers } from "@/services/apitest";
-import { formatNumberWithCommas } from "@/utils/formatNumber";
-
-import Link from "next/link";
-import { getAuthenticatedUsername, getAuthenticatedUsername1 } from "@/utils/authenticate";
-import DashboardClient from "./dashboardClient";
 
 import CollapsibleSidebar from "@/components/sidebar";
-
+import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faSliders } from "@fortawesome/free-solid-svg-icons";
-import { redirect } from "next/navigation";
-import { getServerSession } from "next-auth";
 
-export default async function DashboardPage() {
-  
-  let premium = "0";
-  let premiumCount = 0;
-
- 
-
-          const username = await getAuthenticatedUsername1();
-        
-
-          const result = await totalPremium(username);
-          premium=formatNumberWithCommas(result);
-
-          const result1 = await viewPolicyNumbers(username);
-          premiumCount=result1.length;
-          
-        
-     
-  
-
-   
-
+export default function DashboardClient({
+  premium,
+  premiumCount,
+}: {
+  premium: string;
+  premiumCount: number;
+}) {
   return (
-    
-   <div className="flex min-h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-gray-100">
       <CollapsibleSidebar />
 
       <div className="flex flex-1 flex-col items-center justify-center py-8 px-2">
@@ -86,6 +62,5 @@ export default async function DashboardPage() {
         </div>
       </div>
     </div>
-
   );
 }

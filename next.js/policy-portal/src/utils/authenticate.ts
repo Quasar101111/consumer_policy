@@ -19,3 +19,18 @@ export async function getAuthenticatedUsername(
 
   return null;
 }
+// utils/getAuthenticatedUsernameServer.ts
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { redirect } from "next/navigation";
+
+
+export async function getAuthenticatedUsername1(): Promise<string> {
+  const session = await getServerSession(authOptions);
+
+  if (!session || !session.user?.name) {
+    redirect("/login"); 
+  }
+
+  return session.user.name;
+}

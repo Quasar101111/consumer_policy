@@ -63,7 +63,9 @@ function CollapsibleSidebar() {
         width="250px"
         collapsedWidth="70px"
         backgroundColor="rgb(249, 249, 249, 0.6)"
-        image="https://t4.ftcdn.net/jpg/12/67/56/29/360_F_1267562960_W9EtaNdIBcJCtGK1IUOkq4a5FnLHRwmw.jpg"
+        // image="https://t4.ftcdn.net/jpg/12/67/56/29/360_F_1267562960_W9EtaNdIBcJCtGK1IUOkq4a5FnLHRwmw.jpg"
+                image="/images/bg2.jpg"
+
         rootStyles={{
           position: 'relative',
           paddingTop: '40px',

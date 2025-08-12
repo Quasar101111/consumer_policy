@@ -18,7 +18,7 @@ export default function DeletePolicy({ open, onClose, onConfirm, policyId }: Del
 
   
   return (
-    <DeleteModal open={open} onClose={onClose} onConfirm={onConfirm}>
+    <DeleteModal  onClose={onClose} onConfirm={onConfirm}>
       <p >Are you sure you want to delete this policy?</p>
     </DeleteModal>
   );

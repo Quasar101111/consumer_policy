@@ -24,8 +24,7 @@ export default function DashboardPage() {
 
  useEffect(() => {
     const loadData = async () => {
-      // if (status === "authenticated" && session) {
-      //   const username = session.user.name;
+     
 
         try {
           const username = await getAuthenticatedUsername(status,session);

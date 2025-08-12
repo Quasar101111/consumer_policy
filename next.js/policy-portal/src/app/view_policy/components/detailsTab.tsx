@@ -77,7 +77,7 @@ export default function PolicyDetailsTabs({
 
       {/* Tab Content */}
       <div className="border-t pt-4">
-        {activeTab === 'holder' && policyDetails?.policyholder && (
+        {activeTab === 'holder' && (policyDetails?.policyholder? (
           <div className=" grid grid-cols-1 lg:grid-cols-2 gap-6">
             <DetailCard
               title="Personal Information"
@@ -116,9 +116,9 @@ export default function PolicyDetailsTabs({
               }}
             />
           </div>
-        )}
+        ): ( <div className=" grid grid-cols-1 lg:grid-cols-2 gap-6"><p className='text-center font-bold col-span-2 '>No data found</p></div>) )}
 
-        {activeTab === 'policy' && policyDetails?.policyDetails && (
+        {activeTab === 'policy' && (policyDetails?.policyDetails? (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <DetailCard
               title="Policy Information"
@@ -138,9 +138,10 @@ export default function PolicyDetailsTabs({
               }}
             />
           </div>
-        )}
+        ): ( <div className=" grid grid-cols-1 lg:grid-cols-2 gap-6"><p className='text-center font-bold col-span-2 '>No data found</p></div>) )}
 
-        {activeTab === 'desc' && policyDetails?.coverageDetails?.description && (
+
+        {activeTab === 'desc' && (policyDetails?.coverageDetails?.description? (
           <div className="bg-gray-100 rounded-lg shadow-md p-6 border border-gray-200">
             <h4 className="text-lg font-semibold mb-4">Coverage Details</h4>
             <ul className="list-disc list-inside space-y-1">
@@ -148,7 +149,8 @@ export default function PolicyDetailsTabs({
                }
             </ul>
           </div>
-        )}
+        ): ( <div className=" grid grid-cols-1 lg:grid-cols-2 gap-6"><p className='text-center font-bold col-span-2 '>No data found</p></div>) )}
+
 
         {activeTab === 'vehicle' && policyDetails?.vehicleDetails && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
