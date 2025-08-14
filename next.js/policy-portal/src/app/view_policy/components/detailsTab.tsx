@@ -3,6 +3,7 @@ import DetailCard from "@/components/cards";
 import { formatNumberWithCommas } from '@/utils/formatNumber';
 import { formatDate } from '@/utils/formatDate';
 import '@/styles/scroll.css';
+import Link from 'next/link';
 
 
 type PolicyDetailsTabsProps = {
@@ -23,6 +24,11 @@ export default function PolicyDetailsTabs({
 }: PolicyDetailsTabsProps) {
   return (
   <div className=" overflow-auto no-scrollbar mt-2 ml-25 mr-auto sm:ml-auto max-w-md sm:max-w-lg md:max-w-xl lg:max-w-4xl bg-white p-6 rounded shadow">
+    <Link href={`/download/${policyDetails.policyDetails.policyNumber}`} target="_blank">
+  <button className="px-4 py-2 bg-blue-600 text-white rounded">
+    Download PDF
+  </button>
+</Link>
  {/* Tabs */}
       <ul className="flex flex-wrap justify-center text-sm font-medium text-gray-500 border-b pb-2">
         <li className="me-2">
