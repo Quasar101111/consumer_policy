@@ -1,8 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-
 import { ToastContainer, toast } from 'react-toastify';
 import CollapsibleSidebar from '@/components/sidebar';
 import 'react-toastify/dist/ReactToastify.css';
@@ -27,7 +25,7 @@ type PolicyResponse = {
 };
 
 export default function AddPolicyPage() {
-  const router = useRouter();
+
 
   const [policyData, setPolicyData] = useState({
     policyNumber: '',
@@ -72,7 +70,7 @@ export default function AddPolicyPage() {
  
 
   try {
-    const data = await addPolicy(policyData.policyNumber, username);
+     await addPolicy(policyData.policyNumber, username);
    
     toast.success("Policy added successfully!");
     

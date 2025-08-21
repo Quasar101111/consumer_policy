@@ -11,8 +11,9 @@ import {
   faFile,
   faRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
+import React from 'react';
 
-export default function SidebarLayout() {
+ function SidebarLayout() {
   return (
     <>
       <Menu rootStyles={{ marginTop: '10px' }}>
@@ -52,3 +53,4 @@ export default function SidebarLayout() {
     </>
   );
 }
+export default React.memo(SidebarLayout);

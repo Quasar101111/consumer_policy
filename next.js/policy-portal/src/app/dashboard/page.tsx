@@ -6,25 +6,42 @@ import { faPlus, faSliders } from '@fortawesome/free-solid-svg-icons';
 import { totalPremium, viewPolicyNumbers } from "@/services/api";
 import { useState, useEffect } from "react";
 import { formatNumberWithCommas } from "@/utils/formatNumber";
-import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { getAuthenticatedUsername } from "@/utils/authenticate";
+import ErrorFallback from "@/components/errorBoundary";
+import { ErrorBoundary } from "react-error-boundary";
+
+
+function BrokenContent(){
+  throw new Error("error occured");
+}
+const InlinePolicyFallback = () => (
+<div className="bg-amber-600 rounded-full shadow p-4 w-40 h-40 flex flex-col justify-center items-center transition-all duration-300 hover:scale-110 hover:shadow-xl">
+   
+    <h3 className="text-sm font-semibold">Policy Total Value</h3>
+    <p className="text-sm">!!! Error</p>
+  </div>
+);
 
 
 export default function DashboardPage() {
   const [premium, setpremium] = useState<string>("0");
   const [premiumCount, setpremiumCount] = useState(0);
-   const [authChecked, setAuthChecked] = useState(false);
-  const router = useRouter();
+
   
   const { data: session, status } = useSession();
  
+  const [error, seterror] = useState(false);
+  const[comperror, setcomperror]= useState(false);
+
+
 
 
  useEffect(() => {
+   
     const loadData = async () => {
-     
+      
 
         try {
           const username = await getAuthenticatedUsername(status,session);
@@ -36,38 +53,51 @@ export default function DashboardPage() {
           setpremiumCount(result1.length);
           }
          catch (error: any) {
-          // if (error.name === "AuthError") {
-          //   redirectToLogin();
-          // } else {
+          
             console.error("Unexpected error:", error);
-          // }
+          
         }
-      // }else if (status === "unauthenticated") {
-      //   console.log("User is not authenticated, redirecting to login");
-      //   redirectToLogin();
-      // }
-      // }
+      
     };
 
     loadData();
-    setAuthChecked(true);
-  }, [session, status]);
+   
+  }, [status,session]);
 
   return (
-    
+    <ErrorBoundary FallbackComponent={ErrorFallback}  > 
    <div className="flex min-h-screen bg-gray-100">
   <CollapsibleSidebar />
  
   <div className="flex flex-1 flex-col items-center justify-center py-8 px-2">
     <div className="relative w-full max-w-md flex flex-col items-center justify-center gap-6 md:block">
-      
+       <div className="p-4 relative md:absolute md:top-[-300px] ">
+          <button
+            onClick={() => seterror(true)}
+            className="px-4 py-2 bg-red-600 text-white rounded"
+          >
+            Trigger Render Error
+          </button>
+          <button
+            onClick={() => setcomperror(true)}
+            className="px-4 py-2 bg-red-600 text-white rounded"
+          >
+            Trigger elements Error
+          </button>
+          {error && <BrokenContent />}
+          {comperror && <InlinePolicyFallback />}
+        </div>
      {/* Policy Count */}
+   
 <div className="relative md:absolute md:top-[-200px] md:left-1/2 md:transform md:-translate-x-1/2 text-center">
+  <ErrorBoundary FallbackComponent={InlinePolicyFallback}>
   <div className="bg-white rounded-full shadow p-4 w-40 h-40 flex flex-col justify-center items-center transition-all duration-300 hover:scale-110 hover:shadow-xl">
     <h3 className="text-sm font-semibold text-gray-600">Policy Count</h3>
     <p className="text-lg font-bold text-blue-600">{premiumCount}</p>
   </div>
+  </ErrorBoundary>
 </div>
+
 
       {/* Policy Total Value */}
       <div className="relative md:absolute md:left-0 md:top-1/2 md:transform md:-translate-y-1/2 text-center">
@@ -110,6 +140,7 @@ export default function DashboardPage() {
     </div>
   </div>
 </div>
+</ErrorBoundary>
 
   );
 }

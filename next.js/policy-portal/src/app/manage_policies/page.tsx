@@ -1,7 +1,7 @@
 //manage_policies/page.tsx
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useMemo,useCallback } from 'react';
 import CollapsibleSidebar from "@/components/sidebar";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -55,20 +55,18 @@ export default  function ManagePolicies() {
   }, [session,sessionStatus]);
   console.log(policies);
   
-  const handleDelete = (policyId:number) => {
+  const handleDelete = useCallback((policyId:number) => {
    const Id= policyId.toString();
     dispatch(openDeleteModal({policyId:Id}));
 
-  };
+  },[dispatch]);
 
-  const handleCloseModal = () => {
+  const handleCloseModal = useCallback(() => {
     dispatch(closeDeleteModal());
-  };
+  }, [dispatch]);
 
-  const handleConfirmDelete = async() =>{
-  // if (policyId === null) return;
- 
-  dispatch(confirmDelete());
+  const handleConfirmDelete = useCallback(async () => {
+    dispatch(confirmDelete());
    const policyId = Number(Id);
     console.log(policyId);
 
@@ -77,8 +75,9 @@ export default  function ManagePolicies() {
  
   const result = await deletePolicy(policyId);
   toast.error(result,result.message);
+  setPolicies(prev=>prev.filter(p=> p.policyId !==policyId))
  
-  }
+  },[dispatch,Id]);
 
 
  const handleToggle = (policyId: number) => {
@@ -104,6 +103,7 @@ export default  function ManagePolicies() {
 
 
 };
+const policyCount =useMemo(()=>policies.length,[policies]);
 
 
 
@@ -117,7 +117,7 @@ export default  function ManagePolicies() {
         <div className="flex items-center gap-x-3 mx-4 ">
           <h2 className="text-lg font-medium text-gray-800">My policies</h2>
           <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full text-center">
-            {policies.length} policies
+            {policyCount} policies
           </span>
 
           <div className=" w-full flex justify-end mb-4  "><Link href="/add_policy" >
@@ -164,7 +164,7 @@ export default  function ManagePolicies() {
                       <tr>
                         <td colSpan={3} className="text-center py-8 text-gray-400">Loading...</td>
                       </tr>
-                    ) : policies.length === 0 ? (
+                    ) : policyCount === 0 ? (
                       <tr>
                         <td colSpan={3} className="text-center py-8 text-gray-400">No policies found.</td>
                       </tr>
@@ -178,6 +178,7 @@ export default  function ManagePolicies() {
                                 <div>
                                   <h2 className="font-medium text-gray-800">{policy.policyNumber}</h2>
                                 </div>
+                               
                               </div>
                             </div>
                           </td>
@@ -201,8 +202,7 @@ export default  function ManagePolicies() {
                               <PolicyButtons status={policy.status as 'Active' | 'Inactive'} 
                               onDelete={()=>handleDelete(policy.policyId)} onToggle={() => handleToggle(policy.policyId)}
                                 policyId={policy.policyId} />
-                              <DeletePolicy   onConfirm={() => handleConfirmDelete()}    />
-                            </div>
+                               </div>
                           </td>
                         </tr>
                       ))
@@ -215,7 +215,8 @@ export default  function ManagePolicies() {
           </div>
         </div>
       </section>
-
+<DeletePolicy    onConfirm={() => handleConfirmDelete()}    />
+                           
 
 <ToastContainer />
 

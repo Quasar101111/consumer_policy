@@ -3,15 +3,11 @@ import { totalPremium, viewPolicyNumbers } from "@/services/apitest";
 import { formatNumberWithCommas } from "@/utils/formatNumber";
 
 import Link from "next/link";
-import { getAuthenticatedUsername, getAuthenticatedUsername1 } from "@/utils/authenticate";
-import DashboardClient from "./dashboardClient";
-
+import { getAuthenticatedUsername1 } from "@/utils/authenticate";
 import CollapsibleSidebar from "@/components/sidebar";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faSliders } from "@fortawesome/free-solid-svg-icons";
-import { redirect } from "next/navigation";
-import { getServerSession } from "next-auth";
 
 export default async function DashboardPage() {
   
@@ -22,18 +18,15 @@ export default async function DashboardPage() {
 
           const username = await getAuthenticatedUsername1();
         
-
-          const result = await totalPremium(username);
+           const [result, result1] = await Promise.all([
+        totalPremium(username),
+        viewPolicyNumbers(username),
+      ]);
           premium=formatNumberWithCommas(result);
 
-          const result1 = await viewPolicyNumbers(username);
           premiumCount=result1.length;
           
-        
-     
   
-
-   
 
   return (
     

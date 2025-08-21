@@ -6,6 +6,7 @@ import { pdf, Document, Page, Text, View, StyleSheet, PDFViewer } from "@react-p
 import { policyDetails as fetchPolicy } from "@/services/api";
 import { useAppSelector } from "@/redux/hooks";
 import { formatNumberWithCommas } from "@/utils/formatNumber";
+import { formatDate } from "@/utils/formatDate";
 const styles = StyleSheet.create({
   page: {
     padding: 40,
@@ -15,6 +16,7 @@ const styles = StyleSheet.create({
   },
   section: {
     marginBottom: 18,
+    marginTop:12,
     border: "1 solid #ddd",
     borderRadius: 6,
     padding: 12,
@@ -53,6 +55,13 @@ const styles = StyleSheet.create({
     color: "#E53935",
     fontWeight: "bold",
   },
+  logo:{
+    color:"darkblue",
+    fontSize: 20,
+    fontFamily:"Courier",
+     marginBottom: 10,
+     fontWeight:"bold",
+  }
 });
 
 const renderFields = (
@@ -76,6 +85,8 @@ const renderFields = (
 export const PolicyPdf = ({ policy }: { policy: any }) => (
   <Document>
     <Page size="A4" style={styles.page}>
+
+      <Text style={styles.logo}>CORP LTD</Text>
       {/* Policy Holder Details */}
       {policy?.policyholder && (
         <View style={styles.section}>
@@ -122,8 +133,8 @@ export const PolicyPdf = ({ policy }: { policy: any }) => (
           {renderFields(
             {
               "Policy Number": policy.policyDetails.policyNumber,
-              "Effective Date": policy.policyDetails.policyEffectiveDt,
-              "Expiration Date": policy.policyDetails.policyExpirationDt,
+              "Effective Date": formatDate(policy.policyDetails.policyEffectiveDt),
+              "Expiration Date": formatDate(policy.policyDetails.policyExpirationDt),
               "Term": `${policy.policyDetails.term} year(s)`,
               "Status": policy.policyDetails.status,
               "Total Premium": `Rs.  ${formatNumberWithCommas( policy.policyDetails.totalPremium)}`,
@@ -151,7 +162,7 @@ export const PolicyPdf = ({ policy }: { policy: any }) => (
             "Policy Number": policy.vehicleDetails.policyNumber,
             "Vehicle Type": policy.vehicleDetails.vehicleType,
             "Registration Number": policy.vehicleDetails.registrationNumber,
-            "Date of Purchase": policy.vehicleDetails.dateOfPurchase,
+            "Date of Purchase": formatDate(policy.vehicleDetails.dateOfPurchase),
             "RTO Name": policy.vehicleDetails.rtoName,
             "City": policy.vehicleDetails.city,
             "State": policy.vehicleDetails.state,
@@ -231,8 +242,19 @@ export default function DownloadPage() {
     loadPolicy();
   }, [policyNumber, policyMap]);
 
-  if (loading) return <p>Generating your policy PDF...</p>;
-  if (!policy) return <p>No policy found.</p>;
+if (loading)
+  return (
+    <div className="flex justify-center items-center h-screen border-2 border-gray-300 rounded-lg m-5 text-lg font-medium bg-gray-50">
+      Generating your policy PDF...
+    </div>
+  );
+
+if (!policy)
+  return (
+    <div className="flex justify-center items-center h-screen border-2 border-gray-300 rounded-lg m-5 text-lg font-medium bg-red-50 text-red-600">
+      No policy found.
+    </div>
+  );
 
   return (
     <div style={{ height: "100vh" }}>

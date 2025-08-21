@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState,useMemo , useCallback} from 'react';
 import { Sidebar } from 'react-pro-sidebar';
 import SidebarLayout from './sidebarLayout';
 
@@ -7,7 +7,7 @@ function CollapsibleSidebar() {
   const [collapsed, setCollapsed] = useState(true);
   const sidebarWidth = collapsed ? 80 : 250;
 
-  const toggleSidebar = () => setCollapsed(prev => !prev);
+  const toggleSidebar =useCallback( () => setCollapsed(prev => !prev),[]);
 
   return (
     <div
@@ -80,4 +80,4 @@ function CollapsibleSidebar() {
   );
 }
 
-export default CollapsibleSidebar;
+export default  React.memo(CollapsibleSidebar);

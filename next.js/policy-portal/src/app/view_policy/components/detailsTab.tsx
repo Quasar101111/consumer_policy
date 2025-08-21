@@ -4,6 +4,8 @@ import { formatNumberWithCommas } from '@/utils/formatNumber';
 import { formatDate } from '@/utils/formatDate';
 import '@/styles/scroll.css';
 import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDownload } from '@fortawesome/free-solid-svg-icons';
 
 
 type PolicyDetailsTabsProps = {
@@ -23,12 +25,18 @@ export default function PolicyDetailsTabs({
   policyDetails,
 }: PolicyDetailsTabsProps) {
   return (
-  <div className=" overflow-auto no-scrollbar mt-2 ml-25 mr-auto sm:ml-auto max-w-md sm:max-w-lg md:max-w-xl lg:max-w-4xl bg-white p-6 rounded shadow">
-    <Link href={`/download/${policyDetails.policyDetails.policyNumber}`} target="_blank">
-  <button className="px-4 py-2 bg-blue-600 text-white rounded">
-    Download PDF
-  </button>
-</Link>
+  <div className=" overflow-auto no-scrollbar mt-2 ml-25 mr-auto sm:ml-auto max-w-md sm:max-w-lg md:max-w-xl lg:max-w-4xl bg-white p-6 rounded shadow ">
+   <div className="flex justify-end">
+    <Link
+      href={`/download/${policyDetails.policyDetails.policyNumber}`}
+      target="_blank"
+    >
+      <button className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition">
+         <FontAwesomeIcon icon={faDownload} />
+        Download PDF
+      </button>
+    </Link>
+  </div>
  {/* Tabs */}
       <ul className="flex flex-wrap justify-center text-sm font-medium text-gray-500 border-b pb-2">
         <li className="me-2">

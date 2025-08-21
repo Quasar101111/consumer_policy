@@ -19,13 +19,6 @@ export default function SearchableDropdown({ policies, onSelect }: Props) {
       option.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-  // useEffect(() => {
-  //   if (policies.length > 0) {
-  //     setSelected(policies[0]);
-  //     setSearchTerm(policies[0]);
-  //     if (onSelect) onSelect(policies[0]);
-  //   }
-  // }, [policies, onSelect]);
   useEffect(() => {
   if (!hasInitialized.current && policies.length > 0) {
     hasInitialized.current = true;

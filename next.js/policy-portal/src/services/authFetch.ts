@@ -44,7 +44,8 @@ export async function authFetch(url: string, options: RequestInit = {}) {
 
 // utils/authFetchServer.ts
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+// import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions";
 import { redirect } from "next/navigation";
 
 export async function authFetch1(url: string, options: RequestInit = {}) {
@@ -56,7 +57,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
   if (!session?.accessToken) {
-    console.warn("No server-side access token. Consider redirecting.");
+    
     redirect("/login");
   }
 
@@ -69,28 +70,18 @@ if (process.env.NODE_ENV === 'development') {
   const response = await fetch(url, {
     ...options,
     headers,
-    cache: 'no-store',
+    
   });
 
-console.log("authFetch1 -> URL:", url);
-console.log("authFetch1 -> Request Headers:", headers);
-console.log("authFetch1 -> Response Status:", response.status);
-
-  console.log(response);
       if (response.status === 401 || response.status === 403) {
     console.warn(`Unauthorized (${response.status}). Redirecting to login.`);
     redirect("/login");
   }
-    if(response.status === 500){
+    else if(response.status === 500){
     notFound();
   }
   if (!response.ok) {
     throw new Error(`Failed with status ${response.status},${response.statusText}`);
   }
-
-
-
-  
-
   return response;
 }
