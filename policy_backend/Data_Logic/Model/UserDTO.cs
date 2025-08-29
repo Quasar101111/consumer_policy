@@ -19,6 +19,8 @@ namespace Data_Logic.Models
         [StringLength(100)]
         public string Password { get; set; }
 
+        public int role {  get; set; }
+
     }
 
     public class LoginDTO

@@ -7,8 +7,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/navigation';
 import PolicyButtons from './components/policyButtons';
-import DeletePolicy from './components/deletePolicyCom';
+// import DeletePolicy from './components/deletePolicyCom';
 import { policyNumbersWithStatus, togglePolicyStatus,deletePolicy } from '@/services/api';
+import dynamic from 'next/dynamic';
 
 import { ToastContainer,toast } from 'react-toastify';
 import Link from 'next/link';
@@ -17,6 +18,13 @@ import { useSession } from 'next-auth/react';
 
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { closeDeleteModal, openDeleteModal,confirmDelete } from '@/redux/slices/deletemodalSlice';
+import { Metadata } from 'next';
+
+export const metadata: Metadata={
+  title: "manage policies",
+  description:"used to perform actions such as disable/enable  and delete policy",
+}
+
 export default  function ManagePolicies() {
 
 
@@ -34,14 +42,15 @@ export default  function ManagePolicies() {
   // const[confirmDelete, setconfirmDelete]= useState(false);
     const { data: session ,status:sessionStatus } = useSession();
    
-
+  const DeletePolicy = dynamic(()=>import('./components/deletePolicyCom'),
+  { ssr: false,})
            
   useEffect(() => {
     const fetchPolicies = async () => {
       try {
-          const username = await getAuthenticatedUsername(sessionStatus,session,);
-        if (!username) return;
-        console.log(username);
+          const user = await getAuthenticatedUsername(sessionStatus,session,);
+        if (!user) return;
+        const{username, role}= user;
         
         const data = await policyNumbersWithStatus(username);
         setPolicies(data);

@@ -4,8 +4,6 @@ import DeleteModal from "@/components/modalDelete";
 
 
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import { closeDeleteModal, openDeleteModal } from '@/redux/slices/deletemodalSlice';
-
 import { useRouter } from "next/navigation";
 
 type DeletePolicyProps = {

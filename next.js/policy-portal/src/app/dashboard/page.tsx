@@ -44,8 +44,9 @@ export default function DashboardPage() {
       
 
         try {
-          const username = await getAuthenticatedUsername(status,session);
-          if (!username) return;
+          const user = await getAuthenticatedUsername(status,session);
+          if (!user) return;
+          const {username, role}= user;
           const result = await totalPremium(username);
           setpremium(formatNumberWithCommas(result));
 

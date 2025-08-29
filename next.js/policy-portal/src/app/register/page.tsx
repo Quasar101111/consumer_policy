@@ -99,12 +99,12 @@ export default function RegisterPage() {
         if (!isValid) return;
         const result = await register(form);
 
-        const res = await fetch("/api/register", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(form),
-        });
-        if (res.ok) setMessage("Registration successful!");
+        // const res = await fetch("/api/register", {
+        //     method: "POST",
+        //     headers: { "Content-Type": "application/json" },
+        //     body: JSON.stringify(form),
+        // });
+        if (result.ok) setMessage("Registration successful!");
         else setMessage("Registration failed.");
     }
 

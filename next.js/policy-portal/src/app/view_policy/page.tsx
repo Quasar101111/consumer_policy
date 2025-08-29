@@ -35,8 +35,9 @@ const { data: session, status } = useSession();
         return;
       }
       try {
-        const username = await getAuthenticatedUsername(status,session);
-        if (!username) return;
+        const user = await getAuthenticatedUsername(status,session);
+        if (!user) return;
+        const username= user.username;
         const result = await viewPolicyNumbers(username);
         dispatch(setPolicies(result));
         

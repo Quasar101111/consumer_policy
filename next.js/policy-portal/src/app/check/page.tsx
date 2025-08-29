@@ -8,6 +8,8 @@ import CollapsibleSidebar from "@/components/sidebar";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faSliders } from "@fortawesome/free-solid-svg-icons";
+export const runtime = "edge";
+export const revalidate = 60;
 
 export default async function DashboardPage() {
   

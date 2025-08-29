@@ -67,7 +67,7 @@ namespace policy_portal_api.Controllers
             return Ok(result);
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet("policynostatus/{username}")]
         public async Task<IActionResult> ViewPolicyNoWithStatus(string username) {
             var (success, result) = await _PolicyServices.GetPolicyNumbersWithStatus(username);

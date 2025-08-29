@@ -3,11 +3,17 @@ import React, { useState,useMemo , useCallback} from 'react';
 import { Sidebar } from 'react-pro-sidebar';
 import SidebarLayout from './sidebarLayout';
 
+
+
 function CollapsibleSidebar() {
   const [collapsed, setCollapsed] = useState(true);
   const sidebarWidth = collapsed ? 80 : 250;
 
   const toggleSidebar =useCallback( () => setCollapsed(prev => !prev),[]);
+
+
+  // const role= getAuthenticatedRole();
+ 
 
   return (
     <div

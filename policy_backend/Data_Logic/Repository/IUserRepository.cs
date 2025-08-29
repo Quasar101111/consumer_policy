@@ -8,6 +8,7 @@ namespace Data_Logic.Repository
         Task<User> CreateUser(User user);
         Task<bool> EmailExists(string email);
         Task<User?> FindByUsername(string username);
+        Task<string?> GetRole(int role);
         Task<string> GetUserIds(string username);
         Task<bool> UserNameExists(string username);
     }

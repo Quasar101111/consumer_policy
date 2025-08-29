@@ -4,6 +4,8 @@ import { encode } from "punycode";
 import { json } from "stream/consumers";
 import {authFetch,authFetch1} from "./authFetch";
 import { signIn } from "next-auth/react";
+import next from "next";
+import { revalidate } from "@/app/check/page";
 
 // };
 
@@ -137,7 +139,7 @@ export async function togglePolicyStatus(policyId: number){
   const response = await fetch(`${policyUrl}/togglestatus?id=${policyId}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-  });
+  });//,{next:{revalidate:1800}}
 
   if (!response.ok) {
     throw new Error(`Error toggling policy status: ${response.statusText}`);
@@ -200,6 +202,8 @@ export async function policyDetails(policyNumber: string) {
       const errorBody = await response.json().catch(() => ({}));
       throw new Error(errorBody.message);
     }
-    return response.json();
+     const result= response.json();
+    //  return response.json();
+    return {result, revalidate:60};
 
 }

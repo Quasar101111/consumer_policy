@@ -22,6 +22,9 @@ namespace Data_Logic.Models
 
         [StringLength(100)]
         public string Password { get; set; }
+        
+        [ForeignKey(nameof(Role))]
+        public int role {  get; set; }
 
         public DateTime CreatedAt { get; set; }
 

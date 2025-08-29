@@ -70,6 +70,22 @@ namespace Data_Logic.Repository
         }
 
 
+        public async Task<string?> GetRole(int role_id)
+        {
+
+            Console.WriteLine("The role id", role_id);
+            var roleName = await _context.Roles
+         .Where(r => r.role_id == role_id)
+         .Select(r => r.roles)  
+         .FirstOrDefaultAsync();
+          Console.WriteLine("The role fetched", roleName);
+      
+            return roleName;
+
+        }
+
+
+
 
 
     }

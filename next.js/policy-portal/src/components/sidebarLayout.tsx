@@ -1,4 +1,4 @@
-
+'use client'
 import Link from 'next/link';
 import { Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,10 +10,18 @@ import {
   faHome,
   faFile,
   faRightFromBracket,
+  faUser,
 } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
+import { getAuthenticatedRole } from '@/utils/authenticate';
+import { useSession } from 'next-auth/react';
 
- function SidebarLayout() {
+  function SidebarLayout() {
+  //  const { data: session } = useSession();
+  // const role = session?.user?.role;
+ const role = getAuthenticatedRole();
+
+
   return (
     <>
       <Menu rootStyles={{ marginTop: '10px' }}>
@@ -39,6 +47,14 @@ import React from 'react';
           Change Password
         </MenuItem>
       </Menu>
+      {role ==='admin' &&(
+      <Menu rootStyles={{ marginTop: '10px' }}>
+        <MenuItem icon={<FontAwesomeIcon icon={faUser} />} component={<Link href="/admin_panel" />}>
+          Admin panel
+        </MenuItem>
+      </Menu>
+    )}
+
 
       <div style={{ position: 'absolute', bottom: '40px', width: '100%' }}>
         <Menu>
@@ -49,6 +65,8 @@ import React from 'react';
             Logout
           </MenuItem>
         </Menu>
+  
+
       </div>
     </>
   );

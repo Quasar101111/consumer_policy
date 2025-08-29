@@ -31,6 +31,7 @@ namespace Business_Logic.Services
             }
             user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
             user.CreatedAt = DateTime.UtcNow;
+            user.role = 1;
 
             await _repository.CreateUser(user);
             return (true, "User registered successfully");
@@ -48,8 +49,13 @@ namespace Business_Logic.Services
             if (!passwordMatch)
             {
                 return (false, null, null, "Invalid username or password");
+
             }
-            var token = GenerateJwtToken(user);
+          
+            var role = await _repository.GetRole(role:user.role);
+            Console.WriteLine($"role{ role}");
+            var token = GenerateJwtToken(user,role);
+            
             return (true, token, user.Username, "Login Successful");
 
 
@@ -97,13 +103,14 @@ namespace Business_Logic.Services
                 return 2;
             }
         }
-        private string GenerateJwtToken(User user)
+        private string GenerateJwtToken(User user, string role)
         {
 
             var claims = new[] {
                 new Claim(ClaimTypes.Name, user.Username),
                 new Claim(ClaimTypes.Email, user.Email),
-                new Claim(JwtRegisteredClaimNames.Sub, user.Username)
+                new Claim(JwtRegisteredClaimNames.Sub, user.Username),
+                new Claim(ClaimTypes.Role, role)
 
             };
 

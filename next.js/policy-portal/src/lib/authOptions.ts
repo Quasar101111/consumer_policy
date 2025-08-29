@@ -1,5 +1,6 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import { NextAuthOptions } from "next-auth";
+import {jwtDecode} from "jwt-decode"; 
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -34,11 +35,19 @@ export const authOptions: NextAuthOptions = {
           if (!res.ok) {
             throw new Error(data.message || "Authentication failed");
           }
+          let role = undefined;
+          if(data.token){
+            const decode = jwtDecode(data.token);
+             role= decode["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+          }
+          // role = data.role || "user";
+          
 
           return {
             id: data.username,
             name: credentials?.username || "",
             accessToken: data.token,
+            role: role,
           };
         } catch (error) {
           console.error("Authorization error:", error);
@@ -58,12 +67,14 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, user }) {
       if (user?.accessToken) {
         token.accessToken = user.accessToken;
+        token.role = user.role;
       }
       return token;
     },
     async session({ session, token }) {
       if (token?.accessToken) {
         session.accessToken = token.accessToken as string;
+        session.user.role = token.role as string ;
       }
       return session;
     },
