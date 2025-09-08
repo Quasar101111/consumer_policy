@@ -24,6 +24,7 @@ export const authOptions: NextAuthOptions = {
           });
 
           const text = await res.text();
+         
           let data;
           try {
             data = JSON.parse(text);
@@ -45,7 +46,7 @@ export const authOptions: NextAuthOptions = {
 
           return {
             id: data.username,
-            name: credentials?.username || "",
+            name: data.username || "",
             accessToken: data.token,
             role: role,
           };

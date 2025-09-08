@@ -3,13 +3,19 @@ import { totalPremium, viewPolicyNumbers } from "@/services/apitest";
 import { formatNumberWithCommas } from "@/utils/formatNumber";
 
 import Link from "next/link";
-import { getAuthenticatedUsername1 } from "@/utils/authenticate";
+import { getAuthenticatedUsername1 } from "@/utils/authenticateServer";
 import CollapsibleSidebar from "@/components/sidebar";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faSliders } from "@fortawesome/free-solid-svg-icons";
-export const runtime = "edge";
+// export const runtime = "edge";
 export const revalidate = 60;
+import { Metadata } from 'next';
+
+export const metadata: Metadata={
+  title: " policy dashboard",
+  description:"shows the page contains basic details of the user policies.",
+}
 
 export default async function DashboardPage() {
   

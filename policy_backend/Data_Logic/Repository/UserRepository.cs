@@ -84,6 +84,14 @@ namespace Data_Logic.Repository
 
         }
 
+        public async Task<int> UsersCount() { 
+          return await _context.Users.CountAsync();
+        }
+
+
+
+
+
 
 
 

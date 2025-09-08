@@ -1,5 +1,5 @@
-// utils/getAuthenticatedUsername.ts
-
+import { redirect } from "next/navigation";
+import { useSession } from "next-auth/react";
 export async function getAuthenticatedUsername(
   status: string,
   session: any
@@ -24,8 +24,6 @@ export async function getAuthenticatedUsername(
   return null;
 }
 
-import { useSession } from "next-auth/react";
-
 
 
 export  function getAuthenticatedRole(): string| null{
@@ -35,4 +33,3 @@ export  function getAuthenticatedRole(): string| null{
   return session?.user?.role ?? null ;
 
 }
-

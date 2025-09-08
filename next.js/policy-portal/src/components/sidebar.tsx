@@ -12,7 +12,6 @@ function CollapsibleSidebar() {
   const toggleSidebar =useCallback( () => setCollapsed(prev => !prev),[]);
 
 
-  // const role= getAuthenticatedRole();
  
 
   return (

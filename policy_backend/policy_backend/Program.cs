@@ -7,6 +7,7 @@ using NuGet.Protocol.Core.Types;
 
 using Data_Logic;
 using Data_Logic.Repository;
+using policy_portal_api.middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -85,7 +86,8 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowAngularApp",
         builder =>
         {
-            builder.WithOrigins("http://localhost:4200")
+            builder.WithOrigins("http://localhost:4200",
+                "http://192.168.1.11:4200", "http://10.80.0.148:4200")
                    .AllowAnyHeader()
                    .AllowAnyMethod()
                    .AllowCredentials();
@@ -109,6 +111,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseAuthorizationMiddleware();
 
 
 app.MapControllers();

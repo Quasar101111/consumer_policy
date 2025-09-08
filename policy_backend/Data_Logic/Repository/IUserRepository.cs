@@ -11,5 +11,6 @@ namespace Data_Logic.Repository
         Task<string?> GetRole(int role);
         Task<string> GetUserIds(string username);
         Task<bool> UserNameExists(string username);
+        Task<int> UsersCount();
     }
 }

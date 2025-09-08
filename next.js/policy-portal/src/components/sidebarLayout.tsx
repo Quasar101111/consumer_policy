@@ -14,11 +14,10 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import { getAuthenticatedRole } from '@/utils/authenticate';
-import { useSession } from 'next-auth/react';
+
 
   function SidebarLayout() {
-  //  const { data: session } = useSession();
-  // const role = session?.user?.role;
+
  const role = getAuthenticatedRole();
 
 

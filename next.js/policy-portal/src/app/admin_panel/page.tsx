@@ -2,6 +2,7 @@
 import React from 'react';
 import CollapsibleSidebar from "@/components/sidebar";
 import { getAuthenticatedRole } from "@/utils/authenticate";
+import { adminPolicy,adminUsers } from '@/services/api';
 
 const users = [
   {
@@ -48,7 +49,16 @@ function Error404() {
   );
 }
 
-export default function AdminPanelPage() {
+export default async function AdminPanelPage() {
+
+
+             const [result, result1] = await Promise.all([
+          adminPolicy(),
+          adminUsers()
+        ]);
+      
+            
+    
 
 const role = getAuthenticatedRole();
   if (role !== "admin") {
@@ -65,6 +75,15 @@ const role = getAuthenticatedRole();
       {/* Main Content */}
       <div className="flex-1 flex flex-col items-center justify-center py-8 px-2 bg-gray-50">
         <h1 className="text-3xl font-bold mb-8 text-blue-700">Admin Panel</h1>
+
+
+        <div className="mb-12 w-full max-w-4xl">
+          <h2 className="text-xl font-semibold mb-4 text-gray-800">Users</h2>
+          <div className="overflow-x-auto">
+              <p className='text-emerald-600'>${result}</p>
+              <p className='text-emerald-600'>${result1}</p>
+          </div>
+        </div>
 
         <div className="mb-12 w-full max-w-4xl">
           <h2 className="text-xl font-semibold mb-4 text-gray-800">Users</h2>

@@ -64,13 +64,13 @@ export default function AddPolicyPage() {
   };
 
  const add_policy = async () => {
-  const username = await getAuthenticatedUsername(sessionStatus,session,);
-        if (!username) return;
-  console.log(username);
+  const user = await getAuthenticatedUsername(sessionStatus,session,);
+        if (!user) return;
+  console.log(user);
  
 
   try {
-     await addPolicy(policyData.policyNumber, username);
+     await addPolicy(policyData.policyNumber, user.username);
    
     toast.success("Policy added successfully!");
     

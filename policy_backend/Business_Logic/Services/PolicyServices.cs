@@ -138,7 +138,10 @@ namespace Business_Logic.Services
 
 
         }
-
+        public async Task<int> AdminGetPolicies() {
+            var result = await _repository.PoliciesCount();
+            return result;
+        }
 
 
     }

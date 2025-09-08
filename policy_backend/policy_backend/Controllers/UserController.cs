@@ -64,6 +64,14 @@ namespace policy_portal_api.UserController
             };
         }
 
+        [HttpGet("admin-panel")]
+        public async Task<IActionResult> UsersAdDetails()
+        {
+            var users = await _userServices.AdminGetUsers();
+            return Ok(new { users });
+        }
+
+
 
     }
 }

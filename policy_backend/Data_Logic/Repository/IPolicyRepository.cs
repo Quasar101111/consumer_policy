@@ -10,6 +10,7 @@ namespace Data_Logic.Repository
         Task<bool> DeletePolicy(int id);
         Task<object> GetBasicDetails(string policyno, string chassisno);
         Task<string> GetUserId(string username);
+        Task<int> PoliciesCount();
         Task<bool> ToggleStatus(int id);
         Task<int> TotalPremium(string userid);
         Task<List<string>> ViewPolicyNumber(string userid);

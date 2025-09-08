@@ -485,9 +485,41 @@ namespace Data_Logic.Repository
             }
         }
 
+        public async Task<int> PoliciesCount()
+        {
+
+
+            try
+            {
+                using var connection = _context.Database.GetDbConnection();
+                if (connection.State != System.Data.ConnectionState.Open)
+                {
+                    await connection.OpenAsync();
+                }
+
+                using var command = connection.CreateCommand();
+                command.CommandText = @"
+                   SELECT COUNT(*) FROM portal_userpolicylist;
+                   " ;
+
+            
+
+                var total_policies = await command.ExecuteScalarAsync();
+                if (total_policies == DBNull.Value || total_policies == null)
+                {
+                    return 0;
+                }
+                return (int)total_policies;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error : {ex.Message}");
+                return 0;
+            }
+
+        }
 
 
 
-
-    }
+        }
 }

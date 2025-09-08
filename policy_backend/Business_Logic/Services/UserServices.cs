@@ -9,6 +9,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
+using Data_Logic.Model;
 
 namespace Business_Logic.Services
 {
@@ -103,6 +104,16 @@ namespace Business_Logic.Services
                 return 2;
             }
         }
+
+        public async Task<int?> AdminGetUsers() {
+
+            var result = await _repository.UsersCount();
+            
+            return result;
+
+        
+        }
+
         private string GenerateJwtToken(User user, string role)
         {
 

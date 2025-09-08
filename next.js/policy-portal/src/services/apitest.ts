@@ -1,7 +1,7 @@
 
 import { encode } from "punycode";
 import { json } from "stream/consumers";
-import {authFetch1} from "./authFetch";
+import {authFetch1} from "./authFetchServer";
 import { signIn } from "next-auth/react";
 
 // };

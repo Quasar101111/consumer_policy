@@ -2,7 +2,7 @@
 
 import { encode } from "punycode";
 import { json } from "stream/consumers";
-import {authFetch,authFetch1} from "./authFetch";
+import {authFetch} from "./authFetch";
 import { signIn } from "next-auth/react";
 import next from "next";
 import { revalidate } from "@/app/check/page";
@@ -55,12 +55,13 @@ export async function login(userData: { username: string; password: string }) {
     redirect: false,
     username: userData.username,
     password: userData.password,
-     callbackUrl: '/',
+     callbackUrl: '/dashboard',
 
   });
 
 
   if (!response || !response.ok) {
+
     throw new Error("Login failed.");
   }
 
@@ -203,7 +204,22 @@ export async function policyDetails(policyNumber: string) {
       throw new Error(errorBody.message);
     }
      const result= response.json();
-    //  return response.json();
-    return {result, revalidate:60};
+     return result;
+    // return {result, revalidate:60};
 
+}
+
+
+export async function adminPolicy(){
+  const response = await fetch ('1${policyUrl}/admin-panel',{method:'GET'});
+  if(!response.ok){
+
+  }return response.json();
+}
+
+export async function adminUsers(){
+  const response = await fetch ('1${baseUrl}/admin-panel',{method:'GET'});
+  if(!response.ok){
+
+  }return response.json();
 }

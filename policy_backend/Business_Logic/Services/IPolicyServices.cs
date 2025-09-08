@@ -5,6 +5,7 @@ namespace Business_Logic.Services
     public interface IPolicyServices
     {
         Task<object> AddUserPolicy(string policyno, string username);
+        Task<int> AdminGetPolicies();
         Task<bool> DeletePolicy(int id);
         Task<object> FindPolicy(string policyno, string chassisno);
         Task<(bool success, List<PolicyInfo>? result)> GetPolicyNumbersWithStatus(string username);

@@ -115,7 +115,7 @@ export default function DashboardPage() {
          
           <Link href="/add_policy" passHref>
           <button
-            type="button"
+            type="button" name="addpolicy"
             className="mt-2 text-white bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 shadow-lg rounded-full p-3"
           >
             <FontAwesomeIcon icon={faPlus} />
@@ -130,7 +130,7 @@ export default function DashboardPage() {
           <h3 className="text-sm font-semibold text-gray-600">Manage Policies</h3>
          <Link href="/manage_policies" passHref>
           <button
-            type="button"
+            type="button"  name="managepolicy"
             className="mt-2 text-white bg-gradient-to-r from-gray-500 via-gray-600 to-gray-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-gray-300 shadow-lg rounded-full p-3"
           >
             <FontAwesomeIcon icon={faSliders} />

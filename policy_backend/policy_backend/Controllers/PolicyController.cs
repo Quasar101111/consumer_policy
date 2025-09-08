@@ -140,6 +140,14 @@ namespace policy_portal_api.Controllers
         }
 
 
+        [HttpGet("admin-panel")]
+        public async Task<IActionResult> PoliciesDetails() {
+            var result = await _PolicyServices.AdminGetPolicies();
+            return Ok(result);
+        }
+
+
+
 
 
     }

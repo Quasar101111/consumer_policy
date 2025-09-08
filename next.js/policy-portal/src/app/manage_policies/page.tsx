@@ -18,12 +18,9 @@ import { useSession } from 'next-auth/react';
 
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { closeDeleteModal, openDeleteModal,confirmDelete } from '@/redux/slices/deletemodalSlice';
-import { Metadata } from 'next';
 
-export const metadata: Metadata={
-  title: "manage policies",
-  description:"used to perform actions such as disable/enable  and delete policy",
-}
+
+
 
 export default  function ManagePolicies() {
 
