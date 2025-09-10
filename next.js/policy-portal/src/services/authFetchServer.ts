@@ -31,15 +31,15 @@ if (process.env.NODE_ENV === 'development') {
     
   });
 
-      if (response.status === 401 || response.status === 403) {
-    console.warn(`Unauthorized (${response.status}). Redirecting to login.`);
-    redirect("/login");
-  }
-    else if(response.status === 500){
-    notFound();
-  }
-  if (!response.ok) {
-    throw new Error(`Failed with status ${response.status},${response.statusText}`);
-  }
+  //     if (response.status === 401 || response.status === 403) {
+  //   console.warn(`Unauthorized (${response.status}). Redirecting to login.`);
+  //   redirect("/login");
+  // }
+  //   else if(response.status === 500){
+  //   notFound();
+  // }
+  // if (!response.ok) {
+  //   throw new Error(`Failed with status ${response.status},${response.statusText}`);
+  // }
   return response;
 }

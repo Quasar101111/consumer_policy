@@ -2,6 +2,8 @@
 
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
+import { signOut } from 'next-auth/react';
+
 
 export default function Logout() {
   const router = useRouter();
@@ -11,8 +13,10 @@ export default function Logout() {
     localStorage.removeItem('username');
     localStorage.removeItem('token');
 
+signOut({ callbackUrl: '/login' });
+  
     // Redirect after localStorage is cleared
-    router.push('/login');
+    // router.push('/login');
   }, [router]); 
 
   return null; 

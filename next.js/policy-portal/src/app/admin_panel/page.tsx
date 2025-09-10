@@ -1,7 +1,7 @@
-'use client';
-import React from 'react';
+// 'use client';
+// import React from 'react';
 import CollapsibleSidebar from "@/components/sidebar";
-import { getAuthenticatedRole } from "@/utils/authenticate";
+import { getAuthenticatedRole1 } from "@/utils/authenticateServer";
 import { adminPolicy,adminUsers } from '@/services/api';
 
 const users = [
@@ -40,11 +40,12 @@ const policies = [
   },
 ];
 
-function Error404() {
+function Error404({message}:{message?:string}) {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
       <h1 className="text-5xl font-bold text-red-600 mb-4">404</h1>
       <p className="text-xl text-gray-700">Unauthorized access</p>
+       {message && ( <p className="text-xl text-gray-700">${message}</p> )}
     </div>
   );
 }
@@ -52,18 +53,25 @@ function Error404() {
 export default async function AdminPanelPage() {
 
 
+
+  const role = await getAuthenticatedRole1();
+  if (role !== "admin") {
+    return <Error404 />;
+  }
+
+
              const [result, result1] = await Promise.all([
           adminPolicy(),
           adminUsers()
         ]);
-      
-            
-    
+        console.log(result1);
 
-const role = getAuthenticatedRole();
-  if (role !== "admin") {
-    return <Error404 />;
-  }
+           if (
+      result?.message?.includes("Forbidden") ||
+      result1?.message?.includes("Forbidden")
+    ) {
+      return <Error404 />;
+    }
 
 
   return (
@@ -80,8 +88,8 @@ const role = getAuthenticatedRole();
         <div className="mb-12 w-full max-w-4xl">
           <h2 className="text-xl font-semibold mb-4 text-gray-800">Users</h2>
           <div className="overflow-x-auto">
-              <p className='text-emerald-600'>${result}</p>
-              <p className='text-emerald-600'>${result1}</p>
+              <p className='px-4 py-2 text-emerald-600'>Total Policies:{result}</p>
+              <p className='px-4 py-2 text-amber-500'>Total Users:{result1.users}</p>
           </div>
         </div>
 

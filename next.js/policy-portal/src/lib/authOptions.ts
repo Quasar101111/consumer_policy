@@ -28,6 +28,7 @@ export const authOptions: NextAuthOptions = {
           let data;
           try {
             data = JSON.parse(text);
+             
           } catch {
             console.error("Non-JSON response from server:", text);
             throw new Error("Unexpected server response");
@@ -41,8 +42,7 @@ export const authOptions: NextAuthOptions = {
             const decode = jwtDecode(data.token);
              role= decode["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
           }
-          // role = data.role || "user";
-          
+     
 
           return {
             id: data.username,

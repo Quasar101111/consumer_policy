@@ -6,6 +6,7 @@ import {authFetch} from "./authFetch";
 import { signIn } from "next-auth/react";
 import next from "next";
 import { revalidate } from "@/app/check/page";
+import { authFetch1 } from "./authFetchServer";
 
 // };
 
@@ -55,7 +56,7 @@ export async function login(userData: { username: string; password: string }) {
     redirect: false,
     username: userData.username,
     password: userData.password,
-     callbackUrl: '/dashboard',
+     callbackUrl: '/',
 
   });
 
@@ -211,14 +212,14 @@ export async function policyDetails(policyNumber: string) {
 
 
 export async function adminPolicy(){
-  const response = await fetch ('1${policyUrl}/admin-panel',{method:'GET'});
+  const response = await authFetch1 (`${policyUrl}/admin-panel`,{method:'GET'});
   if(!response.ok){
-
+   
   }return response.json();
 }
 
 export async function adminUsers(){
-  const response = await fetch ('1${baseUrl}/admin-panel',{method:'GET'});
+  const response = await authFetch1 (`${baseUrl}/admin-panel`,{method:'GET'});
   if(!response.ok){
 
   }return response.json();
